@@ -50,13 +50,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Login
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/promjenaProfila"> Postavke profila </a></li>
-                                <li><a href="/registrirajDijete"> Registriraj dijete </a></li>
-                            </ul>
-                        </li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Login
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Prijava">Prijava</a></li>
+                            <li><a href="/Registracija">Registracija</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -79,9 +79,9 @@
                 <div class="col-lg-4">
                     <h4>A to su...</h4>
                     <p>
-                        <a href="#">Adrian Bijelić</a><br/>
-                        <a href="#">Josip Grgić</a><br/>
-                        <a href="#">Leon Hrnjak</a>
+                        <a href="mailto:adrian.bijelic@fer.hr">Adrian Bijelić</a><br/>
+                        <a href="mailto:josip.grgic@fer.hr">Josip Grgić</a><br/>
+                        <a href="mailto:leon.hrnjak@fer.hr">Leon Hrnjak</a>
                     </p>
                 </div><!-- /col-lg-4 -->
 
@@ -100,13 +100,46 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script>
-        $(window).scroll(function() {
-            if ($(document).scrollTop() > 10) {
+        $(document).ready(function() {
+            if ($(document).scrollTop() > 10 || $(".navbar-toggle").is(":visible")) {
+                $('#traka').removeClass('enlarge');
                 $('#traka').addClass('shrink');
             } else {
                 $('#traka').removeClass('shrink');
+                $('#traka').addClass('enlarge');
+            }
+
+        });
+
+        $(window).scroll(function() {
+            if(!$(".navbar-toggle").is(":visible")) {
+                if ($(document).scrollTop() > 10) {
+                    $('#traka').removeClass('enlarge');
+                    $('#traka').addClass('shrink');
+                } else {
+                    $('#traka').removeClass('shrink');
+                    $('#traka').addClass('enlarge');
+                }
+                $('#traka').addClass('grad');
             }
         });
+
+        $(window).resize(function () {
+            if ($(".navbar-toggle").is(":visible")) {
+                $('#traka').removeClass('enlarge');
+                $('#traka').addClass('shrink');
+            } else {
+               if ($(document).scrollTop() > 10) {
+                    $('#traka').removeClass('enlarge');
+                    $('#traka').addClass('shrink');
+                } else {
+                    $('#traka').removeClass('shrink');
+                    $('#traka').addClass('enlarge');
+                }
+            }
+            $('#traka').addClass('grad');
+        });
+
     </script>
 
 </body>

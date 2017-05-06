@@ -15,7 +15,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     color: #555;
-    margin-top: 140px;
+    margin-top: 180px;
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
@@ -91,12 +91,19 @@ a:after {
 	background-color: #F8F8F8;
 }
 
-.navbar-inverse {
+.enlarge {
 	padding-bottom: 70px;
 	padding-top: 70px;
+}
 
-	-webkit-transition: all 0.4s ease;
-   transition: all 0.4s ease;
+.shrink {
+    padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+.grad {
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 .navbar-inverse {
@@ -112,9 +119,8 @@ a:after {
 	color: #222222;
 }
 
-.navbar-inverse.shrink {
-    padding-bottom: 0px;
-	padding-top: 0px;
+.drop > a {
+    color: white;
 }
 
 .navbar-brand {
@@ -224,16 +230,15 @@ bt {
     background:transparent url(../img/loader.gif) no-repeat center;
 }
 
-
-    .zoomOverlay {
-        position:absolute;
-        top:0; left:0;
-        bottom:0; right:0;
-        display:none;
-        background-image:url(../img/zoom.png);
-        background-repeat:no-repeat;
-        background-position:center;
-    }
+.zoomOverlay {
+    position:absolute;
+    top:0; left:0;
+    bottom:0; right:0;
+    display:none;
+    background-image:url(../img/zoom.png);
+    background-repeat:no-repeat;
+    background-position:center;
+}
 
 .zoom2 {
 	opacity: 1;
@@ -248,4 +253,15 @@ bt {
 .glyphicon {
 	font-size: 40px;
 	color: #1abc9c;
+}
+
+.bordered {
+    border: 5px solid;
+    max-width: 400px;
+    max-height: 305px;
+}
+
+.collapse {
+    padding-bottom: 0px;
+	padding-top: 0px;
 }
