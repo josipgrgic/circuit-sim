@@ -261,7 +261,10 @@ bt {
     max-height: 305px;
 }
 
-.collapse {
-    padding-bottom: 0px;
-	padding-top: 0px;
+.center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+

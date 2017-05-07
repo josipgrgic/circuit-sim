@@ -71,25 +71,24 @@
     <div id="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <h4>Tko smo mi?</h4>
                     <p>Entrepreneurs of Entrepreneurship ©</p>
                 </div><!-- /col-lg-4 -->
 
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <h4>A to su...</h4>
                     <p>
-                        <a href="mailto:adrian.bijelic@fer.hr">Adrian Bijelić</a><br/>
-                        <a href="mailto:josip.grgic@fer.hr">Josip Grgić</a><br/>
-                        <a href="mailto:leon.hrnjak@fer.hr">Leon Hrnjak</a>
+                        <a class="col-lg-12" href="mailto:adrian.bijelic@fer.hr">Adrian Bijelić</a><br/>
+                        <a class="col-lg-12" href="mailto:josip.grgic@fer.hr">Josip Grgić</a><br/>
+                        <a class="col-lg-12" href="mailto:leon.hrnjak@fer.hr">Leon Hrnjak</a>
                     </p>
                 </div><!-- /col-lg-4 -->
 
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <h4>O nama</h4>
                     <p>Mali kolektiv kojemu je cilj približivanje digitalne logike širom pučanstvu.</p>
                 </div><!-- /col-lg-4 -->
-
             </div>
 
         </div>
@@ -101,45 +100,37 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script>
         $(document).ready(function() {
-            if ($(document).scrollTop() > 10 || $(".navbar-toggle").is(":visible")) {
-                $('#traka').removeClass('enlarge');
-                $('#traka').addClass('shrink');
-            } else {
-                $('#traka').removeClass('shrink');
-                $('#traka').addClass('enlarge');
-            }
-
+            checkAndChange();
         });
 
         $(window).scroll(function() {
             if(!$(".navbar-toggle").is(":visible")) {
-                if ($(document).scrollTop() > 10) {
-                    $('#traka').removeClass('enlarge');
-                    $('#traka').addClass('shrink');
-                } else {
-                    $('#traka').removeClass('shrink');
-                    $('#traka').addClass('enlarge');
-                }
-                $('#traka').addClass('grad');
+                checkAndChange();
             }
         });
 
         $(window).resize(function () {
-            if ($(".navbar-toggle").is(":visible")) {
-                $('#traka').removeClass('enlarge');
-                $('#traka').addClass('shrink');
-            } else {
-               if ($(document).scrollTop() > 10) {
-                    $('#traka').removeClass('enlarge');
-                    $('#traka').addClass('shrink');
-                } else {
-                    $('#traka').removeClass('shrink');
-                    $('#traka').addClass('enlarge');
-                }
-            }
-            $('#traka').addClass('grad');
+            checkAndChange();
         });
 
+        function shrink() {
+             $('#traka').removeClass('enlarge');
+             $('#traka').addClass('shrink');
+        }
+
+        function enlarge() {
+            $('#traka').removeClass('shrink');
+            $('#traka').addClass('enlarge');
+        }
+
+        function checkAndChange() {
+            if ($(document).scrollTop() > 10 || $(".navbar-toggle").is(":visible")) {
+                shrink()
+            } else {
+                enlarge()
+            }
+            $('#traka').addClass('grad');
+        }
     </script>
 
 </body>
