@@ -1,5 +1,4 @@
 function simulate(){
-
     var queue = [];
 
     gates.forEach(function(gate) {
@@ -38,9 +37,6 @@ function simulate(){
         }
 
         inputs = [];
-        console.log("inputs");
-        console.log(inputs);
-
         inputWires.forEach(function(wire){
             inputs.push(wire.status);
         });
@@ -69,7 +65,6 @@ function simulate(){
         }
         if(typeof outputWires !== 'undefined'){
             outputWires.forEach(function(wire){
-                console.log("status: " + currentGate.outputNum + ", " + newStatus[wire.outIndex] + ", " + wire.status);
                 if((currentGate.outputNum === 1 && newStatus !== wire.status) || (currentGate.outputNum > 1 && newStatus[wire.outIndex] !== wire.status)){
                     if(currentGate.outputNum > 1){
                         wire.status = newStatus[wire.outIndex];
@@ -89,11 +84,18 @@ function simulate(){
         if(typeof currentGate.sevenSeg !== 'undefined'){
             currentGate.switch(inputs);
         }
-        console.log("Current gate: ");
         console.log(currentGate);
         console.log(inputs);
-        console.log(wires);
+        console.log(gates);
     }
+}
+
+function setupClocks(){
+    gates.forEach(function(gate) {
+        if(gate.isClock !== 'undefined' && gate.isClock){
+            gate.switch();
+        }
+    }, this);
 }
 
 function endSimulation(){
@@ -114,5 +116,6 @@ function endSimulation(){
             }
         }
     });
+    clearInterval(intervalClock);
 }
 

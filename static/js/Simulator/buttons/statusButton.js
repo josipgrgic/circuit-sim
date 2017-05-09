@@ -11,9 +11,6 @@ function StatusButton(inSignal, index) {
 
     this.button.mousePressed(function() {
         gates[this.value()].switch();
-        if (simToggleValue === 1) {
-            simulate();
-        }
     });
 
     this.setPosition = function(x, y) {
@@ -21,7 +18,7 @@ function StatusButton(inSignal, index) {
         this.y = y;
         var el = document.getElementById("canvas-holder");
         var rect = el.getBoundingClientRect();
-       this.button.position(rect.left + this.x, rect.top +  this.y + scroll);
+        this.button.position(rect.left + this.x, rect.top +  this.y + scroll);
     }
 
     this.hide = function() {

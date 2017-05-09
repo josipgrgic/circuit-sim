@@ -31,6 +31,7 @@ var sliderValue = 700;
 var canWidth;
 var canHeigth;
 var scroll = $(document).scrollTop();
+var intervalClock;
 
 function setup() {
     var el = document.getElementById("canvas-holder");
@@ -153,6 +154,11 @@ function setup() {
             currentGate = new Counter(0, 0);
     });
 
+    $( "#CLOCK" ).click(function() {
+        if (simToggleValue === 0 && deleteWireMode === 0)
+            currentGate = new Clock(0, 0);
+    });
+
     $( "#SIMULATION" ).click(function() {
         deleteWireMode = 0;
         adjustColor();
@@ -163,13 +169,21 @@ function setup() {
         if (simToggleValue === 1) {
             $( "#SIMULATION" ).removeClass("btn-danger");
             $( "#SIMULATION" ).addClass("btn-success");
-            simulate();
+            //simulate();
+            intervalClock = setInterval(clock, 10);
         } else {
             $( "#SIMULATION" ).removeClass("btn-success");
             $( "#SIMULATION" ).addClass("btn-danger");
             endSimulation();
         }
     });
+}
+
+function clock(){
+    if (simToggleValue === 1) {
+        setupClocks();
+        simulate();
+    }
 }
 
 function draw() {
