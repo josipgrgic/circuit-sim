@@ -1,0 +1,39 @@
+function StatusButton(inSignal, index) {
+    this.inSignal = inSignal;
+    this.inSignalIndex = index;
+
+    this.x;
+    this.y;
+
+    this.button = createButton('');
+    this.button.addClass('statButton');
+    this.button.value(this.inSignalIndex);
+
+    this.button.mousePressed(function() {
+        gates[this.value()].switch();
+        if (simToggleValue === 1) {
+            simulate();
+        }
+    });
+
+    this.setPosition = function(x, y) {
+        this.x = x;
+        this.y = y;
+        var el = document.getElementById("canvas-holder");
+        var rect = el.getBoundingClientRect();
+       this.button.position(rect.left + this.x - 7, rect.top +  this.y - 7 + scroll);
+    }
+
+    this.hide = function() {
+        this.button.style('visibility', 'hidden');
+    }
+
+    this.show = function() {
+        this.button.style('visibility', 'visible');
+    }
+
+    this.refresh = function() {
+        this.inSignalIndex = this.inSignal.index;
+        this.button.value(this.inSignalIndex);
+    }
+}
