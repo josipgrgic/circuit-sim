@@ -196,7 +196,17 @@ function draw() {
         currentWire.draw();
         currentWire.drawSegment();
     }
+    drawFrame();
 }
+
+function drawFrame() {
+    noFill();
+    stroke(0);
+    strokeWeight(2);
+    rect(1,1,width-2, height-2);
+    strokeWeight(1);
+}
+
 function adjustColor() {
     if (deleteWireMode === 1) {
         clearCurrentWire();
@@ -329,7 +339,7 @@ function displayGate() {
 }
 
 function outOfBounds(other) {
-    if (other.left < 0 || other.right > width || other.up < 0 || other.bottom > height)
+    if (other.left < 3 || other.right > width-3 || other.up < 0 || other.bottom > height)
         return true;
     return false;
 }
