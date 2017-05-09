@@ -15,7 +15,7 @@ function InButton(gate, inIndex) {
     this.button.mousePressed(function() {
         var but = gates[this.value()].in[parseInt(this.id())];
         print(but);
-        if (simToggleValue === 1)
+        if (simToggleValue === 1 || deleteWireMode === 1)
             return;
 
         if (currentWire === null && but.wires.length === 0) {
@@ -32,9 +32,6 @@ function InButton(gate, inIndex) {
             but.wires.push(currentWire);
             currentWire.push();
         }
-
-        var but = gates[this.value()].in[parseInt(this.id())];
-        print(but.wires.length);
     });
 
     this.setPosition = function(x, y) {

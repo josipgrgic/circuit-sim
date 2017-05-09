@@ -44,29 +44,27 @@ function setup() {
     canvas.mousePressed(addGateOrWire);
 
     $( "#AND-GATE" ).click(function() {
-        print("Usao and");
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new AndGate(0, 0);
     });
 
     $( "#OR-GATE" ).click(function() {
-        print("Usao or");
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new OrGate(0, 0);
     });
 
     $( "#CUSTOM-GATE" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new CustomGate(0, 0);
     });
 
     $( "#INPUT-SIGNAL" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new InSignal(0, 0);
     });
 
     $( "#OUTPUT-SIGNAL" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new OutSignal(0, 0);
     });
 
@@ -85,6 +83,8 @@ function setup() {
         wires = [];
         currentWire = null;
         currentGate = null;
+        deleteWireMode = 0;
+        adjustColor()
     });
 
     $( "#CLEAR-WIRE" ).click(function() {
@@ -92,77 +92,81 @@ function setup() {
     });
 
     $( "#NOT-GATE" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new NotGate(0, 0);
     });
 
     $( "#NAND-GATE" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new NandGate(0, 0);
     });
 
     $( "#NOR-GATE" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new NorGate(0, 0);
     });
 
     $( "#XOR-GATE" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new XorGate(0, 0);
     });
 
     $( "#DELETE-WIRE-MODE" ).click(function() {
-        deleteWireMode = 1 - deleteWireMode;
-        if (deleteWireMode === 1) {
-            clearCurrentWire();
-        } else {
-
+        if(simToggleValue === 0){
+            deleteWireMode = 1 - deleteWireMode;
+            adjustColor();
         }
     });
 
     $( "#HALF-ADDER" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new HalfAdderGate(0, 0);
     });
 
     $( "#FULL-ADDER" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new FullAdderGate(0, 0);
     });
 
     $( "#HALF-SUBTRACTOR" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new HalfSubtractor(0, 0);
     });
 
     $( "#FULL-SUBTRACTOR" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new FullSubtractor(0, 0);
     });
 
     $( "#7-SEG-DISPLAY" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new SevenSegDisplay(0, 0);
     });
 
     $( "#BCD-TO-7-SEG" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new BcdToSevenSeg(0, 0);
     });
 
     $( "#COUNTER" ).click(function() {
-        if (simToggleValue === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new Counter(0, 0);
     });
 
     $( "#SIMULATION" ).click(function() {
+        deleteWireMode = 0;
+        adjustColor();
         currentGate = null;
         currentWire = null;
         simToggleValue = 1 - simToggleValue;
         print(simToggleValue);
         if (simToggleValue === 1) {
+            $( "#SIMULATION" ).removeClass("btn-danger");
+            $( "#SIMULATION" ).addClass("btn-success");
             simulate();
         } else {
+            $( "#SIMULATION" ).removeClass("btn-success");
+            $( "#SIMULATION" ).addClass("btn-danger");
             endSimulation();
         }
     });
@@ -191,6 +195,16 @@ function draw() {
     } else if (currentWire !== null) {
         currentWire.draw();
         currentWire.drawSegment();
+    }
+}
+function adjustColor() {
+    if (deleteWireMode === 1) {
+        clearCurrentWire();
+        $( "#DELETE-WIRE-MODE" ).removeClass("btn-danger");
+        $( "#DELETE-WIRE-MODE" ).addClass("btn-success");
+    } else {
+        $( "#DELETE-WIRE-MODE" ).removeClass("btn-success");
+        $( "#DELETE-WIRE-MODE" ).addClass("btn-danger");
     }
 }
 
