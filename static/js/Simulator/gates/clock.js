@@ -51,7 +51,7 @@ function Clock(x, y) {
 
         strokeWeight(1);
 
-        if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0) {
+        if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0 && currentWire === null) {
             this.closeButton.show();
         } else {
             this.closeButton.hide();
