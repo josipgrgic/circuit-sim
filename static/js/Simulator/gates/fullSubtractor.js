@@ -102,19 +102,12 @@ function FullSubtractor(x, y) {
             for (var i = 0; i < this.inputNum; i++) {
                 this.in[i] = new InButton(this, i);
             }
-
-            this.in[0].setPosition(this.left, this.y + this.height / 4 - 5);
-            this.in[1].setPosition(this.left, this.y + 2 * this.height / 4);
-            this.in[2].setPosition(this.left, this.y + 3 * this.height / 4 + 5);
         }
         for (i = 0; i < this.outputNum; i++) {
             this.out[i] = new OutButton(this, i);
         }
-        this.out[0].setPosition(this.right, this.y + this.height / 4 - 5);
-        this.out[1].setPosition(this.right, this.y + 3 * this.height / 4 + 5);
 
-
-        this.closeButton.setPosition(this.right - 33, this.up + 2);
+        this.refreshButtons();
         this.truthTable = [
             [
                 [
@@ -137,6 +130,19 @@ function FullSubtractor(x, y) {
                 ]
             ]
         ];
+    }
+
+    this.refreshButtons = function() {
+        if (this.inputNum == 3) {
+            this.in[0].setPosition(this.left, this.y + this.height / 4 - 5);
+            this.in[1].setPosition(this.left, this.y + 2 * this.height / 4);
+            this.in[2].setPosition(this.left, this.y + 3 * this.height / 4 + 5);
+        }
+        this.out[0].setPosition(this.right, this.y + this.height / 4 - 5);
+        this.out[1].setPosition(this.right, this.y + 3 * this.height / 4 + 5);
+
+
+        this.closeButton.setPosition(this.right - 33, this.up + 2);
     }
 
     this.delete = function() {

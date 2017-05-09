@@ -139,6 +139,15 @@ function SevenSegDisplay(x, y) {
         if (this.inputNum == 7) {
             for (var i = 0; i < this.inputNum; i++) {
                 this.in[i] = new InButton(this, i);
+            }
+        }
+
+        this.refreshButtons();
+    }
+
+    this.refreshButtons = function() {
+        if (this.inputNum == 7) {
+            for (var i = 0; i < this.inputNum; i++) {
                 this.in[i].setPosition(this.left, this.y + (i + 1) * 10);
             }
         }

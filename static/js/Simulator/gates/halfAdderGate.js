@@ -101,17 +101,12 @@ function HalfAdderGate(x, y) {
                 this.in[i] = new InButton(this, i);
             }
 
-            this.in[0].setPosition(this.left, this.y + this.height / 4);
-            this.in[1].setPosition(this.left, this.y + 3 * this.height / 4);
         }
         for (i = 0; i < this.outputNum; i++) {
             this.out[i] = new OutButton(this, i);
         }
-        this.out[0].setPosition(this.right, this.y + this.height / 4);
-        this.out[1].setPosition(this.right, this.y + 3 * this.height / 4);
 
-
-        this.closeButton.setPosition(this.right - 33, this.up + 2);
+        this.refreshButtons();
         this.truthTable = [
             [
                 [0, 0],
@@ -129,6 +124,18 @@ function HalfAdderGate(x, y) {
                 [2, 2]
             ]
         ];
+    }
+
+    this.refreshButtons = function() {
+        if (this.inputNum == 2) {
+
+            this.in[0].setPosition(this.left, this.y + this.height / 4);
+            this.in[1].setPosition(this.left, this.y + 3 * this.height / 4);
+        }
+        this.out[0].setPosition(this.right, this.y + this.height / 4);
+        this.out[1].setPosition(this.right, this.y + 3 * this.height / 4);
+
+        this.closeButton.setPosition(this.right - 33, this.up + 2);
     }
 
     this.delete = function() {

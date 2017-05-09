@@ -111,11 +111,19 @@ function Counter(x, y) {
             this.in[i] = new InButton(this, i);
         }
 
+        for (i = 0; i < this.outputNum; i++) {
+            this.out[i] = new OutButton(this, i);
+        }
+
+        this.refreshButtons();
+    }
+
+    this.refreshButtons = function() {
+
         this.in[0].setPosition(this.left, this.y + 20);
         this.in[1].setPosition(this.left, this.y + 60);
 
         for (i = 0; i < this.outputNum; i++) {
-            this.out[i] = new OutButton(this, i);
             this.out[i].setPosition(this.right, this.y + i * 20 + 10);
         }
 

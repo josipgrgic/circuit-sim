@@ -74,6 +74,10 @@ function OutSignal(x, y) {
         this.name += this.index;
 
         this.in[0] = new InButton(this, 0);
+        this.refreshButtons();
+    }
+
+    this.refreshButtons = function() {
         this.in[0].setPosition(this.left, this.up + this.height / 2);
 
         this.closeButton.setPosition(this.left + 6, this.up - 3);

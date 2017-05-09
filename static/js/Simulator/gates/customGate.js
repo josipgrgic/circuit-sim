@@ -89,22 +89,28 @@ function CustomGate(x, y) {
         this.index = gates.length;
         this.name += this.index;
 
-        if (this.inputNum == 2) {
-            for (var i = 0; i < this.inputNum; i++) {
-                this.in[i] = new InButton(this, i);
-            }
+        for (i = 0; i < this.inputNum; i++) {
+            this.in[i] = new InButton(this, i);
+        }
 
+        for (i = 0; i < this.outputNum; i++) {
+            this.out[i] = new OutButton(this, i);
+        }
+
+        this.refreshButtons();
+    }
+
+    this.refreshButtons = function() {
+        if (this.inputNum == 2) {
             this.in[0].setPosition(this.left, this.y + this.height / 4);
             this.in[1].setPosition(this.left, this.y + 3 * this.height / 4);
         } else {
             for (i = 0; i < this.inputNum; i++) {
-                this.in[i] = new InButton(this, i);
                 this.in[i].setPosition(this.left, this.y + (i + 1) * this.height / (this.inputNum + 1));
             }
         }
 
         for (i = 0; i < this.outputNum; i++) {
-            this.out[i] = new OutButton(this, i);
             this.out[i].setPosition(this.right, this.y + (i + 1) * this.height / (this.outputNum + 1));
         }
 
