@@ -5,8 +5,8 @@ function SevenSegDisplay(x, y) {
     this.index = -1;
     this.name = "SEVEN_SEG_DISPLAY_";
 
-    this.length = 46;
-    this.height = 80;
+    this.length = 55;
+    this.height = 110;
 
     this.left = this.x - 10;
     this.right = this.x + this.length + 10;
@@ -48,44 +48,44 @@ function SevenSegDisplay(x, y) {
         line(this.x, this.y, this.x, this.y + this.height);
         line(this.x + this.length, this.y, this.x + this.length, this.y + this.height);
 
-        strokeWeight(4);
+        strokeWeight(8);
         stroke(this.color[0]);
-        line(this.x + 13, this.y + 10, this.x + this.length - 12, this.y + 10); // a
+        line(this.x + 15, this.y + 10, this.x + this.length - 14, this.y + 10); // a
 
         stroke(this.color[5]);
-        line(this.x + 9, this.y + 14, this.x + 8, this.y + this.height / 2 - 7 + 3); // f
+        line(this.x + 9, this.y + 17, this.x + 8, this.y + this.height / 2 - 5); // f
 
         stroke(this.color[1]);
-        line(this.x + this.length - 8, this.y + 14, this.x + this.length - 9, this.y + this.height / 2 - 7 + 3); // b
+        line(this.x + this.length - 8, this.y + 17, this.x + this.length - 9, this.y + this.height / 2 - 5); // b
 
         stroke(this.color[6]);
-        line(this.x + 13, this.y + this.height / 2, this.x + this.length - 13, this.y + this.height / 2); // g
+        line(this.x + 14, this.y + this.height / 2, this.x + this.length - 14, this.y + this.height / 2); // g
 
         stroke(this.color[4]);
-        line(this.x + 9, this.y + this.height / 2 + 4, this.x + 8, this.y + this.height - 14); // e
+        line(this.x + 9, this.y + this.height / 2 + 5, this.x + 8, this.y + this.height - 17); // e
 
         stroke(this.color[2]);
-        line(this.x + this.length - 8, this.y + this.height / 2 + 4, this.x + this.length - 9, this.y + this.height - 14); // c
+        line(this.x + this.length - 8, this.y + this.height / 2 + 5, this.x + this.length - 9, this.y + this.height - 17); // c
 
         stroke(this.color[3]);
-        line(this.x + 12, this.y + this.height - 10, this.x + this.length - 13, this.y + this.height - 10); // d
+        line(this.x + 14, this.y + this.height - 10, this.x + this.length - 15, this.y + this.height - 10); // d
 
         stroke(0);
 
         strokeWeight(2);
 
         for (var i = 0; i < this.inputNum; i++) {
-            line(this.left, this.y + (i + 1) * 10, this.x, this.y + (i + 1) * 10);
+            line(this.left, this.y + 10 + i * 15, this.x, this.y + 10 + i * 15);
         }
         strokeWeight(0.7);
         textSize(9);
-        text("A", this.x - 10, this.y + 9);
-        text("B", this.x - 10, this.y + 19);
-        text("C", this.x - 10, this.y + 29);
-        text("D", this.x - 10, this.y + 39);
-        text("E", this.x - 10, this.y + 49);
-        text("F", this.x - 10, this.y + 59);
-        text("G", this.x - 10, this.y + 69);
+        text("A", this.x - 10, this.y + 8);
+        text("B", this.x - 10, this.y + 23);
+        text("C", this.x - 10, this.y + 38);
+        text("D", this.x - 10, this.y + 53);
+        text("E", this.x - 10, this.y + 68);
+        text("F", this.x - 10, this.y + 83);
+        text("G", this.x - 10, this.y + 98);
 
         strokeWeight(1);
 
@@ -106,7 +106,7 @@ function SevenSegDisplay(x, y) {
 
         for (i = 0; i < this.in.length; i++) {
             var but = this.in[i];
-            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
+            if (mouseX > but.x - 6 && mouseX < but.x + 6 && mouseY > but.y - 6 && mouseY < but.y + 6 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
                 but.show();
             } else {
                 but.hide();
@@ -136,11 +136,9 @@ function SevenSegDisplay(x, y) {
         this.index = gates.length;
         this.name += this.index;
 
-        if (this.inputNum == 7) {
-            for (var i = 0; i < this.inputNum; i++) {
-                this.in[i] = new InButton(this, i);
-                this.in[i].setPosition(this.left, this.y + (i + 1) * 10);
-            }
+        for (var i = 0; i < this.inputNum; i++) {
+            this.in[i] = new InButton(this, i);
+            this.in[i].setPosition(this.left, this.y + 10 + i * 15);
         }
 
         this.closeButton.setPosition(this.right - 33, this.up + 2);

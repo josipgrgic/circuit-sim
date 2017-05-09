@@ -44,17 +44,17 @@ function Counter(x, y) {
 
         strokeWeight(0.7);
         textSize(9);
-        text("C", this.x - 10, this.y + 19);
-        text("R", this.x - 10, this.y + 59);
+        text("C", this.x - 10, this.y + 18);
+        text("R", this.x - 10, this.y + 58);
 
-        text("A", this.right - 15, this.y + 9);
-        text("B", this.right - 15, this.y + 29);
-        text("C", this.right - 15, this.y + 49);
-        text("D", this.right - 15, this.y + 69);
+        text("A", this.right - 15, this.y + 8);
+        text("B", this.right - 15, this.y + 28);
+        text("C", this.right - 15, this.y + 48);
+        text("D", this.right - 15, this.y + 68);
 
         strokeWeight(1.0);
         textSize(12);
-        text(" COU\nNTER", this.x + 7, this.y + 30);
+        text("CNTR", this.x + 6, this.y + 42);
 
         strokeWeight(1);
 
@@ -178,7 +178,7 @@ function Counter(x, y) {
         }
         if (typeof reset === 'undefined' || reset === 2) {
             this.previousReset = 0;
-        } else if (reset === 1 && this.previousReset != reset) {
+        } else if (reset === 1) {
             this.state = 0;
         }
         this.previousClk = clk;
