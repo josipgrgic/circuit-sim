@@ -7,7 +7,7 @@
         <div class="row">
         <div class="col-md-3 col-xs-6">
             <p>ULAZ/IZLAZ</p>
-            <div class="btn-container">
+            <div class="btn-container centered">
                 <a id="INPUT-SIGNAL" class="g-b-wr">
                     <img src="{% static 'img/btn-img/in.png' %}" title="Izvor signala" class="gate-btn" width="70" height="40"/>
                 </a>
@@ -24,7 +24,7 @@
 
         <div class="col-md-3 col-xs-6">
             <p>JEDNOSTAVNI SKLOPOVI</p>
-            <div class="btn-container">
+            <div class="btn-container centered">
                 <a id="AND-GATE">
                     <img src="{% static 'img/btn-img/and.png' %}" title="I sklop" class="gate-btn" width="70" height="40"/>
                 </a>
@@ -49,7 +49,7 @@
 
         <div class="col-md-3 col-xs-6">
             <p>SLOŽENI SKLOPOVI</p>
-            <div class="btn-container">
+            <div class="btn-container centered">
                 <a id="CUSTOM-GATE">
                 </a>
                 <a id="HALF-ADDER">
@@ -79,15 +79,16 @@
             <a id="MOUSE-POINTER">
                 <img src="{% static 'img/btn-img/cursor.png' %}" title="Pokazivač" class="cursor" width="30" height="30"/>
             </a>
-            <a id="CLEAR" class="btn btn-primary btn-xs col-xs-offset-1">OČISTI</a>
+            <a id="CLEAR" class="btn btn-primary btn-xs col-xs-offset-3">OČISTI</a>
             <!--<a id="CLEAR-WIRE" class="btn btn-primary btn-xs">OBRIŠI ŽICU</a>-->
             <br /><br />
             <a id="DELETE-WIRE-MODE" class="btn btn-danger btn-xs">DELETE WIRE MODE</a>
             <a id="SIMULATION" class="btn btn-danger btn-xs">SIMULATION</a>
             <br /><br />
-            <div class="row"><span>Podesi veličinu prozora:</span> <div id="SLIDER"></div></div>
+            <!--<div class="row"><span>Podesi veličinu prozora:</span> <div id="SLIDER"></div></div>-->
         </div>
         </div>
+        <hr>
 
         <div id="canvas-holder" class="row"></div>
     </div>
