@@ -35,7 +35,7 @@ var scroll = $(document).scrollTop();
 function setup() {
     var el = document.getElementById("canvas-holder");
     var rect = el.getBoundingClientRect();
-    slider = createSlider(700, rect.right - rect.left, 700, 1);
+    slider = createSlider(700, rect.right - rect.left, rect.right - rect.left, 1);
     slider.parent("SLIDER");
     canWidth = slider.value();
     canHeigth = 400;

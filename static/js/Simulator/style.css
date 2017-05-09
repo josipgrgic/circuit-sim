@@ -43,6 +43,10 @@
     border: 1px solid black;
 }
 
+.cursor {
+    cursor: pointer;
+}
+
 .g-b-wr{
     padding-top: 5px;
 }
