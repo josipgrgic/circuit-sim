@@ -21,7 +21,7 @@ function StatusButton(inSignal, index) {
         this.y = y;
         var el = document.getElementById("canvas-holder");
         var rect = el.getBoundingClientRect();
-       this.button.position(rect.left + this.x - 7, rect.top +  this.y - 7 + scroll);
+       this.button.position(rect.left + this.x, rect.top +  this.y + scroll);
     }
 
     this.hide = function() {

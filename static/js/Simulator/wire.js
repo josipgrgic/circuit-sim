@@ -98,7 +98,7 @@ function Wire() {
         var first = this.points[0];
         var last = this.points[this.points.length - 1];
 
-        if (mouseX < first.x + 10 && mouseX > first.x - 10 && mouseY < first.y + 10 && mouseY > first.y - 10) {
+        /*if (mouseX < first.x + 10 && mouseX > first.x - 10 && mouseY < first.y + 10 && mouseY > first.y - 10) {
             this.branchButton.hide();
             return;
         }
@@ -106,7 +106,7 @@ function Wire() {
         if (mouseX < last.x + 10 && mouseX > last.x - 10 && mouseY < last.y + 10 && mouseY > last.y - 10) {
             this.branchButton.hide();
             return;
-        }
+        }*/
 
         if (!this.done || currentGate !== null || simToggleValue === 1) {
             this.branchButton.hide();

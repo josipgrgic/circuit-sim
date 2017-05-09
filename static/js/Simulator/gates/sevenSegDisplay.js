@@ -30,14 +30,14 @@ function SevenSegDisplay(x, y) {
     this.colorRed = color(200, 0, 0);
     this.colorGreen = color(0, 255, 0);
 
-    this.color = [  this.colorGrey,
-                    this.colorGrey,
-                    this.colorGrey,
-                    this.colorGrey,
-                    this.colorGrey,
-                    this.colorGrey,
-                    this.colorGrey
-                    ];
+    this.color = [this.colorGrey,
+        this.colorGrey,
+        this.colorGrey,
+        this.colorGrey,
+        this.colorGrey,
+        this.colorGrey,
+        this.colorGrey
+    ];
 
 
     this.draw = function() {
@@ -50,56 +50,63 @@ function SevenSegDisplay(x, y) {
 
         strokeWeight(4);
         stroke(this.color[0]);
-        line(this.x+13, this.y+10, this.x + this.length-12, this.y+10); // a
+        line(this.x + 13, this.y + 10, this.x + this.length - 12, this.y + 10); // a
 
         stroke(this.color[5]);
-        line(this.x+9, this.y+14, this.x+8, this.y + this.height/2-7+3); // f
+        line(this.x + 9, this.y + 14, this.x + 8, this.y + this.height / 2 - 7 + 3); // f
 
         stroke(this.color[1]);
-        line(this.x+this.length-8, this.y+14, this.x+this.length-9, this.y + this.height/2-7+3); // b
+        line(this.x + this.length - 8, this.y + 14, this.x + this.length - 9, this.y + this.height / 2 - 7 + 3); // b
 
         stroke(this.color[6]);
-        line(this.x+13, this.y + this.height/2, this.x + this.length-13,  this.y + this.height/2); // g
+        line(this.x + 13, this.y + this.height / 2, this.x + this.length - 13, this.y + this.height / 2); // g
 
         stroke(this.color[4]);
-        line(this.x+9, this.y + this.height/2 + 4, this.x+8, this.y + this.height - 14); // e
+        line(this.x + 9, this.y + this.height / 2 + 4, this.x + 8, this.y + this.height - 14); // e
 
         stroke(this.color[2]);
-        line(this.x+this.length-8, this.y + this.height/2 + 4, this.x+this.length-9, this.y + this.height - 14); // c
+        line(this.x + this.length - 8, this.y + this.height / 2 + 4, this.x + this.length - 9, this.y + this.height - 14); // c
 
         stroke(this.color[3]);
-        line(this.x+12, this.y + this.height - 10, this.x + this.length-13,  this.y + this.height - 10); // d
+        line(this.x + 12, this.y + this.height - 10, this.x + this.length - 13, this.y + this.height - 10); // d
 
         stroke(0);
 
         strokeWeight(2);
 
-        for(var i = 0; i < this.inputNum; i++){
+        for (var i = 0; i < this.inputNum; i++) {
             line(this.left, this.y + (i + 1) * 10, this.x, this.y + (i + 1) * 10);
         }
         strokeWeight(0.7);
         textSize(9);
-        text("A", this.x-10, this.y+9);
-        text("B", this.x-10, this.y+19);
-        text("C", this.x-10, this.y+29);
-        text("D", this.x-10, this.y+39);
-        text("E", this.x-10, this.y+49);
-        text("F", this.x-10, this.y+59);
-        text("G", this.x-10, this.y+69);
+        text("A", this.x - 10, this.y + 9);
+        text("B", this.x - 10, this.y + 19);
+        text("C", this.x - 10, this.y + 29);
+        text("D", this.x - 10, this.y + 39);
+        text("E", this.x - 10, this.y + 49);
+        text("F", this.x - 10, this.y + 59);
+        text("G", this.x - 10, this.y + 69);
 
         strokeWeight(1);
 
-        if (simToggleValue === 1)
-            this.closeButton.hide();
-        else if (this.index >= 0 && this.mouseInside() && currentGate === null) {
+        if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0) {
             this.closeButton.show();
         } else {
             this.closeButton.hide();
         }
 
+        for (i = 0; i < this.out.length; i++) {
+            var but = this.out[i];
+            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
+                but.show();
+            } else {
+                but.hide();
+            }
+        }
+
         for (i = 0; i < this.in.length; i++) {
             var but = this.in[i];
-            if (mouseX > but.x - 5 && mouseX < but.x + 5 && mouseY > but.y - 5 && mouseY < but.y + 5) {
+            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
                 but.show();
             } else {
                 but.hide();
@@ -108,7 +115,7 @@ function SevenSegDisplay(x, y) {
     }
 
     this.placeTaken = function(other) {
-        if (other.left < this.right && other.right > this.left && other.up < this.bottom && other.bottom > this.up)
+        if (other.left < this.right + 10 && other.right > this.left - 10 && other.up < this.bottom && other.bottom > this.up)
             return true;
         return false;
     }
@@ -125,7 +132,7 @@ function SevenSegDisplay(x, y) {
 
     this.set = function() {
         this.x = mouseX;
-        this.y = mouseY - mouseY % 10;
+        this.y = mouseY - mouseY % 5;
         this.index = gates.length;
         this.name += this.index;
 
@@ -134,9 +141,9 @@ function SevenSegDisplay(x, y) {
                 this.in[i] = new InButton(this, i);
                 this.in[i].setPosition(this.left, this.y + (i + 1) * 10);
             }
-        } 
+        }
 
-        this.closeButton.setPosition(this.right - 33, this.up+2);
+        this.closeButton.setPosition(this.right - 33, this.up + 2);
     }
 
     this.delete = function() {
@@ -157,7 +164,7 @@ function SevenSegDisplay(x, y) {
 
     this.refreshPosition = function() {
         this.x = mouseX;
-        this.y = mouseY - mouseY % 10;
+        this.y = mouseY - mouseY % 5;
 
         this.left = this.x - 20;
         this.right = this.x + this.length;
@@ -188,14 +195,12 @@ function SevenSegDisplay(x, y) {
     this.switch = function(status) {
         this.status = status;
 
-        for(var i = 0; i < status.length; i++){
-            if(status[i] === 0){
+        for (var i = 0; i < status.length; i++) {
+            if (status[i] === 0) {
                 this.color[i] = this.colorGrey;
-            }
-            else if(status[i] === 1){
+            } else if (status[i] === 1) {
                 this.color[i] = this.colorRed;
-            }
-            else{
+            } else {
                 this.color[i] = this.colorGrey;
             }
         }

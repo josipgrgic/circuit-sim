@@ -31,38 +31,36 @@ function BcdToSevenSeg(x, y) {
         line(this.x, this.y, this.x, this.y + this.height);
         line(this.x + this.length, this.y, this.x + this.length, this.y + this.height);
 
-        for(var i = 0; i < this.inputNum; i++){
+        for (var i = 0; i < this.inputNum; i++) {
             line(this.left, this.y + 10 + i * 20, this.x, this.y + 10 + i * 20);
         }
 
-        for(var i = 0; i < this.outputNum; i++){
+        for (var i = 0; i < this.outputNum; i++) {
             line(this.x + this.length, this.y + (i + 1) * 10, this.right, this.y + (i + 1) * 10);
         }
 
         strokeWeight(0.7);
         textSize(9);
-        text("A", this.x-10, this.y+9);
-        text("B", this.x-10, this.y+29);
-        text("C", this.x-10, this.y+49);
-        text("D", this.x-10, this.y+69);
+        text("A", this.x - 10, this.y + 9);
+        text("B", this.x - 10, this.y + 29);
+        text("C", this.x - 10, this.y + 49);
+        text("D", this.x - 10, this.y + 69);
 
-        text("A", this.right-15, this.y+9);
-        text("B", this.right-15, this.y+19);
-        text("C", this.right-15, this.y+29);
-        text("D", this.right-15, this.y+39);
-        text("E", this.right-15, this.y+49);
-        text("F", this.right-15, this.y+59);
-        text("G", this.right-15, this.y+69);
+        text("A", this.right - 15, this.y + 9);
+        text("B", this.right - 15, this.y + 19);
+        text("C", this.right - 15, this.y + 29);
+        text("D", this.right - 15, this.y + 39);
+        text("E", this.right - 15, this.y + 49);
+        text("F", this.right - 15, this.y + 59);
+        text("G", this.right - 15, this.y + 69);
 
         strokeWeight(1.0);
         textSize(12);
-        text("BCD\n   to\n7seg", this.x+10, this.y+30);
+        text("BCD\n   to\n7seg", this.x + 10, this.y + 30);
 
         strokeWeight(1);
 
-        if (simToggleValue === 1)
-            this.closeButton.hide();
-        else if (this.index >= 0 && this.mouseInside() && currentGate === null) {
+        if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0) {
             this.closeButton.show();
         } else {
             this.closeButton.hide();
@@ -70,7 +68,7 @@ function BcdToSevenSeg(x, y) {
 
         for (i = 0; i < this.out.length; i++) {
             var but = this.out[i];
-            if (mouseX > but.x - 5 && mouseX < but.x + 5 && mouseY > but.y - 5 && mouseY < but.y + 5) {
+            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
                 but.show();
             } else {
                 but.hide();
@@ -79,7 +77,7 @@ function BcdToSevenSeg(x, y) {
 
         for (i = 0; i < this.in.length; i++) {
             var but = this.in[i];
-            if (mouseX > but.x - 5 && mouseX < but.x + 5 && mouseY > but.y - 5 && mouseY < but.y + 5) {
+            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
                 but.show();
             } else {
                 but.hide();
@@ -88,7 +86,7 @@ function BcdToSevenSeg(x, y) {
     }
 
     this.placeTaken = function(other) {
-        if (other.left < this.right && other.right > this.left && other.up < this.bottom && other.bottom > this.up)
+        if (other.left < this.right + 10 && other.right > this.left - 10 && other.up < this.bottom && other.bottom > this.up)
             return true;
         return false;
     }
@@ -98,14 +96,14 @@ function BcdToSevenSeg(x, y) {
     }
 
     this.mouseInside = function() {
-        if (mouseX > this.left - 6 && mouseX < this.right + 6 && mouseY > this.up && mouseY < this.bottom)
+        if (mouseX > this.left - 5 && mouseX < this.right + 5 && mouseY > this.up && mouseY < this.bottom)
             return true;
         return false;
     }
 
     this.set = function() {
         this.x = mouseX;
-        this.y = mouseY - mouseY % 10;
+        this.y = mouseY - mouseY % 5;
         this.index = gates.length;
         this.name += this.index;
 
@@ -119,40 +117,52 @@ function BcdToSevenSeg(x, y) {
             this.out[i].setPosition(this.right, this.y + (i + 1) * 10);
         }
 
-        this.closeButton.setPosition(this.right - 33, this.up+2);
+        this.closeButton.setPosition(this.right - 33, this.up + 2);
 
         this.truthTable = [
-            [   [   [   [1, 1, 1, 1, 1, 1, 0], 
-                        [0, 1, 1, 0, 0, 0, 0] 
-                    ], 
+            [
+                [
+                    [
+                        [1, 1, 1, 1, 1, 1, 0],
+                        [0, 1, 1, 0, 0, 0, 0]
+                    ],
 
-                    [   [1, 1, 0, 1, 1, 0, 1], 
-                        [1, 1, 1, 1, 0, 0, 1] 
+                    [
+                        [1, 1, 0, 1, 1, 0, 1],
+                        [1, 1, 1, 1, 0, 0, 1]
                     ]
                 ],
                 [
-                    [   [0, 1, 1, 0, 0, 1, 1], 
-                        [1, 0, 1, 1, 0, 1, 1] 
+                    [
+                        [0, 1, 1, 0, 0, 1, 1],
+                        [1, 0, 1, 1, 0, 1, 1]
                     ],
 
-                    [   [1, 0, 1, 1, 1, 1, 1],
+                    [
+                        [1, 0, 1, 1, 1, 1, 1],
                         [1, 1, 1, 0, 0, 0, 0]
                     ]
                 ]
             ],
-            [   [   [   [1, 1, 1, 1, 1, 1, 1],
+            [
+                [
+                    [
+                        [1, 1, 1, 1, 1, 1, 1],
                         [1, 1, 1, 1, 0, 1, 1]
                     ],
-                    [   [0, 0, 0, 0, 0, 0, 0], 
-                        [0, 0, 0, 0, 0, 0, 0] 
+                    [
+                        [0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0]
                     ]
                 ],
                 [
-                    [   [0, 0, 0, 0, 0, 0, 0], 
-                        [0, 0, 0, 0, 0, 0, 0] 
+                    [
+                        [0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0]
                     ],
 
-                    [   [0, 0, 0, 0, 0, 0, 0],
+                    [
+                        [0, 0, 0, 0, 0, 0, 0],
                         [0, 0, 0, 0, 0, 0, 0]
                     ]
                 ]
@@ -178,7 +188,7 @@ function BcdToSevenSeg(x, y) {
 
     this.refreshPosition = function() {
         this.x = mouseX;
-        this.y = mouseY - mouseY % 10;
+        this.y = mouseY - mouseY % 5;
 
         this.left = this.x - 20;
         this.right = this.x + this.length + 20;

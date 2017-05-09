@@ -54,7 +54,7 @@ function NorGate(x, y) {
 
         for (i = 0; i < this.out.length; i++) {
             var but = this.out[i];
-            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null) {
+            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
                 but.show();
             } else {
                 but.hide();
@@ -63,7 +63,7 @@ function NorGate(x, y) {
 
         for (i = 0; i < this.in.length; i++) {
             var but = this.in[i];
-            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null) {
+            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
                 but.show();
             } else {
                 but.hide();
@@ -89,7 +89,7 @@ function NorGate(x, y) {
 
     this.set = function() {
         this.x = mouseX;
-        this.y = mouseY - mouseY % 10;
+        this.y = mouseY - mouseY % 5;
         this.index = gates.length;
         this.name += this.index;
 
@@ -141,7 +141,7 @@ function NorGate(x, y) {
 
     this.refreshPosition = function() {
         this.x = mouseX;
-        this.y = mouseY - mouseY % 10;
+        this.y = mouseY - mouseY % 5;
 
         this.left = this.x - 20;
         this.right = this.x + (3 / 2) * this.length + 45;

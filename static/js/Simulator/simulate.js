@@ -45,25 +45,32 @@ function simulate(){
             inputs.push(wire.status);
         });
 
+        var newStatus = 2;
+        if(currentGate.outputNum > 0 ){
+            if(currentGate.inputNum === 1){
+                newStatus = currentGate.truthTable[inputs[0]];
+            }
+            else if(currentGate.inputNum === 2 && typeof currentGate.state === 'undefined'){
+                newStatus = currentGate.truthTable[inputs[0]][inputs[1]];
+            }
+            else if(currentGate.inputNum === 2 && typeof currentGate.state !== 'undefined'){
+                currentGate.switch(inputs[0], inputs[1]);
+                newStatus = currentGate.truthTable;
+            }
+            else if(currentGate.inputNum === 3){
+                newStatus = currentGate.truthTable[inputs[0]][inputs[1]][inputs[2]];
+            }
+            else if(currentGate.inputNum === 4){
+                newStatus = currentGate.truthTable[inputs[0]][inputs[1]][inputs[2]][inputs[3]];
+            }
+            if(typeof newStatus === 'undefiend'){
+                newStatus = 2;
+            }
+        }
         if(typeof outputWires !== 'undefined'){
             outputWires.forEach(function(wire){
-                newStatus = wire.status;
-                if(currentGate.inputNum === 1){
-                    newStatus = currentGate.truthTable[inputs[0]];
-                }
-                if(currentGate.inputNum === 2){
-                    newStatus = currentGate.truthTable[inputs[0]][inputs[1]];
-                }
-                if(currentGate.inputNum === 3){
-                    newStatus = currentGate.truthTable[inputs[0]][inputs[1]][inputs[2]];
-                }
-                if(currentGate.inputNum === 4){
-                    newStatus = currentGate.truthTable[inputs[0]][inputs[1]][inputs[2]][inputs[3]];
-                }
-                if(typeof newStatus === 'undefined'){
-                        newStatus = 2;
-                }
-                if(newStatus !== wire.status){
+                console.log("status: " + currentGate.outputNum + ", " + newStatus[wire.outIndex] + ", " + wire.status);
+                if((currentGate.outputNum === 1 && newStatus !== wire.status) || (currentGate.outputNum > 1 && newStatus[wire.outIndex] !== wire.status)){
                     if(currentGate.outputNum > 1){
                         wire.status = newStatus[wire.outIndex];
                     }
@@ -100,6 +107,10 @@ function endSimulation(){
             }
             if(typeof gate.sevenSeg !== 'undefined'){
                 gate.switch([0, 0, 0, 0, 0, 0, 0]);
+            }
+            if(typeof gate.counter !== 'undefined'){
+                gate.switch(0, 1);
+                gate.switch(0, 0);
             }
         }
     });

@@ -25,65 +25,56 @@ var fsubtractorButton;
 var hsubtractorButton;
 var sevenSegButton;
 var bcdToSevenSegButton;
+var counter;
 var slider;
-var sliderValue = 0;
+var sliderValue = 700;
 var canWidth;
 var canHeigth;
 var scroll = $(document).scrollTop();
 
 function setup() {
-    slider = createSlider(0, 100, 0, 1);
-    slider.position(10, 650);
-    canWidth = 700;
+    var el = document.getElementById("canvas-holder");
+    var rect = el.getBoundingClientRect();
+    slider = createSlider(700, rect.right - rect.left, 700, 1);
+    slider.parent("SLIDER");
+    canWidth = slider.value();
     canHeigth = 400;
     canvas = createCanvas(canWidth, canHeigth);
     canvas.parent('canvas-holder');
     canvas.mousePressed(addGateOrWire);
 
-    andButton = createButton('AND gate');
-    andButton.position(0, 410);
-    andButton.mousePressed(function() {
+    $( "#AND-GATE" ).click(function() {
+        print("Usao and");
         if (simToggleValue === 0)
             currentGate = new AndGate(0, 0);
     });
 
-    orButton = createButton('OR gate');
-    orButton.position(100, 410);
-    orButton.mousePressed(function() {
+    $( "#OR-GATE" ).click(function() {
+        print("Usao or");
         if (simToggleValue === 0)
             currentGate = new OrGate(0, 0);
     });
 
-    customButton = createButton('Custom gate');
-    customButton.position(200, 410);
-    customButton.mousePressed(function() {
+    $( "#CUSTOM-GATE" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new CustomGate(0, 0);
     });
 
-    inSignalButton = createButton('Input Signal');
-    inSignalButton.position(0, 450);
-    inSignalButton.mousePressed(function() {
+    $( "#INPUT-SIGNAL" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new InSignal(0, 0);
     });
 
-    outSignalButton = createButton('Output Signal');
-    outSignalButton.position(100, 450);
-    outSignalButton.mousePressed(function() {
+    $( "#OUTPUT-SIGNAL" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new OutSignal(0, 0);
     });
 
-    mousePointer = createButton('Mouse pointer');
-    mousePointer.position(330, 410);
-    mousePointer.mousePressed(function() {
+    $( "#MOUSE-POINTER" ).click(function() {
         currentGate = null;
     });
 
-    clearButton = createButton('Clear');
-    clearButton.position(460, 410);
-    clearButton.mousePressed(function() {
+    $( "#CLEAR" ).click(function() {
         if (simToggleValue === 1)
             return;
 
@@ -96,108 +87,82 @@ function setup() {
         currentGate = null;
     });
 
-    clearWireButton = createButton('Clear Wire');
-    clearWireButton.position(530, 410);
-    clearWireButton.mousePressed(function() {
+    $( "#CLEAR-WIRE" ).click(function() {
         clearCurrentWire();
     });
 
-    notButton = createButton('NOT gate');
-    notButton.position(230, 450);
-    notButton.mousePressed(function() {
+    $( "#NOT-GATE" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new NotGate(0, 0);
     });
 
-    nandButton = createButton('NAND gate');
-    nandButton.position(330, 450);
-    nandButton.mousePressed(function() {
+    $( "#NAND-GATE" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new NandGate(0, 0);
     });
 
-    norButton = createButton('NOR gate');
-    norButton.position(460, 450);
-    norButton.mousePressed(function() {
+    $( "#NOR-GATE" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new NorGate(0, 0);
     });
 
-    xorButton = createButton('XOR gate');
-    xorButton.position(560, 450);
-    xorButton.mousePressed(function() {
+    $( "#XOR-GATE" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new XorGate(0, 0);
     });
 
-    delWireButton = createButton('Delete Wire Mode');
-    delWireButton.position(800, 450);
-    delWireButton.style('background', 'red');
-    delWireButton.mousePressed(function() {
+    $( "#DELETE-WIRE-MODE" ).click(function() {
         deleteWireMode = 1 - deleteWireMode;
         if (deleteWireMode === 1) {
-            delWireButton.style('background', 'green');
             clearCurrentWire();
         } else {
-            delWireButton.style('background', 'red');
+
         }
     });
 
-    hadderButton = createButton('Half adder');
-    hadderButton.position(0, 490);
-    hadderButton.mousePressed(function() {
+    $( "#HALF-ADDER" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new HalfAdderGate(0, 0);
     });
 
-    fadderButton = createButton('Full adder');
-    fadderButton.position(130, 490);
-    fadderButton.mousePressed(function() {
+    $( "#FULL-ADDER" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new FullAdderGate(0, 0);
     });
 
-    hsubtractorButton = createButton('Half subtractor');
-    hsubtractorButton.position(260, 490);
-    hsubtractorButton.mousePressed(function() {
+    $( "#HALF-SUBTRACTOR" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new HalfSubtractor(0, 0);
     });
 
-    fsubtractorButton = createButton('Full subtractor');
-    fsubtractorButton.position(390, 490);
-    fsubtractorButton.mousePressed(function() {
+    $( "#FULL-SUBTRACTOR" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new FullSubtractor(0, 0);
     });
 
-    sevenSegButton = createButton('7 seg display');
-    sevenSegButton.position(520, 490);
-    sevenSegButton.mousePressed(function() {
+    $( "#7-SEG-DISPLAY" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new SevenSegDisplay(0, 0);
     });
 
-    bcdToSevenSegButton = createButton('BCD to 7 seg');
-    bcdToSevenSegButton.position(0, 530);
-    bcdToSevenSegButton.mousePressed(function() {
+    $( "#BCD-TO-7-SEG" ).click(function() {
         if (simToggleValue === 0)
             currentGate = new BcdToSevenSeg(0, 0);
     });
 
-    simToggleButton = createButton('Simulation');
-    simToggleButton.style('background', 'red')
-    simToggleButton.position(0, 570);
-    simToggleButton.mousePressed(function() {
+    $( "#COUNTER" ).click(function() {
+        if (simToggleValue === 0)
+            currentGate = new Counter(0, 0);
+    });
+
+    $( "#SIMULATION" ).click(function() {
         currentGate = null;
         currentWire = null;
         simToggleValue = 1 - simToggleValue;
         print(simToggleValue);
         if (simToggleValue === 1) {
-            simToggleButton.style('background', 'green');
             simulate();
         } else {
-            simToggleButton.style('background', 'red');
             endSimulation();
         }
     });
@@ -229,10 +194,19 @@ function draw() {
     }
 }
 
+function windowResized() {
+    var currentVal = slider.value();
+    var el = document.getElementById("canvas-holder");
+    var rect = el.getBoundingClientRect();
+    slider.hide();
+    slider = createSlider(700, rect.right - rect.left, min(currentVal, rect.right - rect.left), 1);
+    slider.parent("SLIDER");
+}
+
 function changeCanvasSize() {
     if (simToggleValue === 0) {
-        var newWidth = 700 * (1 + slider.value() / 100);
-        var newHeigth = 400 * (1 + slider.value() / 100);
+        var newWidth = slider.value();
+        var newHeigth = 400 * (slider.value()/700);
 
         var maxW = 0;
         var maxH = 0;
@@ -252,6 +226,7 @@ function changeCanvasSize() {
                     maxH = wires[i].points[j].y;
             }
         }
+
 
         if (newWidth > maxW && newHeigth > maxH) {
             canWidth = newWidth;
