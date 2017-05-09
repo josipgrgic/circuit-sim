@@ -82,13 +82,17 @@ function NotGate(x, y) {
         this.name += this.index;
 
         this.in[0] = new InButton(this, 0);
-        this.in[0].setPosition(this.left, this.y + this.height / 2);
-
         this.out[0] = new OutButton(this, 0);
+
+        this.refreshButtons();
+        this.truthTable = [1, 0, 2];
+    }
+
+    this.refreshButtons = function() {
+        this.in[0].setPosition(this.left, this.y + this.height / 2);
         this.out[0].setPosition(this.right, this.y + this.height / 2);
 
         this.closeButton.setPosition(this.right - 40, this.up - 5);
-        this.truthTable = [1, 0, 2];
     }
 
     this.delete = function() {

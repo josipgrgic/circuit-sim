@@ -211,6 +211,28 @@ function draw() {
         currentWire.drawSegment();
     }
     drawFrame();
+    if(deleteWireMode === 1)
+        drawEraser();
+}
+
+function drawEraser() {
+    line(mouseX, mouseY, mouseX - 10, mouseY - 10);
+
+    line(mouseX, mouseY, mouseX + 5, mouseY - 5);
+
+    line(mouseX + 5, mouseY - 5, mouseX - 5, mouseY - 15);
+
+    line(mouseX - 5, mouseY - 15, mouseX-10, mouseY-10);
+
+    line(mouseX - 10, mouseY - 10, mouseX - 10 + 10, mouseY - 10 - 20);
+
+    line(mouseX - 5, mouseY - 15, mouseX - 5 + 10, mouseY - 15 - 20);
+
+    line(mouseX + 5, mouseY - 5, mouseX + 5 + 10, mouseY - 5 - 20);
+
+    line(mouseX - 5 + 10, mouseY - 15 - 20, mouseX - 10 + 10, mouseY - 10 - 20);
+
+    line(mouseX - 5 + 10, mouseY - 15 - 20, mouseX + 5 + 10, mouseY - 5 - 20);
 }
 
 function drawFrame() {
@@ -287,6 +309,8 @@ function changeCanvasSize() {
 function addGateOrWire() {
     if (simToggleValue === 1)
         return;
+    /*if (mouseButton == RIGHT)
+        clearCurrentWire();*/
     if (currentGate !== null) {
 
         if (outOfBounds(currentGate)) {

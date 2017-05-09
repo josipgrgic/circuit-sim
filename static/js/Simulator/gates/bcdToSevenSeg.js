@@ -117,8 +117,7 @@ function BcdToSevenSeg(x, y) {
             this.out[i].setPosition(this.right, this.y + 10 + i * 15);
         }
 
-        this.closeButton.setPosition(this.right - 33, this.up + 2);
-
+        this.refreshButtons();
         this.truthTable = [
             [
                 [
@@ -168,6 +167,18 @@ function BcdToSevenSeg(x, y) {
                 ]
             ]
         ];
+    }
+
+    this.refreshButtons = function() {
+        for (var i = 0; i < this.inputNum; i++) {
+            this.in[i].setPosition(this.left, this.y + 10 + i * 20);
+        }
+
+        for (i = 0; i < this.outputNum; i++) {
+            this.out[i].setPosition(this.right, this.y + (i + 1) * 10);
+        }
+
+        this.closeButton.setPosition(this.right - 33, this.up + 2);
     }
 
     this.delete = function() {

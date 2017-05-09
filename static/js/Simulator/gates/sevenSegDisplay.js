@@ -140,6 +140,13 @@ function SevenSegDisplay(x, y) {
             this.in[i] = new InButton(this, i);
             this.in[i].setPosition(this.left, this.y + 10 + i * 15);
         }
+        this.refreshButtons();
+    }
+
+    this.refreshButtons = function() {
+        for (var i = 0; i < this.inputNum; i++) {
+            this.in[i].setPosition(this.left, this.y + (i + 1) * 10);
+        }
 
         this.closeButton.setPosition(this.right - 33, this.up + 2);
     }
