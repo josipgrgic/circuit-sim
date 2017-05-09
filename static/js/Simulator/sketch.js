@@ -1,33 +1,12 @@
 var gates = [];
 var wires = [];
-var andButton;
-var orButton;
-var customButton;
-var mousePointer;
-var clearButton;
-var clearWireButton;
-var inSignalButton;
-var outSignalButton;
 var currentGate = null;
 var currentWire = null;
 var canvas;
 var simToggleValue = 0;
-var simToggleButton;
-var notButton;
-var nandButton;
-var norButton;
-var xorButton;
-var delWireButton;
 var deleteWireMode = 0;
-var fadderButton;
-var hadderButton;
-var fsubtractorButton;
-var hsubtractorButton;
-var sevenSegButton;
-var bcdToSevenSegButton;
-var counter;
-var slider;
-var sliderValue = 700;
+//var slider;
+//var sliderValue = 700;
 var canWidth;
 var canHeigth;
 var scroll = $(document).scrollTop();
@@ -35,10 +14,10 @@ var scroll = $(document).scrollTop();
 function setup() {
     var el = document.getElementById("canvas-holder");
     var rect = el.getBoundingClientRect();
-    slider = createSlider(700, rect.right - rect.left, rect.right - rect.left, 1);
-    slider.parent("SLIDER");
-    canWidth = slider.value();
-    canHeigth = 400;
+    //slider = createSlider(700, rect.right - rect.left, rect.right - rect.left, 1);
+    //slider.parent("SLIDER");
+    canWidth = rect.right - rect.left;
+    canHeigth = 400 * (canWidth/700);
     canvas = createCanvas(canWidth, canHeigth);
     canvas.parent('canvas-holder');
     canvas.mousePressed(addGateOrWire);
@@ -192,7 +171,7 @@ function setup() {
 
 function draw() {
     scroll = $(document).scrollTop();
-    changeCanvasSize();
+    //changeCanvasSize();
     background('#F8F8F8');
     for (var i = gates.length - 1; i >= 0; i--) {
         if (gates[i].closeButton.value() == 1)
@@ -259,12 +238,41 @@ function adjustColor() {
 }
 
 function windowResized() {
-    var currentVal = slider.value();
+    //var currentVal = slider.value();
     var el = document.getElementById("canvas-holder");
     var rect = el.getBoundingClientRect();
-    slider.hide();
-    slider = createSlider(700, rect.right - rect.left, min(currentVal, rect.right - rect.left), 1);
-    slider.parent("SLIDER");
+    //slider.hide();
+    //slider = createSlider(700, rect.right - rect.left, min(currentVal, rect.right - rect.left), 1);
+    //slider.parent("SLIDER");
+
+    var newWidth = rect.right - rect.left;
+    var newHeigth = 400 * (newWidth/700);
+
+    var maxW = 0;
+    var maxH = 0;
+
+    for (var i = 0; i < gates.length; i++) {
+        if (maxW < gates[i].right)
+            maxW = gates[i].right;
+        if (maxH < gates[i].bottom)
+            maxH = gates[i].bottom;
+    }
+
+    for (var i = 0; i < wires.length; i++) {
+        for (var j = 0; j < wires[i].points.length; j++) {
+            if (maxW < wires[i].points[j].x)
+                maxW = wires[i].points[j].x;
+            if (maxH < wires[i].points[j].y)
+                maxH = wires[i].points[j].y;
+        }
+    }
+
+
+    if (newWidth > maxW && newHeigth > maxH) {
+        canWidth = newWidth;
+        canHeigth = newHeigth;
+    }
+    canvas.size(canWidth, canHeigth);
 
     for(var i = 0; i<gates.length; i++) {
         gates[i].refreshButtons();

@@ -50,3 +50,10 @@
 .g-b-wr{
     padding-top: 5px;
 }
+
+.btn-container {
+    height: 100px;
+    width : 200px;
+    overflow-y: scroll;
+    border : 5px solid #1abc9c;
+}
