@@ -44,28 +44,35 @@ function setup() {
     canvas.mousePressed(addGateOrWire);
 
     $( "#AND-GATE" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new AndGate(0, 0);
+        }
+
     });
 
     $( "#OR-GATE" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new OrGate(0, 0);
+        }
     });
 
     $( "#CUSTOM-GATE" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new CustomGate(0, 0);
+        }
     });
 
     $( "#INPUT-SIGNAL" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new InSignal(0, 0);
+        }
+
     });
 
     $( "#OUTPUT-SIGNAL" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new OutSignal(0, 0);
+        }
     });
 
     $( "#MOUSE-POINTER" ).click(function() {
@@ -102,13 +109,15 @@ function setup() {
     });
 
     $( "#NOR-GATE" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new NorGate(0, 0);
+        }
     });
 
     $( "#XOR-GATE" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new XorGate(0, 0);
+        }
     });
 
     $( "#DELETE-WIRE-MODE" ).click(function() {
@@ -119,18 +128,22 @@ function setup() {
     });
 
     $( "#HALF-ADDER" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new HalfAdderGate(0, 0);
+        }
     });
 
     $( "#FULL-ADDER" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new FullAdderGate(0, 0);
+        }
+
     });
 
     $( "#HALF-SUBTRACTOR" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new HalfSubtractor(0, 0);
+        }
     });
 
     $( "#FULL-SUBTRACTOR" ).click(function() {
@@ -139,18 +152,23 @@ function setup() {
     });
 
     $( "#7-SEG-DISPLAY" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new SevenSegDisplay(0, 0);
+        }
     });
 
     $( "#BCD-TO-7-SEG" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
             currentGate = new BcdToSevenSeg(0, 0);
+        }
     });
 
     $( "#COUNTER" ).click(function() {
-        if (simToggleValue === 0 && deleteWireMode === 0)
+        if (simToggleValue === 0 && deleteWireMode === 0){
+            deleteWireMode = 0;
+            adjustColor();
             currentGate = new Counter(0, 0);
+        }
     });
 
     $( "#SIMULATION" ).click(function() {
