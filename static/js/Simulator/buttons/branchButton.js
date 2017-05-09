@@ -2,7 +2,7 @@ function BranchButton(wire) {
     this.wire = wire;
 
     this.button = createButton('');
-    this.button.addClass('sigButton');
+    this.button.addClass('branchButton');
     this.button.style('visibility', 'hidden');
 
     this.x;

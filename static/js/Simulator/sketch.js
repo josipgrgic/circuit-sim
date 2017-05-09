@@ -273,6 +273,8 @@ function changeCanvasSize() {
 function addGateOrWire() {
     if (simToggleValue === 1)
         return;
+    /*if (mouseButton == RIGHT)
+        clearCurrentWire();*/
     if (currentGate !== null) {
 
         if (outOfBounds(currentGate)) {

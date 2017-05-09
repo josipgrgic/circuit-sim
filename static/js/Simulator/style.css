@@ -20,6 +20,15 @@
     height: 14px;
 }
 
+.branchButton {
+    cursor: pointer;
+    border-radius: 100%;
+    border: 1px solid #AEAEAE;
+    background: blue;
+    width: 14px;
+    height: 14px;
+}
+
 .statButton {
     cursor: pointer;
     border-radius: 5px;
@@ -27,4 +36,13 @@
     background: red;
     width: 20px;
     height: 20px;
+}
+
+.gate-btn {
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.g-b-wr{
+    padding-top: 5px;
 }
