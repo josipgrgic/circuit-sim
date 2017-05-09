@@ -58,9 +58,7 @@ function Counter(x, y) {
 
         strokeWeight(1);
 
-        if (simToggleValue === 1)
-            this.closeButton.hide();
-        else if (this.index >= 0 && this.mouseInside() && currentGate === null) {
+        if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0 && currentWire === null) {
             this.closeButton.show();
         } else {
             this.closeButton.hide();
@@ -68,7 +66,7 @@ function Counter(x, y) {
 
         for (i = 0; i < this.out.length; i++) {
             var but = this.out[i];
-            if (mouseX > but.x - 5 && mouseX < but.x + 5 && mouseY > but.y - 5 && mouseY < but.y + 5) {
+            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
                 but.show();
             } else {
                 but.hide();
@@ -77,7 +75,7 @@ function Counter(x, y) {
 
         for (i = 0; i < this.in.length; i++) {
             var but = this.in[i];
-            if (mouseX > but.x - 5 && mouseX < but.x + 5 && mouseY > but.y - 5 && mouseY < but.y + 5) {
+            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
                 but.show();
             } else {
                 but.hide();

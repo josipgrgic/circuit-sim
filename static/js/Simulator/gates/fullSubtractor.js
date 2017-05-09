@@ -52,7 +52,7 @@ function FullSubtractor(x, y) {
         text("Co", this.x + 44, this.y + 48);
         strokeWeight(1);
 
-        if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0) {
+        if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0 && currentWire === null) {
             this.closeButton.show();
         } else {
             this.closeButton.hide();
