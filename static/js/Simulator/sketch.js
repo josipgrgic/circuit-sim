@@ -225,6 +225,10 @@ function windowResized() {
     slider.hide();
     slider = createSlider(700, rect.right - rect.left, min(currentVal, rect.right - rect.left), 1);
     slider.parent("SLIDER");
+
+    for(var i = 0; i<gates.length; i++) {
+        gates[i].refreshButtons();
+    }
 }
 
 function changeCanvasSize() {
