@@ -134,7 +134,6 @@ function InSignal(x, y) {
 
         if (this.status === 1)
             this.statusButton.button.style('background', 'green');
-
         else
             this.statusButton.button.style('background', 'red');
 

@@ -10,7 +10,12 @@ function StatusButton(inSignal, index) {
     this.button.value(this.inSignalIndex);
 
     this.button.mousePressed(function() {
-        gates[this.value()].switch();
+        if(typeof gates[this.value()].isClock !== 'undefined' && gates[this.value()].isClock){
+            gates[this.value()].switchSpeed();
+        }
+        else{
+            gates[this.value()].switch();
+        }
     });
 
     this.setPosition = function(x, y) {

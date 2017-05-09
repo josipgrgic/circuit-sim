@@ -95,15 +95,6 @@ function SevenSegDisplay(x, y) {
             this.closeButton.hide();
         }
 
-        for (i = 0; i < this.out.length; i++) {
-            var but = this.out[i];
-            if (mouseX > but.x - 10 && mouseX < but.x + 10 && mouseY > but.y - 10 && mouseY < but.y + 10 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
-                but.show();
-            } else {
-                but.hide();
-            }
-        }
-
         for (i = 0; i < this.in.length; i++) {
             var but = this.in[i];
             if (mouseX > but.x - 6 && mouseX < but.x + 6 && mouseY > but.y - 6 && mouseY < but.y + 6 && simToggleValue === 0 && currentGate === null && but.wires.length === 0) {
@@ -145,7 +136,7 @@ function SevenSegDisplay(x, y) {
 
     this.refreshButtons = function() {
         for (var i = 0; i < this.inputNum; i++) {
-            this.in[i].setPosition(this.left, this.y + (i + 1) * 10);
+            this.in[i].setPosition(this.left, this.y + 10 + i * 15);
         }
 
         this.closeButton.setPosition(this.right - 33, this.up + 2);

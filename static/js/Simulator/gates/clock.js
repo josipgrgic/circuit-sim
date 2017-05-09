@@ -14,6 +14,7 @@ function Clock(x, y) {
     this.bottom = this.y + this.height;
 
     this.closeButton = new CloseButton(this);
+    this.statusButton;
 
     this.inputNum = 0;
     this.outputNum = 1;
@@ -24,7 +25,9 @@ function Clock(x, y) {
     this.truthTable = [];
     this.status = 0;
     this.counter = 0;
+    this.speed = 1;
     this.isClock = true;
+
 
     this.draw = function() {
         noFill();
@@ -35,13 +38,14 @@ function Clock(x, y) {
         line(this.x + this.length, this.y, this.x + this.length, this.y + this.height);
 
         var xOffset = 3;
-        line(this.x + 4 + xOffset, this.y + 25, this.x + 12 + xOffset, this.y + 25);
-        line(this.x + 12 + xOffset, this.y + 25, this.x + 12 + xOffset, this.y + 15);
+        var yOffset = -10;
+        line(this.x + 4 + xOffset, this.y + 25 + yOffset, this.x + 12 + xOffset, this.y + 25 + yOffset);
+        line(this.x + 12 + xOffset, this.y + 25 + yOffset, this.x + 12 + xOffset, this.y + 15 + yOffset);
 
-        line(this.x + 13 + xOffset, this.y + 15, this.x + 21 + xOffset, this.y + 15);
+        line(this.x + 13 + xOffset, this.y + 15 + yOffset, this.x + 21 + xOffset, this.y + 15 + yOffset);
 
-        line(this.x + 21 + xOffset, this.y + 15, this.x + 21 + xOffset, this.y + 25);
-        line(this.x + 22 + xOffset, this.y + 25, this.x + 29 + xOffset, this.y + 25);
+        line(this.x + 21 + xOffset, this.y + 15 + yOffset, this.x + 21 + xOffset, this.y + 25 + yOffset);
+        line(this.x + 22 + xOffset, this.y + 25 + yOffset, this.x + 29 + xOffset, this.y + 25 + yOffset);
 
         line(this.x + this.length, this.y + this.height / 2, this.x + this.length + 20, this.y + this.height / 2);
 
@@ -90,6 +94,18 @@ function Clock(x, y) {
         }
         this.out[0].setPosition(this.right, this.y + this.height / 2);
         this.closeButton.setPosition(this.right - 33, this.up + 2);
+
+        this.statusButton = new StatusButton(this, this.index);
+        this.statusButton.button.style('background', '#ccddff');
+        this.refreshButtons();
+    }
+
+    this.refreshButtons = function() {
+        this.out[0].setPosition(this.right, this.up + this.height / 2);
+
+        this.statusButton.setPosition(this.x + 10, this.bottom - 22);
+
+        this.closeButton.setPosition(this.right - 15, this.up - 3);
     }
 
     this.delete = function() {
@@ -103,6 +119,7 @@ function Clock(x, y) {
         }
 
         this.closeButton.hide();
+        this.statusButton.hide();
 
         for (i = wires.length - 1; i >= 0; i--) {
             if (wires[i].inGateIndex == this.index || wires[i].outGateIndex == this.index) {
@@ -148,9 +165,32 @@ function Clock(x, y) {
 
     this.switch = function(){
         this.counter++;
-        if(this.counter % 5 === 0){
+        if(this.counter % (this.speed * 5) === 0){
             this.counter = 0;
             this.status ^= 1;
         }
+    }
+
+    this.switchSpeed = function(){
+        this.speed ++;
+        this.speed %= 5;
+        switch(this.speed){
+            case 0:
+                this.statusButton.button.style('background', '#ffffff');
+                break;
+            case 1:
+                this.statusButton.button.style('background', '#ccddff');
+                break;
+            case 2:
+                this.statusButton.button.style('background', '#a5c4ff');
+                break;
+            case 3:
+                this.statusButton.button.style('background', '#689cff');
+                break;
+            case 4:
+                this.statusButton.button.style('background', '#236fff');
+                break;
+        }
+                console.log("switch speed " + this.speed);
     }
 }
