@@ -11,6 +11,8 @@ var canWidth;
 var canHeigth;
 var scroll = $(document).scrollTop();
 var intervalClock;
+var gateCreated = false;
+
 
 function setup() {
     var el = document.getElementById("canvas-holder");
@@ -334,6 +336,7 @@ function changeCanvasSize() {
 }
 
 function addGateOrWire() {
+    gateCreated = false;
     if (simToggleValue === 1)
         return;
     /*if (mouseButton == RIGHT)
@@ -344,27 +347,17 @@ function addGateOrWire() {
             return;
         }
 
-        var good = true;
-        for (var i = 0; i < gates.length; i++) {
-            if (gates[i].placeTaken(currentGate)) {
-                good = false;
-                break;
-            }
+        var bad = placeTaken();
+        if (!bad) {
+            currentGate.set();
+            gates.push(currentGate);
+            currentGate = currentGate.clone();
+            gateCreated = true;
+        }
+        else {
+            return;
         }
 
-        if (good) {
-            for (i = 0; i < wires.length; i++) {
-                if (wires[i].placeTaken(currentGate)) {
-                    good = false;
-                    break;
-                }
-            }
-            if (good) {
-                currentGate.set();
-                gates.push(currentGate);
-                currentGate = currentGate.clone();
-            }
-        }
     } else {
         if (currentWire !== null) {
             currentWire.addPath();
@@ -382,6 +375,30 @@ function displayGate() {
         return;
     }
 
+    var taken = placeTaken();
+
+    if (taken) {
+        stroke(255, 10, 20);
+        currentGate.draw();
+        stroke(0);
+    } else
+        currentGate.draw();
+}
+
+function clearCurrentGate() {
+    if(currentGate !== null) {
+         if(gateCreated) {
+            var i = gates.length - 1;
+            gates[i].delete();
+            gates.splice(i, 1);
+            refreshGates();
+            gateCreated = false;
+         }
+         currentGate = null;
+    }
+}
+
+function placeTaken() {
     var taken = false;
     for (i = 0; i < gates.length; i++) {
         if (gates[i].placeTaken(currentGate)) {
@@ -398,13 +415,7 @@ function displayGate() {
             }
         }
     }
-
-    if (taken) {
-        stroke(255, 10, 20);
-        currentGate.draw();
-        stroke(0);
-    } else
-        currentGate.draw();
+    return taken;
 }
 
 function outOfBounds(other) {
