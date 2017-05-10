@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+        <h1>Tražena stranica ne postoji :(</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 centered">
+                    <a href="{% url 'index' %}">
+                        <img class="img-responsive" src="{% static 'img/task-failed.png' %}" width="400"/>
+                    </a>
+                </div>
+            </div>
+            <br /><br />
+        </div>
+{% endblock %}

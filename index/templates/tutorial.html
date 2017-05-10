@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="row mt centered">
+        <div class="col-sm-5">
+            <div class="well">
+                 <!--<div class="bordered center-img">
+                    <a class="zoom green" href="/tutorial/lession"><img class="img-responsive" src="{% static '/img/portfolio/dig-log.jpg' %}" alt=""/></a>
+                </div>-->
+                <a href="/tutorial/lesson" ><h4>LEKCIJA DIGITALNE LOGIKE</h4></a>
+                <hr>
+                <p>Ovdje se nalazi kratki osvrt na osnove digitalne logike kao i
+                    opis svih logičkih sklopova koje možeš koristiti u simulatoru.</p>
+
+                <a href="/tutorial/lesson" class="btn btn-primary">VIDI VIŠE</a>
+            </div>
+        </div>
+
+        <div class="col-sm-5 col-sm-offset-1">
+            <div class="well">
+                 <!--<div class="bordered center-img">
+                    <a class="zoom green" href="/tutorial/howTo"><img class="img-responsive" src="{% static '/img/portfolio/instr.jpg' %}" alt="" height="300"/></a>
+                </div>-->
+                <a href="/tutorial/howTo" ><h4>UPUTE ZA KORIŠTENJE SIMULATORA</h4></a>
+                <hr>
+                <p>Upoznaj se sa svim funkcionalnostima koje simulator nudi.
+                    Ukoliko ti je ovo prvo korištenje simulatora, siguran sam da će ti koristiti.</p>
+
+                <a href="/tutorial/howTo" class="btn btn-primary">VIDI VIŠE</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

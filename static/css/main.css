@@ -259,12 +259,17 @@ bt {
     border: 5px solid;
     max-width: 400px;
     max-height: 305px;
+    display: inline;
 }
 
 .center-img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.tut-image {
+    border: 2px solid #1abc9c;
 }
 
 

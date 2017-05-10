@@ -8,41 +8,47 @@
         <div class="col-md-3 col-xs-6">
             <p>ULAZ/IZLAZ</p>
             <div class="btn-container centered">
-                <a id="INPUT-SIGNAL" class="g-b-wr">
-                    <img src="{% static 'img/btn-img/in.png' %}" title="Izvor signala" class="gate-btn" width="70" height="40"/>
-                </a>
-                <a id="OUTPUT-SIGNAL">
-                    <img src="{% static 'img/btn-img/out.png' %}" title="Lampica" class="gate-btn" width="70" height="40"/>
-                </a>
+                <div style="padding: 5px">
+                    <a id="INPUT-SIGNAL" class="g-b-wr">
+                        <img src="{% static 'img/btn-img/in.png' %}" title="Izvor signala" class="gate-btn" width="70" height="40"/>
+                    </a>
+                    <a id="OUTPUT-SIGNAL">
+                        <img src="{% static 'img/btn-img/out.png' %}" title="Lampica" class="gate-btn" width="70" height="40"/>
+                    </a>
 
-                <a id="7-SEG-DISPLAY">
-                    <img src="{% static 'img/btn-img/7seg.png' %}" title="7-segmentni LCD" class="gate-btn" width="70" height="70"/>
-                </a>
-                <a id="CLOCK" class="btn btn-primary btn-xs">CLOCK</a>
+                    <a id="CLOCK">
+                        <img src="{% static 'img/btn-img/clock.png' %}" title="Izvor takta" class="gate-btn" width="70" height="70"/>
+                    </a>
+                    <a id="7-SEG-DISPLAY">
+                        <img src="{% static 'img/btn-img/7seg.png' %}" title="7-segmentni LCD" class="gate-btn" width="70" height="70"/>
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="col-md-3 col-xs-6">
             <p>JEDNOSTAVNI SKLOPOVI</p>
             <div class="btn-container centered">
-                <a id="AND-GATE">
-                    <img src="{% static 'img/btn-img/and.png' %}" title="I sklop" class="gate-btn" width="70" height="40"/>
-                </a>
-                <a id="OR-GATE">
-                    <img src="{% static 'img/btn-img/or.png' %}" title="ILI sklop" class="gate-btn" width="70" height="40"/>
-                </a>
-                <a id="NOT-GATE">
-                    <img src="{% static 'img/btn-img/not.png' %}" title="Inverter" class="gate-btn" width="70" height="40"/>
-                </a>
-                <a id="NAND-GATE">
-                    <img src="{% static 'img/btn-img/nand.png' %}" title="NI sklop" class="gate-btn" width="70" height="40"/>
-                </a>
-                <a id="NOR-GATE">
-                    <img src="{% static 'img/btn-img/nor.png' %}" title="NILI sklop" class="gate-btn" width="70" height="40"/>
-                </a>
-                <a id="XOR-GATE">
-                    <img src="{% static 'img/btn-img/xor.png' %}" title="XOR sklop" class="gate-btn" width="70" height="40"/>
-                </a>
+                <div style="padding: 5px">
+                    <a id="AND-GATE">
+                        <img src="{% static 'img/btn-img/and.png' %}" title="I sklop" class="gate-btn" width="70" height="40"/>
+                    </a>
+                    <a id="OR-GATE">
+                        <img src="{% static 'img/btn-img/or.png' %}" title="ILI sklop" class="gate-btn" width="70" height="40"/>
+                    </a>
+                    <a id="NOT-GATE">
+                        <img src="{% static 'img/btn-img/not.png' %}" title="Inverter" class="gate-btn" width="70" height="40"/>
+                    </a>
+                    <a id="NAND-GATE">
+                        <img src="{% static 'img/btn-img/nand.png' %}" title="NI sklop" class="gate-btn" width="70" height="40"/>
+                    </a>
+                    <a id="NOR-GATE">
+                        <img src="{% static 'img/btn-img/nor.png' %}" title="NILI sklop" class="gate-btn" width="70" height="40"/>
+                    </a>
+                    <a id="XOR-GATE">
+                        <img src="{% static 'img/btn-img/xor.png' %}" title="XOR sklop" class="gate-btn" width="70" height="40"/>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -50,26 +56,28 @@
         <div class="col-md-3 col-xs-6">
             <p>SLOŽENI SKLOPOVI</p>
             <div class="btn-container centered">
-                <a id="CUSTOM-GATE">
-                </a>
-                <a id="HALF-ADDER">
-                    <img src="{% static 'img/btn-img/ha.png' %}" title="Poluzbrajalo" class="gate-btn" width="70" height="50"/>
-                </a>
-                <a id="HALF-SUBTRACTOR">
-                    <img src="{% static 'img/btn-img/hs.png' %}" title="Poluoduzimalo" class="gate-btn" width="70" height="50"/>
-                </a>
-                <a id="FULL-ADDER">
-                    <img src="{% static 'img/btn-img/fa.png' %}" title="Puno zbrajalo" class="gate-btn" width="70" height="70"/>
-                </a>
-                <a id="FULL-SUBTRACTOR">
-                    <img src="{% static 'img/btn-img/fs.png' %}" title="Puno oduzimalo" class="gate-btn" width="70" height="70"/>
-                </a>
-                <a id="BCD-TO-7-SEG">
-                    <img src="{% static 'img/btn-img/bcd27seg.png' %}" title="BCD u 7-seg pretvarać" class="gate-btn" width="70" height="70"/>
-                </a>
-                <a id="COUNTER">
-                    <img src="{% static 'img/btn-img/counter.png' %}" title="Brojač" class="gate-btn" width="70" height="70"/>
-                </a>
+                <div style="padding: 5px">
+                    <a id="CUSTOM-GATE">
+                    </a>
+                    <a id="HALF-ADDER">
+                        <img src="{% static 'img/btn-img/ha.png' %}" title="Poluzbrajalo" class="gate-btn" width="70" height="50"/>
+                    </a>
+                    <a id="HALF-SUBTRACTOR">
+                        <img src="{% static 'img/btn-img/hs.png' %}" title="Poluoduzimalo" class="gate-btn" width="70" height="50"/>
+                    </a>
+                    <a id="FULL-ADDER">
+                        <img src="{% static 'img/btn-img/fa.png' %}" title="Puno zbrajalo" class="gate-btn" width="70" height="70"/>
+                    </a>
+                    <a id="FULL-SUBTRACTOR">
+                        <img src="{% static 'img/btn-img/fs.png' %}" title="Puno oduzimalo" class="gate-btn" width="70" height="70"/>
+                    </a>
+                    <a id="BCD-TO-7-SEG">
+                        <img src="{% static 'img/btn-img/bcd27seg.png' %}" title="BCD u 7-seg pretvarać" class="gate-btn" width="70" height="70"/>
+                    </a>
+                    <a id="COUNTER">
+                        <img src="{% static 'img/btn-img/counter.png' %}" title="Brojač" class="gate-btn" width="70" height="70"/>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -77,13 +85,13 @@
         <div class="col-md-3 col-xs-6">
             <p>KONTROLNI GUMBI</p>
             <a id="MOUSE-POINTER">
-                <img src="{% static 'img/btn-img/cursor.png' %}" title="Pokazivač" class="cursor" width="30" height="30"/>
+                <img src="{% static 'img/btn-img/cursor.png' %}" title="Pokazivač" class="cursor" width="20" height="20"/>
             </a>
-            <a id="CLEAR" class="btn btn-primary btn-xs col-xs-offset-3">OČISTI</a>
+            <a id="CLEAR" class="btn btn-warning btn-xs col-xs-offset-3">OČISTI</a>
             <!--<a id="CLEAR-WIRE" class="btn btn-primary btn-xs">OBRIŠI ŽICU</a>-->
             <br /><br />
-            <a id="DELETE-WIRE-MODE" class="btn btn-danger btn-xs">DELETE WIRE MODE</a>
-            <a id="SIMULATION" class="btn btn-danger btn-xs">SIMULATION</a>
+            <a id="DELETE-WIRE-MODE" class="btn btn-danger btn-xs">BRIŠI ŽICE</a>
+            <a id="SIMULATION" class="btn btn-danger btn-xs">POKRENI SIMULACIJU</a>
             <br /><br />
             <!--<div class="row"><span>Podesi veličinu prozora:</span> <div id="SLIDER"></div></div>-->
         </div>
@@ -126,9 +134,16 @@
     <script src="{% static 'js/Simulator/gates/bcdToSevenSeg.js' %}" type="text/javascript"></script>
 
     <link rel="stylesheet" href="{% static 'js/Simulator/style.css' %}">
+
      <script>
          $('body').on('contextmenu', '#canvas-holder', function(e){
-            clearCurrentWire();
+            if(currentWire !== null)
+                clearCurrentWire();
+            else {
+                clearCurrentGate();
+            }
+            deleteWireMode = 0;
+            adjustColor()
             return false;
          });
 
