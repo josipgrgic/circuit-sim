@@ -68,15 +68,15 @@ function Wire() {
     this.add = function(button) {
         var last = this.points[this.points.length - 1];
         if (button !== null) {
-            //this.points.push(new Point(last.x, button.y));
-            this.points.push(new Point(button.x, last.y));
+            this.points.push(new Point(last.x, button.y));
+            //this.points.push(new Point(button.x, last.y));
             this.points.push(new Point(button.x, button.y));
         } else {
             this.segment.push(last);
-            //this.segment.push(new Point(last.x, mouseY /*- mouseY % 10*/ ));
-            //this.segment.push(new Point(mouseX, mouseY /*- mouseY % 10*/ ));
-            this.segment.push(new Point(mouseX, last.y /*- mouseY % 10*/ ));
+            this.segment.push(new Point(last.x, mouseY /*- mouseY % 10*/ ));
             this.segment.push(new Point(mouseX, mouseY /*- mouseY % 10*/ ));
+            //this.segment.push(new Point(mouseX, last.y /*- mouseY % 10*/ ));
+            //this.segment.push(new Point(mouseX, mouseY /*- mouseY % 10*/ ));
         }
     }
 

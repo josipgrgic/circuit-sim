@@ -172,18 +172,20 @@ function setup() {
         currentGate = null;
         currentWire = null;
         simToggleValue = 1 - simToggleValue;
-        print(simToggleValue);
         if (simToggleValue === 1) {
             $( "#SIMULATION" ).removeClass("btn-danger");
             $( "#SIMULATION" ).addClass("btn-success");
+            $( "#SIMULATION" ).html("<span class='glyphicon glyphicon-stop'></span>&nbsp;Zaustavi");
             //simulate();
             prepareSimulation();
             intervalClock = setInterval(clock, 25);
         } else {
             $( "#SIMULATION" ).removeClass("btn-success");
             $( "#SIMULATION" ).addClass("btn-danger");
+            $( "#SIMULATION" ).html("<span class='glyphicon glyphicon-play'></span>&nbsp;Pokreni");
             endSimulation();
         }
+
     });
 }
 
@@ -254,11 +256,11 @@ function drawFrame() {
 function adjustColor() {
     if (deleteWireMode === 1) {
         clearCurrentWire();
-        $( "#DELETE-WIRE-MODE" ).removeClass("btn-danger");
+        $( "#DELETE-WIRE-MODE" ).removeClass("btn-warning");
         $( "#DELETE-WIRE-MODE" ).addClass("btn-success");
     } else {
         $( "#DELETE-WIRE-MODE" ).removeClass("btn-success");
-        $( "#DELETE-WIRE-MODE" ).addClass("btn-danger");
+        $( "#DELETE-WIRE-MODE" ).addClass("btn-warning");
     }
 }
 

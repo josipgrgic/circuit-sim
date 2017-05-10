@@ -47,13 +47,14 @@
     cursor: pointer;
 }
 
-.g-b-wr{
-    padding-top: 5px;
-}
-
 .btn-container {
     height: 100px;
     width : 200px;
     overflow-y: scroll;
     border : 2px solid #1abc9c;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    /*background: transparent;  /* optional: just make scrollbar invisible */
 }
