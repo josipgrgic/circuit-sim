@@ -57,3 +57,8 @@
     overflow-y: scroll;
     border : 2px solid #1abc9c;
 }
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    /*background: transparent;  /* optional: just make scrollbar invisible */
+}
