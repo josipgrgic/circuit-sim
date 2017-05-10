@@ -120,6 +120,9 @@ function setupClocks(){
 }
 
 function prepareSimulation(){
+    inputQueue = [];
+    inputQueueFlags = {};
+
     gates.forEach(function(gate) {
         if(gate.isInSignal && gates.out !== 'undefined'){
             gate.out.forEach(function(outButton){
@@ -152,7 +155,5 @@ function endSimulation(){
             }
         }
     });
-    inputQueue = [];
-    inputQueueFlags = {};
 }
 
