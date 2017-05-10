@@ -164,18 +164,20 @@ function setup() {
         currentGate = null;
         currentWire = null;
         simToggleValue = 1 - simToggleValue;
-        print(simToggleValue);
         if (simToggleValue === 1) {
             $( "#SIMULATION" ).removeClass("btn-danger");
             $( "#SIMULATION" ).addClass("btn-success");
+            $( "#SIMULATION" ).html("<span class='glyphicon glyphicon-stop'></span>&nbsp;Zaustavi");
             //simulate();
             prepareSimulation();
             intervalClock = setInterval(clock, 25);
         } else {
             $( "#SIMULATION" ).removeClass("btn-success");
             $( "#SIMULATION" ).addClass("btn-danger");
+            $( "#SIMULATION" ).html("<span class='glyphicon glyphicon-play'></span>&nbsp;Pokreni");
             endSimulation();
         }
+
     });
 }
 
