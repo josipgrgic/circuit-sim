@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 centered">
+
+                <p><b>Signal</b> je fenomen koji prenosi informaciju.
+                    Digitalna logika u svom najosnovnijem obliku barata s jednom vrstom signala
+                    čije postojanje ili nepostojanje tvori dva stanja koja možemo označavati na različite načine:
+                    "POSTOJI" ili "NE POSTOJI", "ISTINA" ili "LAŽ" ili, kako je najpraktičije, <b>0</b> (NULA) ili <b>1</b> (JEDAN).
+                    U ovom simulatoru često ćemo ta dva stanja reprezentirati <span style="color:red">crvenom</span> bojom za stanje 0
+                    i <span style="color:green">zelenom</span> bojom za stanje 1.
+                </p>
+
+                <img src="{% static 'img/tut/signal.png' %}" class="tut-image"/>
+
+                <p>Slika iznad pokazuje navedena stanja kako se pojavljuju u simulatoru. Valja primijetiti najosnovnije elemente koje
+                ćeš </p>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -10,5 +10,11 @@ def simulator(request):
 def tutorial(request):
     return render(request, 'tutorial.html', {})
 
+def lesson(request):
+    return render(request, 'lesson.html', {})
+
+def howTo(request):
+    return render(request, 'howTo.html', {})
+
 def notFound(request):
     return render(request, 'notFound.html', {})
