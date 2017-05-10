@@ -49,7 +49,6 @@ function BranchButton(wire) {
 
                 //moras mijenjat x u y ako mijenjas poredak loma zice
                 if (points[endIndex].x == points[endIndex + 1].x) {
-                    print("LOL");
                     currentWire.points.splice(currentWire.points.length - 1, 1);
                     currentWire.points.splice(currentWire.points.length - 1, 1);
                     currentWire.points.push(new Point(currentWire.points[currentWire.points.length - 1].x, clickedButton.y));
