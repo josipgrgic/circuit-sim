@@ -35,6 +35,7 @@ function simulate(inputGatesQueue){
             });
         }
         
+        console.log(inputWires);
         if(typeof currentGate.out !== 'undefined'){
             currentGate.out.forEach(function(outButton){
                 outputWires = outputWires.concat(outButton.wires);
@@ -48,6 +49,9 @@ function simulate(inputGatesQueue){
 
         var newStatus = 2;
         if(currentGate.outputNum > 0 ){
+            if(typeof currentGate.mux !== 'undefined' && currentGate.mux){
+                newStatus = currentGate.output(inputs);
+            }
             if(currentGate.inputNum === 1){
                 newStatus = currentGate.truthTable[inputs[0]];
             }

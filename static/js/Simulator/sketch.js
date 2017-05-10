@@ -161,6 +161,22 @@ function setup() {
         }
     });
 
+    $( "#MUX" ).click(function() {
+        if (simToggleValue === 0 && deleteWireMode === 0){
+            deleteWireMode = 0;
+            adjustColor();
+            currentGate = new Mux(0, 0);
+        }
+    });
+
+    $( "#DEMUX" ).click(function() {
+        if (simToggleValue === 0 && deleteWireMode === 0){
+            deleteWireMode = 0;
+            adjustColor();
+            currentGate = new Demux(0, 0);
+        }
+    });
+
     $( "#CLOCK" ).click(function() {
         if (simToggleValue === 0 && deleteWireMode === 0)
             currentGate = new Clock(0, 0);
