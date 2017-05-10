@@ -3,10 +3,11 @@
 
 {% block content %}
     <div class="col-xs-12">
+        <br /><br/>
     <div class="row well">
-        <div class="row">
-        <div class="col-md-3 col-xs-6">
-            <p>ULAZ/IZLAZ</p>
+        <div class="col-md-3 col-sm-12">
+        <div class="col-md-12 col-sm-3">
+            <span>ULAZ/IZLAZ</span>
             <div class="btn-container centered">
                 <div style="padding: 5px">
                     <a id="INPUT-SIGNAL">
@@ -24,10 +25,11 @@
                     </a>
                 </div>
             </div>
+            <hr/>
         </div>
 
-        <div class="col-md-3 col-xs-6">
-            <p>JEDNOSTAVNI SKLOPOVI</p>
+        <div class="col-md-12 col-sm-3">
+            <span>JEDNOSTAVNI SKLOPOVI</span>
             <div class="btn-container centered">
                 <div style="padding: 5px">
                     <a id="AND-GATE">
@@ -50,11 +52,12 @@
                     </a>
                 </div>
             </div>
+            <hr/>
         </div>
 
 
-        <div class="col-md-3 col-xs-6">
-            <p>SLOŽENI SKLOPOVI</p>
+        <div class="col-md-12 col-sm-3">
+            <span>SLOŽENI SKLOPOVI</span>
             <div class="btn-container centered">
                 <div style="padding: 5px">
                     <a id="CUSTOM-GATE">
@@ -85,26 +88,31 @@
                     </a>
                 </div>
             </div>
+            <hr/>
         </div>
 
 
-        <div class="col-md-3 col-xs-6">
-            <p>KONTROLNI GUMBI</p>
-            <a id="MOUSE-POINTER">
+        <div class="col-md-12 col-sm-3">
+            <br/>
+            <!--<a id="MOUSE-POINTER">
                 <img src="{% static 'img/btn-img/cursor.png' %}" title="Pokazivač" class="cursor" width="20" height="20"/>
-            </a>
-            <a id="CLEAR" class="btn btn-warning btn-xs col-xs-offset-1">OČISTI</a>
-            <!--<a id="CLEAR-WIRE" class="btn btn-primary btn-xs">OBRIŠI ŽICU</a>-->
-            <a id="DELETE-WIRE-MODE" class="btn btn-warning btn-xs col-xs-offset-1">BRIŠI ŽICE</a>
-            <br /><br />
-            <a id="SIMULATION" class="btn btn-lg btn-danger pull-right"><span id="SIM-ICON" class="glyphicon glyphicon-play"></span>&nbsp;Pokreni</a>
-            <br /><br />
+            </a>-->
+            <div class="col-md-6">
+                <a id="CLEAR" class="btn btn-warning btn-xs col-xs-offset-1"style="margin:5px">OČISTI</a>
+                <!--<a id="CLEAR-WIRE" class="btn btn-primary btn-xs">OBRIŠI ŽICU</a>-->
+                <a id="DELETE-WIRE-MODE" class="btn btn-warning btn-xs col-xs-offset-1" style="margin:5px">BRIŠI ŽICE</a>
+            </div>
+            <div class="col-md-6">
+                <a id="SIMULATION" class="btn btn-md btn-danger"style="margin:5px"><span id="SIM-ICON" class="glyphicon glyphicon-play"></span>&nbsp;Pokreni</a>
+            </div>
             <!--<div class="row"><span>Podesi veličinu prozora:</span> <div id="SLIDER"></div></div>-->
         </div>
         </div>
-        <hr>
 
-        <div id="canvas-holder" class="row"></div>
+        <div class="col-md-9 col-sm-12">
+            <div id="canvas-holder"></div>
+        </div>
+
     </div>
 
     <script src="{% static 'js/Simulator/libraries/p5.js' %}" type="text/javascript"></script>

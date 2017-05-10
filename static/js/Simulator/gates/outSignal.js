@@ -62,7 +62,7 @@ function OutSignal(x, y) {
     }
 
     this.mouseInside = function() {
-        if (mouseX > this.left - 6 && mouseX < this.right + 6 && mouseY > this.up && mouseY < this.bottom)
+        if (mouseX > this.left - 6 && mouseX < this.right + 6 && mouseY > this.up-6 && mouseY < this.bottom+6)
             return true;
         return false;
     }
