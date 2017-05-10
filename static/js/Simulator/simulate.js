@@ -20,7 +20,7 @@ function simulate(inputGatesQueue){
 
     var i = 0;
     while(queue.length > 0){
-        if(i++ > wires.length * 10){ 
+        if(i++ > gates.length * 10){ 
             break;
             console.log("Infinite loop detected");
         }
