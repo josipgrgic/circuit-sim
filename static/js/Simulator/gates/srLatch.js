@@ -1,9 +1,9 @@
-function HalfAdderGate(x, y) {
+function SrLatch(x, y) {
     this.x = x;
     this.y = y;
 
     this.index = -1;
-    this.name = "HALF_ADDER_GATE_";
+    this.name = "SR_LATCH_";
 
     this.length = 40;
     this.height = 60;
@@ -41,13 +41,14 @@ function HalfAdderGate(x, y) {
 
         strokeWeight(1.2);
         textSize(14);
-        text("H A", this.x + 9, this.y + 35);
+        text("S R", this.x + 9, this.y + 35);
         strokeWeight(0.7);
         textSize(10);
-        text("A", this.x - 10, this.y + 12);
-        text("B", this.x - 10, this.y + 42);
-        text("S", this.x + 44, this.y + 12);
-        text("C", this.x + 44, this.y + 42);
+        text("S", this.x - 10, this.y + 12);
+        text("R", this.x - 10, this.y + 42);
+        text("Q", this.x + 44, this.y + 12);
+        line(this.x + this.length + 5, this.y + this.height - 28, this.x + this.length + 12, this.y + this.height - 28);
+        text("Q", this.x + 44, this.y + 42);
         strokeWeight(1);
 
         if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0 && currentWire === null) {
@@ -82,7 +83,7 @@ function HalfAdderGate(x, y) {
     }
 
     this.clone = function() {
-        return new HalfAdderGate();
+        return new SrLatch();
     }
 
     this.mouseInside = function() {
@@ -97,11 +98,8 @@ function HalfAdderGate(x, y) {
         this.index = gates.length;
         this.name += this.index;
 
-        if (this.inputNum == 2) {
-            for (var i = 0; i < this.inputNum; i++) {
-                this.in[i] = new InButton(this, i);
-            }
-
+        for (var i = 0; i < this.inputNum; i++) {
+            this.in[i] = new InButton(this, i);
         }
         for (i = 0; i < this.outputNum; i++) {
             this.out[i] = new OutButton(this, i);
@@ -111,12 +109,12 @@ function HalfAdderGate(x, y) {
         this.truthTable = [
             [
                 [0, 0],
-                [1, 0],
+                [1, 1],
                 [2, 2]
             ],
             [
                 [1, 0],
-                [0, 1],
+                [0, 0],
                 [2, 2]
             ],
             [
@@ -128,11 +126,8 @@ function HalfAdderGate(x, y) {
     }
 
     this.refreshButtons = function() {
-        if (this.inputNum == 2) {
-
-            this.in[0].setPosition(this.left, this.y + this.height / 4);
-            this.in[1].setPosition(this.left, this.y + 3 * this.height / 4);
-        }
+        this.in[0].setPosition(this.left, this.y + this.height / 4);
+        this.in[1].setPosition(this.left, this.y + 3 * this.height / 4);
         this.out[0].setPosition(this.right, this.y + this.height / 4);
         this.out[1].setPosition(this.right, this.y + 3 * this.height / 4);
 
@@ -175,7 +170,7 @@ function HalfAdderGate(x, y) {
 
         var prevIndex = this.index;
         this.index = index;
-        this.name = "HALF_ADDER_GATE_" + this.index;
+        this.name = "SR_LATCH_" + this.index;
 
         for (var i = 0; i < wires.length; i++) {
             if (wires[i].inGateIndex == prevIndex)

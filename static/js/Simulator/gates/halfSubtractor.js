@@ -6,7 +6,7 @@ function HalfSubtractor(x, y) {
     this.name = "HALF_SUBTRACTOR_";
 
     this.length = 40;
-    this.height = 40;
+    this.height = 60;
 
     this.left = this.x - 20;
     this.right = this.x + this.length + 20;
@@ -41,13 +41,13 @@ function HalfSubtractor(x, y) {
 
         strokeWeight(1.2);
         textSize(14);
-        text("H S", this.x + 9, this.y + 25);
+        text("H S", this.x + 9, this.y + 35);
         strokeWeight(0.7);
         textSize(10);
-        text("A", this.x - 10, this.y + 8);
-        text("B", this.x - 10, this.y + 28);
-        text("S", this.x + 44, this.y + 8);
-        text("C", this.x + 44, this.y + 28);
+        text("A", this.x - 10, this.y + 12);
+        text("B", this.x - 10, this.y + 42);
+        text("S", this.x + 44, this.y + 12);
+        text("C", this.x + 44, this.y + 42);
         strokeWeight(1);
 
         if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0 && currentWire === null) {
