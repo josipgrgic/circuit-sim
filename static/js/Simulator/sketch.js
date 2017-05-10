@@ -248,11 +248,11 @@ function drawFrame() {
 function adjustColor() {
     if (deleteWireMode === 1) {
         clearCurrentWire();
-        $( "#DELETE-WIRE-MODE" ).removeClass("btn-danger");
+        $( "#DELETE-WIRE-MODE" ).removeClass("btn-warning");
         $( "#DELETE-WIRE-MODE" ).addClass("btn-success");
     } else {
         $( "#DELETE-WIRE-MODE" ).removeClass("btn-success");
-        $( "#DELETE-WIRE-MODE" ).addClass("btn-danger");
+        $( "#DELETE-WIRE-MODE" ).addClass("btn-warning");
     }
 }
 
