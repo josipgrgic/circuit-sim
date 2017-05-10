@@ -298,7 +298,7 @@ function windowResized() {
     }
 }
 
-function changeCanvasSize() {
+/*function changeCanvasSize() {
     if (simToggleValue === 0) {
         var newWidth = slider.value();
         var newHeigth = 400 * (slider.value()/700);
@@ -335,7 +335,7 @@ function changeCanvasSize() {
         slider.value(sliderValue);
 
     canvas.size(canWidth, canHeigth);
-}
+}*/
 
 function addGateOrWire() {
     gateCreated = false;
