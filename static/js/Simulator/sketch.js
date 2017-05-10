@@ -167,6 +167,7 @@ function setup() {
             $( "#SIMULATION" ).removeClass("btn-danger");
             $( "#SIMULATION" ).addClass("btn-success");
             //simulate();
+            prepareSimulation();
             intervalClock = setInterval(clock, 25);
         } else {
             $( "#SIMULATION" ).removeClass("btn-success");
