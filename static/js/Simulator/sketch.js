@@ -15,6 +15,13 @@ var gateCreated = false;
 
 
 function setup() {
+
+    if(windowWidth < 1260) {
+        $( "#sidebar" ).removeClass("fxd");
+    } else {
+        $( "#sidebar" ).addClass("fxd");
+    }
+
     var el = document.getElementById("canvas-holder");
     var rect = el.getBoundingClientRect();
     //slider = createSlider(700, rect.right - rect.left, rect.right - rect.left, 1);
@@ -283,6 +290,13 @@ function adjustColor() {
 }
 
 function windowResized() {
+
+    if(windowWidth < 1260) {
+        $( "#sidebar" ).removeClass("fxd");
+    } else {
+        $( "#sidebar" ).addClass("fxd");
+    }
+
     //var currentVal = slider.value();
     var el = document.getElementById("canvas-holder");
     var rect = el.getBoundingClientRect();
