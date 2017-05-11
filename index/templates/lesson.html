@@ -5,23 +5,214 @@
 <div id="ww" class="container">
     <div class="container">
         <div class="row">
+            <br /><br />
             <div class="col-lg-8 col-lg-offset-2 centered">
 
                 <p><b>Signal</b> je fenomen koji prenosi informaciju.
                     Digitalna logika u svom najosnovnijem obliku barata s jednom vrstom signala
                     čije postojanje ili nepostojanje tvori dva stanja koja možemo označavati na različite načine:
                     "POSTOJI" ili "NE POSTOJI", "ISTINA" ili "LAŽ" ili, kako je najpraktičije, <b>0</b> (NULA) ili <b>1</b> (JEDAN).
-                    U ovom simulatoru često ćemo ta dva stanja reprezentirati <span style="color:red">crvenom</span> bojom za stanje 0
+                    U ovom simulatoru ćemo ta dva stanja reprezentirati <span style="color:red">crvenom</span> bojom za stanje 0
                     i <span style="color:green">zelenom</span> bojom za stanje 1.
                 </p>
 
                 <img src="{% static 'img/tut/signal.png' %}" class="tut-image"/>
                 <br /><br />
                 <p>Slika iznad pokazuje navedena stanja kako se pojavljuju u simulatoru. Valja primijetiti najosnovnije elemente
-                    koje ćeš najčešće susretati. To su: izvor signala, žica i lampica.</p>
+                    koje ćeš najčešće susretati. To su: <b>izvor signala</b>, <b>žica</b> i <b>lampica</b>.</p>
 
+                <p>Put od izvora signala do njegovog odredišta rijetko je tako jednostavan kao što je on prikazan na
+                 gornjoj slici. Gotovo uvijek odredište signala ovisi o većem broju izvora. Stanje koje će se naposljetku
+                    pojaviti na odredištu ovisi o tom putu, odnosno, skupu <b>logičkih vrata</b> i <b>sklopova</b> kroz koje
+                    izvorišni signali prolaze.</p>
             </div>
         </div>
     </div>
+
+    <div class="col-xs-12">
+        <h4>LOGIČKA VRATA</h4>
+
+        <p>U elektronici, logička vrata predstavljaju idealizirane uređaje koji ostvaruju određenu
+            <a target="_blank" href="https://en.wikipedia.org/wiki/Boolean_function">Boole</a>-ovu funkciju.
+             Primaju jedan ili više binarnih vrijednosti i na temelju njih produciraju jedan izlaz. Upravo njihovo
+              kaskadno povezivanje stvaraju svu elekroničku logiku koja se vrti pod tvojim prstima.
+        </p>
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 centered">
+                <p>U prošlosti su logička vrata bila ostvarena vakuumskim cijevima i elektromagnetskim relejima.
+                    Danas su to diode i tranzistori veličina koje se mjeru u nanometrima čije je otkriće imalo vodeću ulogu
+                     u oblikovanju svijeta kakvog danas poznajemo.</p>
+
+                <p style="font-size:15px; color:black"><i>“It has today occurred to me that an amplifier using semiconductors
+                    rather than vacuum is in principle possible.” &nbsp;</i>
+                    [Laboratory notebook, 29 Dec 1939.]
+                    ― William Shockley
+                </p>
+
+                <img src="/static/img/tut/size.jpg" class="tut-image"/>
+                <p style="font-size:15px"><i>"The vacuum tube...a replica of the first point contact transistor...
+                    a plastic encapsulated transistor with life expectancy of
+                    100 million hours...and a 1024-bit Silicon Gate Memory chip that contains 4200 transistors."</i>
+                </p>
+            </div>
+        </div>
+
+        <p>
+            Osnovni tipovi logičkih vrata su sljedeći: "<b>I vrata</b>", "<b>ILI vrata</b>" i "<b>NE vrata</b>".
+             Njihovim međusobnim kombiniranjem nastaju: "<b>NI vrata</b>", "<b>NILI vrata</b>", "<b>XOR vrata</b>"
+             kao i čitav niz viših sklopova poput multiplexera, bistabila, ... Ispod su prikazane slike navedenih sklopova
+              koje će te pritiskom na njih dati više informacija o pojedinim vratima poput opisa i tablice istinitosti.
+        </p>
+
+        <div class="row centered">
+            <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3">
+                <a href="/tutorial/lesson/AND"><h5>I VRATA</h5></a>
+                <a href="/tutorial/lesson/AND"><img src="/static/img/tut/and.png" class="tut-image"/></a>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <a href="/tutorial/lesson/OR"><h5>ILI VRATA</h5></a>
+                <a href="/tutorial/lesson/OR"><img src="/static/img/tut/or.png" class="tut-image"/></a>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <a href="/tutorial/lesson/NOT"><h5>NE VRATA</h5></a>
+                <a href="/tutorial/lesson/NOT"><img src="/static/img/tut/not.png" class="tut-image"/></a>
+            </div>
+
+            <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3">
+                <a href="/tutorial/lesson/NAND"><h5>NI VRATA</h5></a>
+                <a href="/tutorial/lesson/NAND"><img src="/static/img/tut/nand.png" class="tut-image"/></a>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <a href="/tutorial/lesson/NOR"><h5>NILI VRATA</h5></a>
+                <a href="/tutorial/lesson/NOR"><img src="/static/img/tut/nor.png" class="tut-image"/></a>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <a href="/tutorial/lesson/XOR"><h5>XOR VRATA</h5></a>
+                <a href="/tutorial/lesson/XOR"><img src="/static/img/tut/xor.png" class="tut-image"/></a>
+            </div>
+        </div>
+
+        <br/><br/>
+        <div class="row">
+            <div class="col-md-12">
+                <p>Naravno, to je samo podskup svih dostupnih sklopova koje postoje i koje možeš naći u simulatoru. Na dnu stranice pronaći
+                 ćeš linkove na informacije o svim sklopovima koje ovaj simulator nudi. Ukoliko se s digitalnom logikom osjećaš kao u neubranom grožđu
+                  svakako prouči navedene sklopove tako da ti korištenje simulatora bude što prirodnije. U ime tvoraca simulatora, želim ti prije svega
+                    puno zabave i radoznalosti!</p>
+            </div>
+        </div>
+
+    </div>
+
+     <div class="col-xs-12">
+        <h3>POPIS SKLOPOVLJA</h3>
+
+             <div class="row centered">
+                 <br />
+                 <h4>ULAZNO/IZLAZNI SKLOPOVI</h4>
+                 <div class="row">
+                     <div class="col-sm-4 col-sm-offset-2">
+                         <a href="/tutorial/lesson/IN"><h5>SKLOPKA</h5></a>
+                         <a href="/tutorial/lesson/IN"><img src="/static/img/tut/in.png" class="tut-image"/></a>
+                     </div>
+                    <div class="col-sm-4">
+                        <a href="/tutorial/lesson/OUT"><h5>LAMPICA</h5></a>
+                        <a href="/tutorial/lesson/OUT"><img src="/static/img/tut/out.png" class="tut-image"/></a>
+                    </div>
+                 </div>
+                    <br />
+                 <div class="row">
+                     <div class="col-sm-4 col-sm-offset-2">
+                        <a href="/tutorial/lesson/CLOCK"><h5>IZVOR TAKTA</h5></a>
+                        <a href="/tutorial/lesson/CLOCK"><img src="/static/img/tut/clock.png" class="tut-image"/></a>
+                     </div>
+                     <div class="col-sm-4">
+                        <a href="/tutorial/lesson/7SEG"><h5>7-SEG. LCD</h5></a>
+                        <a href="/tutorial/lesson/7SEG"><img src="/static/img/tut/7seg.png" class="tut-image"/></a>
+                    </div>
+                 </div>
+             </div>
+
+            <div class="row centered">
+                <br />
+                <h4>JEDNOSTAVNI SKLOPOVI</h4>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3">
+                        <a href="/tutorial/lesson/AND"><h5>I VRATA</h5></a>
+                        <a href="/tutorial/lesson/AND"><img src="/static/img/tut/and.png" class="tut-image"/></a>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <a href="/tutorial/lesson/OR"><h5>ILI VRATA</h5></a>
+                        <a href="/tutorial/lesson/OR"><img src="/static/img/tut/or.png" class="tut-image"/></a>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <a href="/tutorial/lesson/NOT"><h5>NE VRATA</h5></a>
+                        <a href="/tutorial/lesson/NOT"><img src="/static/img/tut/not.png" class="tut-image"/></a>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3">
+                        <a href="/tutorial/lesson/NAND"><h5>NI VRATA</h5></a>
+                        <a href="/tutorial/lesson/NAND"><img src="/static/img/tut/nand.png" class="tut-image"/></a>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <a href="/tutorial/lesson/NOR"><h5>NILI VRATA</h5></a>
+                        <a href="/tutorial/lesson/NOR"><img src="/static/img/tut/nor.png" class="tut-image"/></a>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <a href="/tutorial/lesson/XOR"><h5>XOR VRATA</h5></a>
+                        <a href="/tutorial/lesson/XOR"><img src="/static/img/tut/xor.png" class="tut-image"/></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row centered">
+                <br />
+                <h4>SLOŽENI SKLOPOVI</h4>
+                <div class="row centered">
+                     <div class="col-md-2 col-md-offset-2 col-sm-4 col-sm-offset-2">
+                        <a href="/tutorial/lesson/HA"><h5>POLUZBRAJALO</h5></a>
+                        <a href="/tutorial/lesson/HA"><img src="/static/img/tut/ha.png" class="tut-image"/></a>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <a href="/tutorial/lesson/HS"><h5>POLUODUZIMALO</h5></a>
+                        <a href="/tutorial/lesson/HS"><img src="/static/img/tut/hs.png" class="tut-image"/></a>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-2">
+                        <a href="/tutorial/lesson/FA"><h5>PUNO ZBRAJALO</h5></a>
+                        <a href="/tutorial/lesson/FA"><img src="/static/img/tut/fa.png" class="tut-image"/></a>
+                    </div>
+                     <div class="col-md-2 col-sm-4">
+                        <a href="/tutorial/lesson/FS"><h5>PUNO ODUZIMALO</h5></a>
+                        <a href="/tutorial/lesson/FS"><img src="/static/img/tut/fs.png" class="tut-image"/></a>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="row centered">
+                    <div class="col-md-2 col-md-offset-2 col-sm-4 col-sm-offset-2">
+                        <a href="/tutorial/lesson/BCD-7SEG"><h5>BCD-7SEG PRETVARAČ</h5></a>
+                        <a href="/tutorial/lesson/BCD-7SEG"><img src="/static/img/tut/bcd.png" class="tut-image"/></a>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <a href="/tutorial/lesson/COUNTER"><h5>BROJAČ</h5></a>
+                        <a href="/tutorial/lesson/COUNTER"><img src="/static/img/tut/cntr.png" class="tut-image"/></a>
+                    </div>
+                    <div class="col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-2">
+                        <a href="/tutorial/lesson/MUX"><h5>MULTIPLEKSER</h5></a>
+                        <a href="/tutorial/lesson/MUX"><img src="/static/img/tut/mux.png" class="tut-image"/></a>
+                    </div>
+                     <div class="col-md-2 col-sm-4 ">
+                        <a href="/tutorial/lesson/DEMUX"><h5>DEMULTIPLEKSER</h5></a>
+                        <a href="/tutorial/lesson/DEMUX"><img src="/static/img/tut/demux.png" class="tut-image"/></a>
+                    </div>
+                </div>
+            </div>
+     </div>
 </div>
 {% endblock %}
