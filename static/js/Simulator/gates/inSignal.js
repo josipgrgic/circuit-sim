@@ -29,7 +29,7 @@ function InSignal(x, y) {
 
         rect(this.x, this.y, this.length, this.height);
 
-        line(this.right - 20, this.up + this.height / 2, this.right, this.up + this.height / 2);
+        line(this.right - 19, this.up + this.height / 2, this.right, this.up + this.height / 2);
 
 
         strokeWeight(1);

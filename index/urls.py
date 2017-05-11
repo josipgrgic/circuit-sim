@@ -10,6 +10,4 @@ urlpatterns = [
     url(r'^tutorial/howTo$', views.howTo, name='howTo'),
 
 
-    url(r'^.*$', views.notFound, name="notFound")
-
 ]
