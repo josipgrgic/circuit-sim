@@ -194,6 +194,7 @@ function setup() {
             $( "#SIMULATION" ).html("<span class='glyphicon glyphicon-stop'></span>&nbsp;Zaustavi");
             //simulate();
             prepareSimulation();
+            simulate();
             intervalClock = setInterval(clock, 25);
         } else {
             $( "#SIMULATION" ).removeClass("btn-success");
@@ -208,7 +209,7 @@ function setup() {
 function clock(){
     if (simToggleValue === 1) {
         setupClocks();
-        simulate();
+        //simulate();
     }
 }
 

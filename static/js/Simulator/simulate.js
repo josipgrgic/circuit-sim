@@ -1,25 +1,24 @@
 var inputQueue = [];
 var inputQueueFlags = {};
+var inputGates = [];
+var clocks = [];
 
-function simulate(inputGatesQueue){
+function simulate(){
     var queue = inputQueue.slice();
     var queueFlags = {};
 
-    gates.forEach(function(gate) {
-        if(gate.isInSignal && gates.out !== 'undefined'){
-            gate.out.forEach(function(outButton){
-                outButton.wires.forEach(function(wire) {
-                    pushGate(gates[wire.inGateIndex], queue, queueFlags);
-
-                    wire.status = gate.status;
-                    wire.switch(wire.status);
-                }, this);
-            });
-        }
+    inputGates.forEach(function(gate) {
+        gate.out.forEach(function(outButton){
+            outButton.wires.forEach(function(wire) {
+                wire.switch(gate.status);
+            }, this);
+        });
     }, this);
 
     var i = 0;
     while(queue.length > 0){
+        console.log("queue");
+        console.log(queue);
         if(i++ > gates.length * 10){ 
             break;
             console.log("Infinite loop detected");
@@ -31,11 +30,15 @@ function simulate(inputGatesQueue){
 
         if(typeof currentGate.in !== 'undefined'){
             currentGate.in.forEach(function(inButton){
-                inputWires = inputWires.concat(inButton.wires);
+                if(inButton.wires.length == 0){
+                    inputWires.push("");
+                }
+                else{
+                    inputWires = inputWires.concat(inButton.wires);
+                }
             });
         }
         
-        console.log(inputWires);
         if(typeof currentGate.out !== 'undefined'){
             currentGate.out.forEach(function(outButton){
                 outputWires = outputWires.concat(outButton.wires);
@@ -44,15 +47,21 @@ function simulate(inputGatesQueue){
 
         inputs = [];
         inputWires.forEach(function(wire){
-            inputs.push(wire.status);
+            if(typeof wire.status === 'undefined'){
+                inputs.push(2);
+            }
+            else{
+                inputs.push(wire.status);
+            }
         });
 
         var newStatus = 2;
         if(currentGate.outputNum > 0 ){
-            if(typeof currentGate.mux !== 'undefined' && currentGate.mux){
+            if((typeof currentGate.demux !== 'undefined' && currentGate.demux) || 
+                    (typeof currentGate.mux !== 'undefined' && currentGate.mux)){
                 newStatus = currentGate.output(inputs);
             }
-            if(currentGate.inputNum === 1){
+            else if(currentGate.inputNum === 1){
                 newStatus = currentGate.truthTable[inputs[0]];
             }
             else if(currentGate.inputNum === 2 && typeof currentGate.state === 'undefined'){
@@ -101,7 +110,7 @@ function simulate(inputGatesQueue){
 }
 
 function pushGate(gate, queue, queueFlags){
-    if(typeof queueFlags[gate.name] === 'undefined' && !queueFlags[gate.name]){
+    if(typeof queueFlags[gate.name] === 'undefined' || !queueFlags[gate.name]){
         queue.push(gate);
         queueFlags[gate.name] = true;
     }
@@ -116,35 +125,49 @@ function shiftGate(queue, queueFlags){
 }
 
 function setupClocks(){
-    gates.forEach(function(gate) {
-        if(gate.isClock !== 'undefined' && gate.isClock){
-            gate.switch();
+    var refresh = false;
+    clocks.forEach(function(gate) {
+        if(gate.switch()){
+            refresh = true;
         }
     }, this);
+    if(refresh){
+        simulate();
+    }
 }
 
 function prepareSimulation(){
     inputQueue = [];
     inputQueueFlags = {};
+    inputGates = [];
+    clocks = [];
 
     gates.forEach(function(gate) {
         if(gate.isInSignal && gates.out !== 'undefined'){
+            if(gate.out[0].wires.length > 0){
+                inputGates.push(gate);
+            }
             gate.out.forEach(function(outButton){
                 outButton.wires.forEach(function(wire) {
                     pushGate(gates[wire.inGateIndex], inputQueue, inputQueueFlags);
-                    wire.status = gate.status;
-                    wire.switch(wire.status);
                 }, this);
             });
+        }
+        if(typeof gate.isClock !== 'undefined' && gate.isClock){
+            if(gate.out[0].wires.length > 0){
+                clocks.push(gate);
+            }
         }
     }, this);
 }
 
 function endSimulation(){
     clearInterval(intervalClock);
+
     wires.forEach(function(wire){
         wire.switch(2);
     });
+
     gates.forEach(function(gate){
         if(typeof gate.switch !== 'undefined'){
             if(!gate.isInSignal){

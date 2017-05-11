@@ -168,7 +168,9 @@ function Clock(x, y) {
         if(this.counter % (this.speed * 5) === 0){
             this.counter = 0;
             this.status ^= 1;
+            return true;
         }
+        return false;
     }
 
     this.switchSpeed = function(){

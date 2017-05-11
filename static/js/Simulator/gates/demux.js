@@ -125,7 +125,7 @@ function Demux(x, y) {
         this.in[2].setPosition(this.x + 30, this.y + this.height + 15);
 
         for(var i = 0; i < this.outputNum; i++){
-            this.out[0].setPosition(this.right, this.y + 10 + 20 * i);
+            this.out[i].setPosition(this.right, this.y + 10 + 20 * i);
         }
 
         this.closeButton.setPosition(this.right - 33, this.up + 2);
@@ -182,16 +182,15 @@ function Demux(x, y) {
     }
 
     this.output = function(inputs){
-        for(var i = 0; i < inputs.length; i++){
-            if(typeof inputs[i] === 'undefined'){
-                inputs[i] = 2;
-            }
-        }
+        var input = inputs[0];
         var outputs = [
-            [inputs[0], inputs[1]],
-            [inputs[2], inputs[3]]
+            [ [input, 0, 0, 0], [0, input, 0, 0] ],
+            [ [0, 0, input, 0], [0, 0, 0, input] ]
         ];
-        var output = outputs[inputs[4]][inputs[5]];
+        if(inputs[1] === 2 || inputs[2] === 2){
+            return 2;
+        }
+        var output = outputs[inputs[1]][inputs[2]];
         if(typeof output === 'undefined'){
             return 2;
         }

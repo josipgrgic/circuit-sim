@@ -181,16 +181,13 @@ function Mux(x, y) {
     }
 
     this.output = function(inputs){
-        for(var i = 0; i < inputs.length; i++){
-            if(typeof inputs[i] === 'undefined'){
-                inputs[i] = 2;
-            }
-        }
-
         var outputs = [
             [inputs[0], inputs[1]],
             [inputs[2], inputs[3]]
         ];
+        if(inputs[4] === 2 || inputs[5] === 2){
+            return 2;
+        }
         var output = outputs[inputs[4]][inputs[5]];
         if(typeof output === 'undefined'){
             return 2;

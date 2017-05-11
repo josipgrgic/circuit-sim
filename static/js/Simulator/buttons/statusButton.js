@@ -15,6 +15,9 @@ function StatusButton(inSignal, index) {
         }
         else{
             gates[this.value()].switch();
+            if(simToggleValue === 1){
+                simulate();
+            }
         }
     });
 
