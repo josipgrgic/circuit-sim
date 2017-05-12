@@ -272,3 +272,11 @@ bt {
     border: 2px solid #1abc9c;
 }
 .top5 { margin-top:5px; }
+
+.red {
+    color:red;
+}
+
+.green {
+    color:green;
+}
