@@ -4,8 +4,11 @@ var inputGates = [];
 var clocks = [];
 
 function simulate(){
-    var queue = inputQueue.slice();
-    var queueFlags = {};
+    var queue = [];
+        var queueFlags = {};
+    inputQueue.forEach(function(gate){
+        pushGate(gate, queue, queueFlags);
+    });
 
     inputGates.forEach(function(gate) {
         gate.out.forEach(function(outButton){
@@ -19,6 +22,7 @@ function simulate(){
     while(queue.length > 0){
         console.log("queue");
         console.log(queue);
+        console.log(currentGate);
         if(i++ > gates.length * 10){ 
             break;
             console.log("Infinite loop detected");
@@ -48,7 +52,7 @@ function simulate(){
         inputs = [];
         inputWires.forEach(function(wire){
             if(typeof wire.status === 'undefined'){
-                inputs.push(2);
+                inputs.push(0);
             }
             else{
                 inputs.push(wire.status);
@@ -56,31 +60,49 @@ function simulate(){
         });
 
         var newStatus = 2;
-        if(currentGate.outputNum > 0 ){
-            if((typeof currentGate.demux !== 'undefined' && currentGate.demux) || 
-                    (typeof currentGate.mux !== 'undefined' && currentGate.mux)){
-                newStatus = currentGate.output(inputs);
-            }
-            else if(currentGate.inputNum === 1){
-                newStatus = currentGate.truthTable[inputs[0]];
-            }
-            else if(currentGate.inputNum === 2 && typeof currentGate.state === 'undefined'){
-                newStatus = currentGate.truthTable[inputs[0]][inputs[1]];
-            }
-            else if(currentGate.inputNum === 2 && typeof currentGate.state !== 'undefined'){
-                currentGate.switch(inputs[0], inputs[1]);
-                newStatus = currentGate.truthTable;
-            }
-            else if(currentGate.inputNum === 3){
-                newStatus = currentGate.truthTable[inputs[0]][inputs[1]][inputs[2]];
-            }
-            else if(currentGate.inputNum === 4){
-                newStatus = currentGate.truthTable[inputs[0]][inputs[1]][inputs[2]][inputs[3]];
-            }
-            if(typeof newStatus === 'undefiend'){
-                newStatus = 2;
+        try{
+            if(currentGate.outputNum > 0 ){
+                if((typeof currentGate.demux !== 'undefined' && currentGate.demux) || 
+                        (typeof currentGate.mux !== 'undefined' && currentGate.mux)){
+                    newStatus = currentGate.output(inputs);
+                }
+                else if(currentGate.inputNum === 1){
+                    newStatus = currentGate.truthTable[inputs[0]];
+                }
+                else if(currentGate.inputNum === 2 && typeof currentGate.state === 'undefined'){
+                    newStatus = currentGate.truthTable[inputs[0]][inputs[1]];
+                }
+                else if(currentGate.inputNum === 2 && typeof currentGate.state !== 'undefined'){
+                    currentGate.switch(inputs[0], inputs[1]);
+                    newStatus = currentGate.truthTable;
+                }
+                else if(currentGate.inputNum === 3){
+                    newStatus = currentGate.truthTable[inputs[0]][inputs[1]][inputs[2]];
+                }
+                else if(currentGate.inputNum === 4){
+                    newStatus = currentGate.truthTable[inputs[0]][inputs[1]][inputs[2]][inputs[3]];
+                }
             }
         }
+        catch(error){
+            console.log("Error at gate: ");
+            console.log(currentGate);
+        }
+        if(typeof newStatus === 'undefiend' || typeof newStatus == undefined || newStatus == null){
+            if(currentGate.outputNum == 1){
+                newStatus = 2;
+            }
+            else{
+                for(var i = 0; i < currentGate.outputNum; i++){
+                    newStatus = [];
+                    newStatus[i] = 0;
+                }
+            }
+        }
+        console.log("inputs");
+        console.log(inputs);
+        console.log("newStatus");
+        console.log(newStatus);
         if(typeof outputWires !== 'undefined'){
             outputWires.forEach(function(wire){
                 if((currentGate.outputNum === 1 && newStatus !== wire.status) || (currentGate.outputNum > 1 && newStatus[wire.outIndex] !== wire.status)){
@@ -103,9 +125,6 @@ function simulate(){
         if(typeof currentGate.sevenSeg !== 'undefined'){
             currentGate.switch(inputs);
         }
-        console.log(currentGate);
-        console.log(inputs);
-        console.log(gates);
     }
 }
 

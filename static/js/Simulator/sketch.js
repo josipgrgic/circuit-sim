@@ -32,6 +32,7 @@ function setup() {
     canvas.parent('canvas-holder');
     canvas.mousePressed(addGateOrWire);
     pixelDensity(2.0);
+    smooth(2);
 
     $( "#AND-GATE" ).click(function() {
         if (simToggleValue === 0 && deleteWireMode === 0){
