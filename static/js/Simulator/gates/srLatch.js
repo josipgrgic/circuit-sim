@@ -22,6 +22,7 @@ function SrLatch(x, y) {
     this.isInSignal = false;
     this.isOutSignal = false;
     this.truthTable = [];
+    this.inputs = [0, 0];
 
     this.draw = function() {
         noFill();

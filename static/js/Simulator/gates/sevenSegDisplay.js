@@ -22,6 +22,7 @@ function SevenSegDisplay(x, y) {
     this.isInSignal = false;
     this.isOutSignal = false;
     this.truthTable = [];
+    this.inputs = [0, 0, 0, 0, 0, 0, 0];
     this.sevenSeg = true;
 
     this.status = [0, 0, 0, 0, 0, 0, 0];
