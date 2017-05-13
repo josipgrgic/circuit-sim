@@ -93,7 +93,7 @@ function simulate(fromClock = false, gateFromButton, clocksForQueue){
         });
 
         var newStatus = 2;
-       // try{
+        try{
             if(currentGate.outputNum > 0 ){
                 if((typeof currentGate.demux !== 'undefined' && currentGate.demux) || 
                         (typeof currentGate.mux !== 'undefined' && currentGate.mux)){
@@ -120,11 +120,11 @@ function simulate(fromClock = false, gateFromButton, clocksForQueue){
                     newStatus = currentGate.truthTable[currentGate.inputs[0]][currentGate.inputs[1]][currentGate.inputs[2]][currentGate.inputs[3]];
                 }
             }
-        /*}
+        }
         catch(error){
             console.log("Error at gate: " + error);
             console.log(currentGate);
-        }*/
+        }
         if(typeof newStatus === 'undefiend' || typeof newStatus == undefined || newStatus == null){
             if(currentGate.outputNum == 1){
                 newStatus = 0;
