@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>"ILI" VRATA</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/or.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-6 centered">
+            <p>ILI (OR) logička vrata sadržavaju dva ili više ulaza i jedan izlaz. U simulatoru koristit ćemo
+             ILI vrata s dva ulaza. Njegov izlaz u ovisnosti o ulazima strogo je definiran te se nalazi u sljedećoj tablici.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>Kao što vidite izlaz ILI vrata će dati zeleno svijetlo kada je barem jedan od ulaza zelen.
+				Kako bi bolje shvatio ovu tablicu sjeti se idućeg scenarija: za pisanje testa nam je potrebna
+				tehnička olovka ili drvena olovka. Kada bi imao jednu od njih bilo bi vam dosta za pisanje.
+				Ukoliko bi imao obje, jednu možeš iskoristit za pisanje testa, a s drugom možeš gađati nastavnika
+				jer je dao pretežak ispit. Ali pazite, u tom slučaju možete pasti taj ispit. Zato bolje spremite višak olovki :)
+            </p>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1">
+            <table class="table table-bordered tut-image">
+                <thead>
+                    <tr>
+                        <th class="text-center">A</th>
+                        <th class="text-center">B</th>
+                        <th class="text-center">IZLAZ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td class="red"><b>0</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td class="green"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td class="green"><b>1</b></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
