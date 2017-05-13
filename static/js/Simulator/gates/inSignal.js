@@ -69,8 +69,7 @@ function InSignal(x, y) {
     }
 
     this.set = function() {
-        this.x = mouseX;
-        this.y = mouseY - mouseY % 5;
+        this.refreshPosition();
         this.index = gates.length;
         this.name += this.index;
 
