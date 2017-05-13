@@ -74,15 +74,17 @@ function setup() {
         if (simToggleValue === 1)
             return;
 
-        for (var i = 0; i < gates.length; i++) {
-            gates[i].delete();
+        if(confirm("Želite li obrisati cijelu skicu?") === true){
+            for (var i = 0; i < gates.length; i++) {
+                gates[i].delete();
+            }
+            gates = [];
+            wires = [];
+            currentWire = null;
+            currentGate = null;
+            deleteWireMode = 0;
+            adjustColor()
         }
-        gates = [];
-        wires = [];
-        currentWire = null;
-        currentGate = null;
-        deleteWireMode = 0;
-        adjustColor()
     });
 
     $( "#CLEAR-WIRE" ).click(function() {

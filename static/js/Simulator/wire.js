@@ -15,6 +15,10 @@ function Wire() {
 
     this.status = 2;
     this.color = color(0);
+    this.branchingPoint = null;
+    this.branchedFrom=null;
+    this.branchIndexBefore=null;
+    this.bSet = false;
 
     this.drawSegment = function() {
         this.segment = [];
@@ -26,11 +30,29 @@ function Wire() {
             line(this.segment[i - 1].x, this.segment[i - 1].y, this.segment[i].x, this.segment[i].y);
         }
         stroke(0);
+
+        if(this.branchingPoint !== null && this.bSet===false){
+            var pnt = this.segment[1];
+            var y1 = wires[this.branchedFrom].points[this.branchIndexBefore].y;
+            var y2 = wires[this.branchedFrom].points[this.branchIndexBefore+1].y;
+            var x = wires[this.branchedFrom].points[this.branchIndexBefore+1].x;
+            if(pnt.y<min(y1,y2)) {
+                this.branchingPoint.y=min(y1,y2)
+            }
+            else if(pnt.y > max(y1,y2)){
+                this.branchingPoint.y=max(y1,y2)
+            }
+            else {
+                this.branchingPoint.y=pnt.y;
+            }
+        }
+
         strokeWeight(1);
     }
 
     this.addPath = function() {
         this.branchedX = false;
+        this.bSet=true;
         for (var i = 1; i < this.segment.length; i++) {
             this.points.push(this.segment[i]);
         }
@@ -94,6 +116,11 @@ function Wire() {
         }
         strokeWeight(1);
         stroke(0);
+        if(this.branchingPoint !== null) {
+            fill(0);
+            ellipse(this.branchingPoint.x,this.branchingPoint.y,5,5);
+            noFill();
+        }
         this.mouseOver();
     }
 

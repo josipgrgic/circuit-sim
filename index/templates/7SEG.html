@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>7 SEGMENTNI DISPLEJ</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/7seg.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-6 centered">
+            <p>7 segmentni displej ima 7 ulaza. Njegovih 7 signala ulaza definiraju na njegovom displeju segmente
+			 koji će se upaliti. Kako bi jasnije shvatili koji signal je za koji segment pogledajte donju sliku </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>Ovo je jedan od jednostavijih displeja. Sada pokušaj razmisliti kako današnjim monitori rade,
+			koji imaju boju i koji iscrtavaju točku po točku. Zamisli koliko bi bilo potrebno ulaza za njih.
+            </p>
+        </div>
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/tut/sev_seg.png" class="tut-image" />
+            <br /><br />
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

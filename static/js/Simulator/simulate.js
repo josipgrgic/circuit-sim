@@ -51,8 +51,8 @@ function simulate(fromClock, gateFromButton, clocksForQueue){
     console.log(gates);
     while(queue.length > 0){
         if(i++ > gates.length * 10){ 
-            break;
             console.log("Infinite loop detected");
+            break;
         }
         var currentQueueGate = shiftGate(queue, queueFlags);
         var currentGate = currentQueueGate.gate;
