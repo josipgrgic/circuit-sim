@@ -27,7 +27,7 @@ function Clock(x, y) {
     this.counter = 0;
     this.speed = 1;
     this.isClock = true;
-
+    this.inputs = [];
 
     this.draw = function() {
         noFill();
@@ -160,11 +160,12 @@ function Clock(x, y) {
         for (i = 0; i < this.out.length; i++) {
             this.out[i].refresh();
         }
+        this.statusButton.refresh();
     }
 
     this.switch = function(){
         this.counter++;
-        if(this.counter % (this.speed * 5) === 0){
+        if(this.counter % (this.speed) === 0){
             this.counter = 0;
             this.status ^= 1;
             return true;
@@ -173,22 +174,25 @@ function Clock(x, y) {
     }
 
     this.switchSpeed = function(){
-        this.speed ++;
-        this.speed %= 5;
         switch(this.speed){
-            case 0:
+            case 100:
+                this.speed = 0;
                 this.statusButton.button.style('background', '#ffffff');
                 break;
-            case 1:
+            case 0:
+                this.speed = 1;
                 this.statusButton.button.style('background', '#ccddff');
                 break;
-            case 2:
+            case 1:
+                this.speed = 5;
                 this.statusButton.button.style('background', '#a5c4ff');
                 break;
-            case 3:
+            case 5:
+                this.speed = 25;
                 this.statusButton.button.style('background', '#689cff');
                 break;
-            case 4:
+            case 25:
+                this.speed = 100;
                 this.statusButton.button.style('background', '#236fff');
                 break;
         }

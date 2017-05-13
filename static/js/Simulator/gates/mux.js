@@ -24,6 +24,7 @@ function Mux(x, y) {
     this.mux = true;
 
     this.truthTable = [];
+    this.inputs = [0, 0, 0, 0, 0, 0];
 
     this.draw = function() {
         noFill();
@@ -179,15 +180,15 @@ function Mux(x, y) {
         }
     }
 
-    this.output = function(inputs){
+    this.output = function(){
         var outputs = [
-            [inputs[0], inputs[1]],
-            [inputs[2], inputs[3]]
+            [this.inputs[0], this.inputs[1]],
+            [this.inputs[2], this.inputs[3]]
         ];
-        if(inputs[4] === 2 || inputs[5] === 2){
+        if(this.inputs[4] === 2 || this.inputs[5] === 2){
             return 2;
         }
-        var output = outputs[inputs[4]][inputs[5]];
+        var output = outputs[this.inputs[4]][this.inputs[5]];
         if(typeof output === 'undefined'){
             return 2;
         }

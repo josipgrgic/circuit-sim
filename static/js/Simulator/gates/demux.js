@@ -25,6 +25,7 @@ function Demux(x, y) {
     this.demux = true;
 
     this.truthTable = [];
+    this.inputs = [0, 0, 0];
 
     this.draw = function() {
         noFill();
@@ -180,16 +181,16 @@ function Demux(x, y) {
         }
     }
 
-    this.output = function(inputs){
-        var input = inputs[0];
+    this.output = function(){
+        var input = this.inputs[0];
         var outputs = [
             [ [input, 0, 0, 0], [0, input, 0, 0] ],
             [ [0, 0, input, 0], [0, 0, 0, input] ]
         ];
-        if(inputs[1] === 2 || inputs[2] === 2){
+        if(this.inputs[1] === 2 || this.inputs[2] === 2){
             return 2;
         }
-        var output = outputs[inputs[1]][inputs[2]];
+        var output = outputs[this.inputs[1]][this.inputs[2]];
         if(typeof output === 'undefined'){
             return 2;
         }
