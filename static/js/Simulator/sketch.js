@@ -16,10 +16,14 @@ var gateCreated = false;
 
 function setup() {
 
-    if(windowWidth < 1260) {
+    if(windowWidth < 992) {
         $( "#sidebar" ).removeClass("fxd");
+        /*$( "#jedn" ).removeClass("margin");
+        $( "#sloz" ).removeClass("margin");*/
     } else {
         $( "#sidebar" ).addClass("fxd");
+       /* $( "#jedn" ).addClass("margin");
+        $( "#sloz" ).addClass("margin");*/
     }
 
     var el = document.getElementById("canvas-holder");
@@ -307,10 +311,14 @@ function adjustColor() {
 
 function windowResized() {
 
-    if(windowWidth < 1260) {
+    if(windowWidth < 992) {
         $( "#sidebar" ).removeClass("fxd");
+        /*$( "#jedn" ).removeClass("margin");
+        $( "#sloz" ).removeClass("margin");*/
     } else {
         $( "#sidebar" ).addClass("fxd");
+        /*$( "#jedn" ).addClass("margin");
+        $( "#sloz" ).addClass("margin");*/
     }
 
     //var currentVal = slider.value();

@@ -138,6 +138,13 @@ function Wire() {
             return;
         }*/
 
+        if(currentWire != null) {
+          if(currentWire.outGateIndex != null){
+            this.branchButton.hide();
+            return;
+          }
+        }
+
         if (!this.done || currentGate !== null || simToggleValue === 1) {
             this.branchButton.hide();
             return;
