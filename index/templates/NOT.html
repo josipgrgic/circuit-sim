@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>"NE" VRATA</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/not.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-6 centered">
+            <p>NE (NOT) logička vrata sadržavaju jedan ulaz i jedan izlaz. Njegov izlaz u ovisnosti o ulazima strogo je
+			definiran te se nalazi u sljedećoj tablici.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>Kao što vidite izlaz NE vrata će dati zeleno svijetlo onda kada mu na ulaz dovedemo crveni signal, odnosno izlaz
+			će nam dati crveno svijetlo onda kada mu dovedemo zeleni signal.
+            Ova vrata se jednostavno zapamte, izlaz daje uvijek suprotnu vrijednost ulaza.
+            </p>
+        </div>
+
+        <div class="col-sm-2 col-sm-offset-1">
+            <table class="table table-bordered tut-image">
+                <thead>
+                    <tr>
+                        <th class="text-center">A</th>
+                        <th class="text-center">IZLAZ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="red"><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+
+                        <td class="red"><b>0</b></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
