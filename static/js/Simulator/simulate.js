@@ -6,13 +6,13 @@ var inputGates = [];
 var clockInputGates = [];
 var clocks = [];
 
-function simulate(fromClock = false, gateFromButton, clocksForQueue){
+function simulate(fromClock, gateFromButton, clocksForQueue){
     var queue = [];
     var queueFlags = {};
 
     var simInputGates = [];
     var simInputQueue = [];
-    if(fromClock){
+    if(typeof fromClock !== 'undefined' && fromClock){
         simInputGates = clocksForQueue;
         clocksForQueue.forEach(function(clock){
             clock.out.forEach(function(outButton){
@@ -51,8 +51,8 @@ function simulate(fromClock = false, gateFromButton, clocksForQueue){
     console.log(gates);
     while(queue.length > 0){
         if(i++ > gates.length * 10){ 
-            break;
             console.log("Infinite loop detected");
+            break;
         }
         var currentQueueGate = shiftGate(queue, queueFlags);
         var currentGate = currentQueueGate.gate;

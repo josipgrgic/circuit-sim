@@ -45,7 +45,6 @@ function Wire() {
             else {
                 this.branchingPoint.y=pnt.y;
             }
-            this.branchingPoint.x=this.segment[0].x;
         }
 
         strokeWeight(1);
