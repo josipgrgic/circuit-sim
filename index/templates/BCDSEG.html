@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>BCD 7 SEGMETNI PRETPAVARAČ</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/BCD.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-6 centered">
+            <p>BCD 7 segmetni pretvarač ima 4 ulaza i 7 izlaza. Njego zadatatak je pretvoriti ulazni niz signala ,koji
+			čine neki broj, u 7 signala koji će služiti kao ulaz za 7 segmetni displej. To znači da ako spojimo izlaze na ulaz 7 segmentog
+			displeja, onda će na sedam segmentu displeju se prikazivati broj kojeg čini ulaz</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>Ulazni niz koji dobijemo čini neki dekadski broj. Pretvorbu binarnih u decimalne brojeve možete vidjeti u tablici ispod.
+			
+            </p>
+        </div>
+
+        <div class="col-sm-5 col-sm-offset-1">
+            <table class="table table-bordered tut-image centered">
+                <thead>
+                    <tr>
+                        <th class="text-center">UA</th>
+                        <th class="text-center">UB</th>
+						<th class="text-center">UC</th>
+						<th class="text-center">UD</th>
+						<th class="text-center">BROJ</th>
+                        <th class="text-center">IA</th>
+						<th class="text-center">IB</th>
+						<th class="text-center">IC</th>
+						<th class="text-center">ID</th>
+						<th class="text-center">UE</th>
+						<th class="text-center">UF</th>
+						<th class="text-center">UG</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="green"><b>1</b></td>
+						<td ><b>1</b></td>
+
+                        <td class="red"><b>0</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>2</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="green"><b>1</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+						<td ><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+	
+	<div class= "row">
+		
+		<div class="col-sm-6 centered">
+            <img src="/static/img/tut/nor_izvod.png" class="tut-image" />
+            <br /><br />
+        </div>
+		
+			
+	</div>
+
+</div>
+
+{% endblock %}

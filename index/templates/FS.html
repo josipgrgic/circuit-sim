@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>PUNO ODUZIMALO</h3>
+    <br /><br/>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/fs.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-6 centered">
+            <p>Puno oduzimalo (Full Subtractor - FS) je logički sklop koji na ulazu ima tri signala; dva koji predstavljaju binarne
+                znamenke i jedan koji predstavlja posudbu, a na izlazu producira njihovu razliku uz posudbu.
+                 Posudba se dalje propagira i može sudjelovati u operaciji oduzimanja na značajnijem mjestu.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>
+                Primjetimo da puno oduzimalo na ulazu za razliku od poluoduzimala prima posudbu moguće prethodne operacije oduzimanja.
+                 Iz tog razloga ga nazivamo <b>puno</b> oduzimalo.
+            </p>
+        </div>
+
+        <div class="col-sm-5 col-sm-offset-1">
+            <table class="table table-bordered tut-image centered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Ci
+                            <span>(prethodna posudba)</span>
+                        </th>
+                        <th class="text-center">A
+                            <span style="white-space: nowrap;">(umanjenik)</span>
+                        </th>
+                        <th class="text-center nwrp">B
+                            <span style="white-space: nowrap;">(umanjitelj)</span>
+                        </th>
+                        <th class="text-center nwrp">RAZLIKA</th>
+                        <th class="text-center nwrp">S
+                            <span style="white-space: nowrap;">(razlika)</span>
+                        </th>
+                        <th class="text-center nwrp">Co
+                            <span style="white-space: nowrap;">(posudba)</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td><b>0</b></td>
+
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td><b>(1)1</b></td>
+
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td><b>1</b></td>
+
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td><b>0</b></td>
+
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>0</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td><b>(1)1</b></td>
+
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td><b>0</b></td>
+
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>0</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td><b>0</b></td>
+
+                        <td class="green"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td><b>(1)1</b></td>
+
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <img src="/static/img/tut/FS-inter.png" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-1 centered">
+            <p>Ovako bi mogla izgledati interna struktura punog oduzimala.</p>
+        </div>
+    </div>
+
+    <div class="row centered">
+        <p class="col-sm-8 col-sm-offset-2">Za kraj, primjer 4-bitnog paralelnog oduzimala. Primjetite, na mjestu prvog i posljednjeg punog oduzimala
+         mogli su se naći dva poluoduzimala. Zašto je to tako?</p>
+
+        <div class="col-sm-12 centered">
+            <img src="/static/img/tut/par-sub.png" class="tut-image" />
+            <br /><br />
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
