@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>POLUODUZIMALO</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/hs.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-6 centered">
+            <p>Poluoduzimalo (Half Subtractor – HS) je logički sklop koji na ulazu ima dva signala koji predstavljaju binarne
+                znamenke, a na izlazu producira njihovu razliku uz posudbu. Ukoliko je umanjitelj veći od umanjenika, potrebno
+                je posuditi jedinicu iz slijedećeg stupnja.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>
+                Bitno je primjetiti da poluzbrajalo na ulazu ne prima posudbu moguće prethodne opracije oduzimanja.
+                 Od tuda poluoduzimalu prefiks "polu-". Tu operaciju obavlja puno oduzimalo o kojem više
+                možeš saznati <a href="/tutorial/lesson/FS">ovdje</a>
+            </p>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1">
+            <table class="table table-bordered tut-image centered">
+                <thead>
+                    <tr>
+                        <th class="text-center">A
+                            <span style="white-space: nowrap;">(umanjenik)</span>
+                        </th>
+                        <th class="text-center nwrp">B
+                            <span style="white-space: nowrap;">(umanjitelj)</span>
+                        </th>
+                        <th class="text-center nwrp">RAZLIKA</th>
+                        <th class="text-center nwrp">S
+                            <span style="white-space: nowrap;">(razlika)</span>
+                        </th>
+                        <th class="text-center nwrp">C
+                            <span style="white-space: nowrap;">(posudba)</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td><b>00</b></td>
+
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td><b>11</b></td>
+
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td><b>10</b></td>
+
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td><b>00</b></td>
+
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <img src="/static/img/tut/HS-int.png" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-1 centered">
+            <p>Naposlijetku, ovako bi mogla izgledati interna struktura poluoduzimala.</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
