@@ -35,6 +35,7 @@ function Wire() {
             var pnt = this.segment[1];
             var y1 = wires[this.branchedFrom].points[this.branchIndexBefore].y;
             var y2 = wires[this.branchedFrom].points[this.branchIndexBefore+1].y;
+            var x = wires[this.branchedFrom].points[this.branchIndexBefore+1].x;
             if(pnt.y<min(y1,y2)) {
                 this.branchingPoint.y=min(y1,y2)
             }
@@ -44,7 +45,7 @@ function Wire() {
             else {
                 this.branchingPoint.y=pnt.y;
             }
-
+            this.branchingPoint.x=x;
         }
 
         strokeWeight(1);
