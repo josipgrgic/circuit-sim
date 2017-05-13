@@ -24,7 +24,7 @@ SECRET_KEY = 'f@dc+=g%5$%^hn2di7w^gqnsrmjaljajp4fomvx4&o(-gv_9_x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['soapy.pythonanywhere.com',
+ALLOWED_HOSTS = ['207.154.229.157',
                  'localhost']
 
 # Application definition
