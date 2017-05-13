@@ -191,6 +191,21 @@ function setup() {
             currentGate = new Clock(0, 0);
     });
 
+    $( "#D-FLIP-FLOP" ).click(function() {
+        if (simToggleValue === 0 && deleteWireMode === 0)
+            currentGate = new DFlipFlop(0, 0);
+    });
+
+    $( "#T-FLIP-FLOP" ).click(function() {
+        if (simToggleValue === 0 && deleteWireMode === 0)
+            currentGate = new TFlipFlop(0, 0);
+    });
+
+    $( "#JK-FLIP-FLOP" ).click(function() {
+        if (simToggleValue === 0 && deleteWireMode === 0)
+            currentGate = new JkFlipFlop(0, 0);
+    });
+
     $( "#SIMULATION" ).click(function() {
         deleteWireMode = 0;
         adjustColor();
@@ -204,7 +219,7 @@ function setup() {
             //simulate();
             prepareSimulation();
             simulate();
-            intervalClock = setInterval(clock, 25);
+            intervalClock = setInterval(clock, 5);
         } else {
             $( "#SIMULATION" ).removeClass("btn-success");
             $( "#SIMULATION" ).addClass("btn-danger");

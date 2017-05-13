@@ -21,6 +21,7 @@ function OutSignal(x, y) {
     this.isInSignal = false;
     this.isOutSignal = true;
 
+    this.inputs = [0];
     this.status = 2;
     this.color = color(255);
 
@@ -136,5 +137,4 @@ function OutSignal(x, y) {
         else if (this.status === 0)
             this.color = color(255, 0, 0);
     }
-
 }

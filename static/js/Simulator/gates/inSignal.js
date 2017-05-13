@@ -22,7 +22,8 @@ function InSignal(x, y) {
     this.status = 0;
     this.isInSignal = true;
     this.isOutSignal = false;
-
+    this.inputs = [];
+    
     this.draw = function() {
         noFill();
         strokeWeight(2);

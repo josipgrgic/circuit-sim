@@ -1,9 +1,9 @@
-function FullSubtractor(x, y) {
+function JkFlipFlop(x, y) {
     this.x = x;
     this.y = y;
 
     this.index = -1;
-    this.name = "FULL_SUBTRACTOR_";
+    this.name = "JK_FLIP_FLOP_";
 
     this.length = 40;
     this.height = 60;
@@ -21,9 +21,14 @@ function FullSubtractor(x, y) {
     this.out = [];
     this.isInSignal = false;
     this.isOutSignal = false;
-    this.truthTable = [];
+    this.truthTable = [0, 0];
     this.inputs = [0, 0, 0];
-
+    this.state = true;
+    this.previousJ = 0;
+    this.previousClk = 0;
+    this.previousK = 0;
+    this.jk = true;
+    
     this.draw = function() {
         noFill();
         strokeWeight(2);
@@ -32,25 +37,24 @@ function FullSubtractor(x, y) {
         line(this.x, this.y, this.x, this.y + this.height);
         line(this.x + this.length, this.y, this.x + this.length, this.y + this.height);
 
-        if (this.inputNum == 3) {
-            line(this.left, this.y + this.height / 4 - 5, this.x, this.y + this.height / 4 - 5);
-            line(this.left, this.y + 2 * this.height / 4, this.x, this.y + 2 * this.height / 4);
-            line(this.left, this.y + 3 * this.height / 4 + 5, this.x, this.y + 3 * this.height / 4 + 5);
-        }
+        line(this.left, this.y + 10, this.x, this.y + 10);
+        line(this.left, this.y + 30, this.x, this.y + 30);
+        line(this.left, this.y + 50, this.x, this.y + 50);
 
-        line(this.x + this.length, this.y + this.height / 4 - 5, this.x + this.length + 20, this.y + this.height / 4 - 5);
-        line(this.x + this.length, this.y + 3 * this.height / 4 + 5, this.x + this.length + 20, this.y + 3 * this.height / 4 + 5);
+        line(this.x + this.length, this.y + this.height / 4, this.x + this.length + 20, this.y + this.height / 4);
+        line(this.x + this.length, this.y + 3 * this.height / 4, this.x + this.length + 20, this.y + 3 * this.height / 4);
 
         strokeWeight(1.2);
         textSize(14);
-        text("F S", this.x + 9, this.y + 35);
+        text("J K", this.x + 9, this.y + 35);
         strokeWeight(0.7);
         textSize(10);
-        text("A", this.x - 10, this.y + 8);
-        text("B", this.x - 10, this.y + 28);
-        text("Ci", this.x - 12, this.y + 48);
-        text("S", this.x + 44, this.y + 8);
-        text("Co", this.x + 44, this.y + 48);
+        text("J", this.x - 10, this.y + 7);
+        text("Clk", this.x - 17, this.y + 27);
+        text("K", this.x - 10, this.y + 47);
+        text("Q", this.x + 44, this.y + 12);
+        line(this.x + this.length + 5, this.y + this.height - 28, this.x + this.length + 12, this.y + this.height - 28);
+        text("Q", this.x + 44, this.y + 42);
         strokeWeight(1);
 
         if (this.index >= 0 && this.mouseInside() && currentGate === null && simToggleValue === 0 && currentWire === null) {
@@ -85,7 +89,7 @@ function FullSubtractor(x, y) {
     }
 
     this.clone = function() {
-        return new FullSubtractor();
+        return new JkFlipFlop();
     }
 
     this.mouseInside = function() {
@@ -100,49 +104,23 @@ function FullSubtractor(x, y) {
         this.index = gates.length;
         this.name += this.index;
 
-        if (this.inputNum == 3) {
-            for (var i = 0; i < this.inputNum; i++) {
-                this.in[i] = new InButton(this, i);
-            }
+        for (var i = 0; i < this.inputNum; i++) {
+            this.in[i] = new InButton(this, i);
         }
         for (i = 0; i < this.outputNum; i++) {
             this.out[i] = new OutButton(this, i);
         }
 
         this.refreshButtons();
-        this.truthTable = [
-            [
-                [
-                    [0, 0],
-                    [1, 1]
-                ],
-                [
-                    [1, 1],
-                    [0, 1]
-                ]
-            ],
-            [
-                [
-                    [1, 0],
-                    [0, 0]
-                ],
-                [
-                    [0, 0],
-                    [1, 1]
-                ]
-            ]
-        ];
+        this.truthTable = [0, 0];
     }
 
     this.refreshButtons = function() {
-        if (this.inputNum == 3) {
-            this.in[0].setPosition(this.left, this.y + this.height / 4 - 5);
-            this.in[1].setPosition(this.left, this.y + 2 * this.height / 4);
-            this.in[2].setPosition(this.left, this.y + 3 * this.height / 4 + 5);
-        }
-        this.out[0].setPosition(this.right, this.y + this.height / 4 - 5);
-        this.out[1].setPosition(this.right, this.y + 3 * this.height / 4 + 5);
-
+        this.in[0].setPosition(this.left, this.y + 10);
+        this.in[1].setPosition(this.left, this.y + 30);
+        this.in[2].setPosition(this.left, this.y + 50);
+        this.out[0].setPosition(this.right, this.y + this.height / 4);
+        this.out[1].setPosition(this.right, this.y + 3 * this.height / 4);
 
         this.closeButton.setPosition(this.right - 33, this.up + 2);
     }
@@ -183,7 +161,7 @@ function FullSubtractor(x, y) {
 
         var prevIndex = this.index;
         this.index = index;
-        this.name = "FULL_SUBTRACTOR_" + this.index;
+        this.name = "JK_FLIP_FLOP_" + this.index;
 
         for (var i = 0; i < wires.length; i++) {
             if (wires[i].inGateIndex == prevIndex)
@@ -199,5 +177,38 @@ function FullSubtractor(x, y) {
         for (i = 0; i < this.out.length; i++) {
             this.out[i].refresh();
         }
+    }
+
+    this.switch = function(){
+        var j = this.inputs[0];
+        var clk = this.inputs[1];
+        var k = this.inputs[2];
+        if(this.truthTable[0] === 0 && this.truthTable[1] === 0){
+            if(clk === 0 && this.previousClk === 1){
+                if(j === 0){
+                    this.truthTable = [0, 1];
+                }
+                else{
+                    this.truthTable = [1, 0];
+                }
+            }
+        }
+        else if(this.truthTable[0] === 0 && this.truthTable[1] === 1){
+            if(clk === 0 && this.previousClk === 1){
+                if(j === 1){
+                    this.truthTable = [1, 0];
+                }
+            }
+        }
+        else if(this.truthTable[0] === 1 && this.truthTable[1] === 0){
+            if(clk === 0 && this.previousClk === 1){
+                if(k === 1){
+                    this.truthTable = [0, 1];
+                }
+            }
+        }
+        this.previousClk = clk;
+        this.previousJ = j;
+        this.previousK = k;
     }
 }

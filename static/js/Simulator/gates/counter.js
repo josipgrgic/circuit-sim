@@ -26,6 +26,7 @@ function Counter(x, y) {
     this.counter = true;
     this.previousClk = 0;
     this.previousReset = 0;
+    this.inputs = [0, 0];
 
     this.draw = function() {
         noFill();
@@ -177,7 +178,17 @@ function Counter(x, y) {
             this.out[i].refresh();
         }
     }
-    this.switch = function(clk, reset) {
+
+    this.reset = function(){
+        this.inputs = [0, 1];
+        this.switch();
+        this.inputs = [0, 0];
+        this.switch();
+    }
+
+    this.switch = function() {
+        clk = inputs[0];
+        reset = inputs[1];
         if (clk === 1 && this.previousClk != clk) {
             this.state++;
             this.state %= 16;

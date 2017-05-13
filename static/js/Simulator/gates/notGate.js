@@ -21,6 +21,7 @@ function NotGate(x, y) {
     this.out = [];
     this.isInSignal = false;
     this.truthTable = [];
+    this.inputs = [0, 0];
 
     this.draw = function() {
         noFill();
