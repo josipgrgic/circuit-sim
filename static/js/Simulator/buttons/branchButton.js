@@ -56,6 +56,20 @@ function BranchButton(wire) {
                     currentWire.points.splice(currentWire.points.length - 1, 1);
                     currentWire.points.push(new Point(currentWire.points[currentWire.points.length - 1].x, clickedButton.y));
                     currentWire.branchingPoint = new Point(currentWire.points[currentWire.points.length - 1].x, clickedButton.y);
+
+                    var x1 = points[endIndex].x;
+                    var x2 = points[endIndex+1].x;
+                    var xC = currentWire.points[currentWire.points.length - 1].x;
+                    if(xC<min(x1,x2)) {
+                        currentWire.branchingPoint.x=min(x1,x2)
+                    }
+                    else if(xC > max(x1,x2)){
+                        currentWire.branchingPoint.x=max(x1,x2)
+                    }
+                    else {
+                        currentWire.branchingPoint.x=xC;
+                    }
+
                     currentWire.points.push(new Point(clickedButton.x, clickedButton.y));
                 } else {
                     currentWire.points.push(new Point(clickedButton.x, clickedButton.y));
