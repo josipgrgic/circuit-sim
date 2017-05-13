@@ -24,7 +24,8 @@ SECRET_KEY = 'f@dc+=g%5$%^hn2di7w^gqnsrmjaljajp4fomvx4&o(-gv_9_x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['soapy.pythonanywhere.com']
+ALLOWED_HOSTS = ['soapy.pythonanywhere.com',
+                 'localhost']
 
 # Application definition
 
@@ -115,4 +116,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")

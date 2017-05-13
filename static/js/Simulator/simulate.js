@@ -6,13 +6,13 @@ var inputGates = [];
 var clockInputGates = [];
 var clocks = [];
 
-function simulate(fromClock = false, gateFromButton, clocksForQueue){
+function simulate(fromClock, gateFromButton, clocksForQueue){
     var queue = [];
     var queueFlags = {};
 
     var simInputGates = [];
     var simInputQueue = [];
-    if(fromClock){
+    if(typeof fromClock !== 'undefined' && fromClock){
         simInputGates = clocksForQueue;
         clocksForQueue.forEach(function(clock){
             clock.out.forEach(function(outButton){
