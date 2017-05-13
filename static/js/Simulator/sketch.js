@@ -74,15 +74,17 @@ function setup() {
         if (simToggleValue === 1)
             return;
 
-        for (var i = 0; i < gates.length; i++) {
-            gates[i].delete();
+        if(confirm("Želite li obrisati cijelu skicu?") === true){
+            for (var i = 0; i < gates.length; i++) {
+                gates[i].delete();
+            }
+            gates = [];
+            wires = [];
+            currentWire = null;
+            currentGate = null;
+            deleteWireMode = 0;
+            adjustColor()
         }
-        gates = [];
-        wires = [];
-        currentWire = null;
-        currentGate = null;
-        deleteWireMode = 0;
-        adjustColor()
     });
 
     $( "#CLEAR-WIRE" ).click(function() {
@@ -522,17 +524,17 @@ function deleteWire(wire) {
 function clearCurrentWire() {
     if (simToggleValue === 0 && currentWire !== null) {
         if (currentWire.inGateIndex !== null) {
-            let inBWires = gates[currentWire.inGateIndex].in[currentWire.inIndex].wires;
+            var inBWires = gates[currentWire.inGateIndex].in[currentWire.inIndex].wires;
             if (inBWires.length > 0) {
-                let wire = inBWires[inBWires.length - 1];
+                var wire = inBWires[inBWires.length - 1];
                 if (wire !== null && wire.outGateIndex === null || wire.inGateIndex === null)
                     inBWires.splice(inBWires.length - 1, 1);
             }
 
         } else {
-            let outBWires = gates[currentWire.outGateIndex].out[currentWire.outIndex].wires;
+            var outBWires = gates[currentWire.outGateIndex].out[currentWire.outIndex].wires;
             if (outBWires.length > 0) {
-                let wire = outBWires[outBWires.length - 1];
+                var wire = outBWires[outBWires.length - 1];
                 if (wire !== null && wire.outGateIndex === null || wire.inGateIndex === null)
                     outBWires.splice(outBWires.length - 1, 1);
             }

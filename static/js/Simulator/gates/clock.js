@@ -184,10 +184,10 @@ function Clock(x, y) {
                 this.statusButton.button.style('background', '#ccddff');
                 break;
             case 1:
-                this.speed = 5;
+                this.speed = 10;
                 this.statusButton.button.style('background', '#a5c4ff');
                 break;
-            case 5:
+            case 10:
                 this.speed = 25;
                 this.statusButton.button.style('background', '#689cff');
                 break;
