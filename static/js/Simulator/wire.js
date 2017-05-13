@@ -116,8 +116,11 @@ function Wire() {
         }
         strokeWeight(1);
         stroke(0);
-        if(this.branchingPoint !== null)
+        if(this.branchingPoint !== null) {
+            fill(0);
             ellipse(this.branchingPoint.x,this.branchingPoint.y,5,5);
+            noFill();
+        }
         this.mouseOver();
     }
 
