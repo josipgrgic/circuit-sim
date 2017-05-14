@@ -3,5 +3,117 @@
 
 {% block content %}
 <div id="ww" class="container">
+	<div class="container">
+		<div class = "centered">
+				<img src="/static/img/tut/simulator.png" class="tut-image" />
+				
+				<i>slika: prikaz simulatora</i>
+				<br /><br />
+		</div>
+        <div class="row">			
+            <div class="col-lg-10 col-lg-offset-2 centered">
+				<p>
+				U simulatoru ćemo moći konstruirati vlastiti sklop uz pomoću jednostavnijih sklopova. Ukoliko se još niste upoznali sa
+				sklopovima, molim pogledaj <a href="/tutorial/lesson">ovdje</a>. Upoznat ćemo se s nekim cjelinama:
+				</p>
+			</div>
+			<div class="col-lg-10 col-lg-offset-4">
+				<ol >
+					<li style="font-size:20px"><a href="#Dodavanje">Dodavanje sklopova u simulator</a></li>
+					<li style="font-size:20px"><a href="#Brisanje">Brisanje sklopova u simulatoru</a></li>
+					<li style="font-size:20px"><a href="#Povezivanje">Povezivanje sklopova žicom</a></li>
+					<li style="font-size:20px"><a href="#BZica">Brisanje žice u simulatoru</a></li>
+					<li style="font-size:20px"><a href="#Simulacija">Simulacija</a></li>
+				</ol>
+            </div>
+        </div>
+    </div>
+
+    <div>
+		<hr />
+		<div class = "centered">
+			<h2><A NAME=Dodavanje>1. Dodavanje sklopova u simulator</A></h2>
+			<br/><br/>
+		
+			
+				<p>Kako bi dodali neki sklop, morate ga odabrati. Imate 3 kategorije sklopova: ULAZ/IZLAZ, JEDNOSTAVNI SKLOPOVI,
+				SLOŽENI SKLOPOVI. Ako niste sigurni što koji radi pogledajte upute <a href="/tutorial/lesson">ovdje</a>.
+				</p>
+				<img src="/static/img/gif/simulator.gif" class="tut-image" />
+				
+				<p>bitno je zapamtiti da ćete uvijek trebati sklopove iz ULAZ/IZLAZ</p>
+				
+			
+		</div>
+		<hr />
+		
+		<div class = "centered">
+			<h2><A NAME=Brisanje>2. Brisanje sklopova u simulatoru</A></h2>
+			<br/><br/>
+		
+			
+				<p>Kada se nađete u situacije da imate pregršt sklopova s kojima nemate kamo, uvijek ih možete izbrisati.
+				Kako biste izbrisali sklopove, ponajprije je potrebno pritisnuti desni klik miša kako bi prešli u stanje
+				koje ne stvara nove sklopove. Potom se približite mišem na sklopku koju želite obrisati i pritisnite mali x uz sklopku.
+				
+				</p>
+				
+				<img src="/static/img/gif/simulator2.gif" class="tut-image" />
+				<i>animacija: brisanja sklopki</i>
+			
+		</div>
+		<hr />
+		<div class = "centered">
+			<h2><A NAME=Povezivanje>3. Povezivanje sklopova žicom</A></h2>
+			<br/><br/>
+		
+			
+				<p>Kako bi povazali neke sklopove prvo trebate kao u predhodnom primjeru pritisnuti desni klik ako ste u stanju
+				kreiranja novih sklopki. Poslije toga potrebno je približit se mišem na ulaz/izlaz sklopke dok se ne pojavi plavi kružić,
+				kliknuti u tom trenutku i povući do ulaza/izlaza neke sklopke. 
+				</p>
+				
+				<img src="/static/img/gif/simulator3.gif" class="tut-image" />
+				<i>animacija: spajanje sklopki</i>
+				
+			
+		</div>
+		
+		<hr />
+		
+		<div class = "centered">
+			<h2><A NAME=BZica>4. Brisanje žice u simulatoru</A></h2>
+			<br/><br/>
+		
+			
+				<p>Ukoliko si povukao neku žicu bespotrebno, možeš prekinuti njezino crtanje desnim klikom. Ako shvatiš da ti je neka žica
+				viška, onda upali mod "BRIŠI ŽICE" i poklikći na sve one žice koje su ti viška. Važno je znati da ne možeš pokrenuti mod
+				"BRIŠI ŽICE" kada se nalaziš u simulacijskom modu
+				</p>
+				<img src="/static/img/gif/simulator4.gif" class="tut-image" />
+				<i>animacija: brisanje žica</i>
+			
+		</div>
+		
+		<hr />
+		
+		<div class = "centered">
+			<h2><A NAME=Simulacija>5. Simulacija</A></h2>
+			<br/><br/>
+				<p>Simulacija je mod koji nam pokazuje signale. Da bi ovaj mod funkcionirao moraš imati neki ulaz i izlaz. Inače će ovaj mod biti 
+				beskoristan. Dok je ovaj mod upaljen onemogućen je ikakav rad sa sklopkama što znači stvaranje i brisanje. 
+				</p>
+				
+				<img src="/static/img/gif/simulator5.gif" class="tut-image" />
+				<i>animacija: simulacija</i>
+			
+		</div>
+		
+		
+		<hr />
+		
+		
+		<p>Entrepreneurs of Entrepreneurship vam želi ugodno korištenjesimulatora na koji možete doći klikom <a href="/simulator/">ovdje</a></p>
+		
 </div>
 {% endblock %}
