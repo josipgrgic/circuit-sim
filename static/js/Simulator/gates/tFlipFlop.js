@@ -177,13 +177,15 @@ function TFlipFlop(x, y) {
         }
     }
 
-    this.switch = function(t, clk){
+    this.switch = function(){
+        var t = this.inputs[0];
+        var clk = this.inputs[1];
         if(this.truthTable[0] === 0 && this.truthTable[1] === 1){
             if(t === 0){
                 // no change
             }
             else if(t === 1){
-                if(clk === 1){
+                if(clk === 1 && this.previousClk === 0){
                     this.truthTable = [1, 0];
                 }
             }
@@ -193,7 +195,7 @@ function TFlipFlop(x, y) {
         }
         else if(this.truthTable[0] === 1 && this.truthTable[1] === 0){
             if(t === 1){
-                if(clk === 1){
+                if(clk === 1 && this.previousClk === 0){
                     this.truthTable = [0, 1];
                 }
             }
@@ -201,5 +203,6 @@ function TFlipFlop(x, y) {
                 // no change
             }
         }
+        this.previousClk = clk;
     }
 }
