@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^tutorial/$', views.tutorial, name='tutorial'),
     url(r'^quiz/$', views.quiz, name='quiz'),
     url(r'^tutorial/lesson$', views.lesson, name='lesson'),
+    url(r'^tutorial/howTo', views.howTo, name='howTo'),
 
     url(r'^tutorial/lesson/AND$', views.AND, name='AND'),
     url(r'^tutorial/lesson/OR$', views.OR, name='OR'),
