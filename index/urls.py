@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^simulator/$', views.simulator, name='simulator'),
     url(r'^tutorial/$', views.tutorial, name='tutorial'),
+    url(r'^quiz/$', views.quiz, name='quiz'),
     url(r'^tutorial/lesson$', views.lesson, name='lesson'),
 
     url(r'^tutorial/lesson/AND$', views.AND, name='AND'),

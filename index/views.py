@@ -13,6 +13,10 @@ def tutorial(request):
     return render(request, 'tutorial.html', {})
 
 
+def quiz(request):
+    return render(request, 'quiz.html', {})
+
+
 def lesson(request):
     return render(request, 'lesson.html', {})
 
