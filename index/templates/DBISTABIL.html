@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>D BISTABIL</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/dbistabil.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-6 centered">
+            <p>D Bistabil ima 2 ulaza i 2 izlaza. NJegovi signali izlaza ovise o ulazu i definirani su u donjoj tablici.</p>
+        </div>
+    </div>
+	
+	
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>U tablici nema E. Kako bi jasnije shvatio taj nedostatak pogledaj na gornju animaciju. Vidiš li da
+				se stanje Q mijenja samo onda kada E prelazi 0->1? To upravo i je bit bistabila. On čuva neku informaciju
+				sve dok mu na E ne dovedemo promjenu iz 0 u 1. Na taj E možemo dovoditi sinkroni i asinkroni signal. Sinkroni
+				sigal možemo dovesti od IZVORA TAKTA čiji je opis <a href="/tutorial/lesson/CLOCK">ovdje</a>. Asinkroni signal je
+				signal koji u vremenu nema jednoliku promjenu.
+            </p>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1">
+            <table class="table table-bordered tut-image centered">
+                <thead>
+                    <tr>
+                        <th class="text-center">D</th>
+                        <th class="text-center">Q</th>
+                        <th class="text-center">^Q</th>
+						
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td class="red"><b>0</b></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+	
+
+</div>
+
+{% endblock %}
