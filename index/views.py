@@ -91,6 +91,15 @@ def MUX(request):
 
 def DEMUX(request):
     return render(request, 'DEMUX.html', {})
+	
+def DBISTABIL(request):
+    return render(request, 'DBISTABIL.html', {})
+	
+def TBISTABIL(request):
+    return render(request, 'TBISTABIL.html', {})
+	
+def JKBISTABIL(request):
+    return render(request, 'JKBISTABIL.html', {})
 
 
 def notFound(request):

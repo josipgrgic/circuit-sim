@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>"NI" VRATA</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/nand.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-6 centered">
+            <p>NI (NAND) logička vrata sadržavaju dva ili više ulaza i jedan izlaz. U simulatoru koristit ćemo
+             NI vrata s dva ulaza. Njegov izlaz u ovisnosti o ulazima strogo je definiran te se nalazi u sljedećoj tablici.</p>
+        </div>
+    </div>
+	
+	
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>Kao što vidite izlaz NI vrata će dati crveno svijetlo kada je su oba ulaza zelena.
+			Logiku ovoga sklopa možeš zapamtit ako znaš logiku vrata I. Njegovi izlazi će uvijek
+			biti negirane u odnosu na sklop I. Ako se sjetimo zaključanih vrata, ovog puta zeleno
+			svijetlo nam predstavlja vijest da nećemo moći proći kroz vrata. Ukoliko se nisi upoznao
+			sa vratima I, upoznaj se na sljedećem <a href="/tutorial/lesson/AND">linku</a>. Na slici 
+			ispod prikazana su NI vrata sastavljena od I i NE vrata. 
+            </p>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1">
+            <table class="table table-bordered tut-image centered">
+                <thead>
+                    <tr>
+                        <th class="text-center">A</th>
+                        <th class="text-center">B</th>
+                        <th class="text-center">IZLAZ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td class="green"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+
+                        <td class="red"><b>0</b></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+	<div class= "row">
+		
+		<div class="col-sm-6 centered">
+            <img src="/static/img/tut/nand_izvod.png" class="tut-image" />
+            <br /><br />
+        </div>
+		
+			
+	</div>
+
+</div>
+
+{% endblock %}
