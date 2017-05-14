@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>T BISTABIL</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/tbistabil.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <div class="col-sm-6 centered">
+            <p>T Bistabil ima 2 ulaza i 2 izlaza. NJegovi signali izlaza ovise o ulazu i izlazu i definirani su u donjoj tablici.</p>
+        </div>
+    </div>
+	
+	
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>Kao i kod D bistabila kojeg možeš vidjet <a href="/tutorial/lesson/DBISTABIL">ovdje</a> u tablici nema E ulaza.
+			Razlog je isti kao i kod D bistabila. Kada E prelazi iz 0 u 1, onda se stanje bistabila mijenja u ovisnost o T.
+            </p>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1">
+            <table class="table table-bordered tut-image centered">
+                <thead>
+                    <tr>
+                        <th class="text-center">T</th>
+						<th class="text-center">TQ</th>
+                        <th class="text-center">IQ</th>
+                        <th class="text-center">^IQ</th>
+						
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="red"><b>0</b></td>
+
+                        <td class="green"><b>1</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="red"><b>0</b></td>
+                        <td class="green"><b>1</b></td>
+						<td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+						<td class="red"><b>0</b></td>
+                        <td class="green"><b>1</b></td>
+                    </tr>
+					
+					
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+	
+
+</div>
+
+{% endblock %}
