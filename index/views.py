@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import Question
+from .models import Answer
 
 
 def index(request):
@@ -14,7 +16,8 @@ def tutorial(request):
 
 
 def quiz(request):
-    return render(request, 'quiz.html', {})
+    questions = Question.objects.all()
+    return render(request, 'quiz.html', {'q':questions})
 
 
 def lesson(request):

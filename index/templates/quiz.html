@@ -4,7 +4,14 @@
 {% block content %}
 
 <div id="ww" class="container">
+    {% if q %}
 
+    {% for ques in q %}
+        <h4>{{ques.text}}</h4>
+    {% endfor %}
+    {% else %}
+        <h4>Nema pitanja</h4>
+    {% endif %}
 </div>
 
 {% endblock %}
