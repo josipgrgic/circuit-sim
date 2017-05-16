@@ -289,3 +289,18 @@ bt {
     color: #1abc9c;
 }
 
+.hide {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+}
+
+.false {
+    background-color:red;
+}
+
+.true {
+    background-color:green;
+}
