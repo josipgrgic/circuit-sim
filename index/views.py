@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Question
 from .models import Answer
+from random import shuffle
 
 
 def index(request):
@@ -16,8 +17,23 @@ def tutorial(request):
 
 
 def quiz(request):
-    questions = Question.objects.all()
-    return render(request, 'quiz.html', {'q':questions})
+    questions = Question.objects.order_by('?')[:5]
+    list = []
+    for q in questions:
+        answers = Answer.objects.all().filter(question=q, isCorrect=False)[:4]
+        ans = []
+        for a in answers:
+            ans.append(a)
+        corr = Answer.objects.all().filter(question=q, isCorrect=True)[:1]
+
+        for a in corr:
+            ans.append(a)
+
+        shuffle(ans)
+        data = {'question' : q, 'answers' : ans}
+        list.append(data)
+
+    return render(request, 'quiz.html', {'list':list })
 
 
 def lesson(request):
