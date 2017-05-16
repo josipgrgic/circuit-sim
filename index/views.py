@@ -1,7 +1,10 @@
-from django.shortcuts import render
-from .models import Question
-from .models import Answer
 from random import shuffle
+
+from django.shortcuts import render, render_to_response
+from django.template import RequestContext
+
+from .models import Answer
+from .models import Question
 
 
 def index(request):
@@ -30,10 +33,10 @@ def quiz(request):
             ans.append(a)
 
         shuffle(ans)
-        data = {'question' : q, 'answers' : ans}
+        data = {'question': q, 'answers': ans}
         list.append(data)
 
-    return render(request, 'quiz.html', {'list':list })
+    return render(request, 'quiz.html', {'list': list})
 
 
 def lesson(request):
@@ -114,13 +117,16 @@ def MUX(request):
 
 def DEMUX(request):
     return render(request, 'DEMUX.html', {})
-	
+
+
 def DBISTABIL(request):
     return render(request, 'DBISTABIL.html', {})
-	
+
+
 def TBISTABIL(request):
     return render(request, 'TBISTABIL.html', {})
-	
+
+
 def JKBISTABIL(request):
     return render(request, 'JKBISTABIL.html', {})
 

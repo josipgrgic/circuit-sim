@@ -29,11 +29,9 @@ urlpatterns = [
     url(r'^tutorial/lesson/COUNTER$', views.COUNTER, name='COUNTER'),
     url(r'^tutorial/lesson/MUX$', views.MUX, name='MUX'),
     url(r'^tutorial/lesson/DEMUX$', views.DEMUX, name='DEMUX'),
-	
-	url(r'^tutorial/lesson/D-FLIP-FLOP$', views.DBISTABIL, name='DBISTABIL'),
-	url(r'^tutorial/lesson/T-FLIP-FLOP$', views.TBISTABIL, name='TBISTABIL'),
-	url(r'^tutorial/lesson/JK-FLIP-FLOP$', views.JKBISTABIL, name='JKBISTABIL'),
-	
 
+    url(r'^tutorial/lesson/D-FLIP-FLOP$', views.DBISTABIL, name='DBISTABIL'),
+    url(r'^tutorial/lesson/T-FLIP-FLOP$', views.TBISTABIL, name='TBISTABIL'),
+    url(r'^tutorial/lesson/JK-FLIP-FLOP$', views.JKBISTABIL, name='JKBISTABIL'),
 
 ]
