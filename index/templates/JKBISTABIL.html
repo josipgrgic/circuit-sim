@@ -4,16 +4,12 @@
 {% block content %}
 
 <div id="ww" class="container">
-    <h3>T BISTABIL</h3>
+    <h3>JK BISTABIL</h3>
     <div class="row">
 
         <div class="col-sm-6 centered">
-            <img src="/static/img/gif/jkbistabil.gif" class="tut-image" />
+            <img src="/static/img/gif/jk_flip_flop.gif" class="tut-image" />
             <br /><br />
-        </div>
-
-        <div class="col-sm-6 centered">
-            <p>JK Bistabil ima 3 ulaza i 2 izlaza. NJegovi signali izlaza ovise o ulazu i definirani su u donjoj tablici.</p>
         </div>
     </div>
 	
@@ -21,9 +17,7 @@
 
     <div class="row">
         <div class="col-sm-6 centered">
-            <p>Kao što su <a href="/tutorial/lesson/DBISTABIL">D bistabil</a> i <a href="/tutorial/lesson/TBISTABIL">T bistabil</a> imali ulaz 
-			E, tako JK bistaibl ima Clk ulaz koji se ponaša malo drukčije nego E. Naime kod E ulaza stanje je se mijenjala kada bi E prelazio
-			iz 0 u 1, a Clk mijenja stanje bistabila kada prelazi iz 1 u 0
+            <p>JK bistabil ima ponašanje slično SR bistabilu, uz razliku da nema nedopuštenih stanja, odnosno kada su ulazi J i K u stanju 1, bistabil će mijenjati stanje na izlazu u ovinosti o prethodnom stanju (1 -> 0, 0 -> 1). Ukoliko je J u stanju 1, a K u stanju 0, na izlazu će se postaviti stanje 1, a ako je J u stanju 0 i K u stanju 1, na izlazu će se postaviti stanje 1. Inače se stanje ne mijenja. JK bistabil možemo smatrati nekom vrstom univerzalnog bistabila.
             </p>
         </div>
 
@@ -34,7 +28,6 @@
                         <th class="text-center">J</th>
 						<th class="text-center">K</th>
                         <th class="text-center">Q</th>
-                        <th class="text-center">^Q</th>
 						
                     </tr>
                 </thead>
@@ -42,29 +35,25 @@
                     <tr>
                         <td class="red"><b>0</b></td>
                         <td class="red"><b>0</b></td>
-						<td class="red"><b>0</b></td>
-                        <td class="green"><b>1</b></td>
+						<td><b>Q</b></td>
                     </tr>
 
                     <tr>
                         <td class="red"><b>0</b></td>
                         <td class="green"><b>1</b></td>
-						<td class="green"><b>1</b></td>
-                        <td class="red"><b>0</b></td>
-                    </tr>
-					
-					<tr>
-                        <td class="green"><b>1</b></td>
-                        <td class="red"><b>0</b></td>
-						<td class="green"><b>1</b></td>
-                        <td class="red"><b>0</b></td>
-                    </tr>
-					
-					<tr>
-                        <td class="green"><b>1</b></td>
-                        <td class="green"><b>1</b></td>
 						<td class="red"><b>0</b></td>
+                    </tr>
+					
+					<tr>
                         <td class="green"><b>1</b></td>
+                        <td class="red"><b>0</b></td>
+						<td class="green"><b>1</b></td>
+                    </tr>
+					
+					<tr>
+                        <td class="green"><b>1</b></td>
+                        <td class="green"><b>1</b></td>
+						<td class="upperline"><b>Q</b></td>
                     </tr>
 					
 					
@@ -74,7 +63,16 @@
             </table>
         </div>
     </div>
-	
+
+    <hr>
+
+    <div class="row">
+        <p> 
+        Na sljedećoj animaciji možemo vidjeti izvedbu 4 bitnog brojila pomoću JK bistabila.
+        </p>
+        <img src="/static/img/gif/counter.gif" class="tut-image" />
+    </div>
+
 
 </div>
 

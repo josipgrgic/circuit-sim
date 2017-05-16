@@ -49,7 +49,7 @@ function TFlipFlop(x, y) {
         strokeWeight(0.7);
         textSize(10);
         text("T", this.x - 10, this.y + 12);
-        text("E", this.x - 10, this.y + 42);
+        text("Clk", this.x - 17, this.y + 42);
         text("Q", this.x + 44, this.y + 12);
         text("Q", this.x + 44, this.y + 42);
         strokeWeight(1);
