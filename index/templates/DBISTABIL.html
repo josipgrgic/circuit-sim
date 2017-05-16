@@ -8,12 +8,8 @@
     <div class="row">
 
         <div class="col-sm-6 centered">
-            <img src="/static/img/gif/dbistabil.gif" class="tut-image" />
+            <img src="/static/img/gif/d_flip_flop.gif" class="tut-image" />
             <br /><br />
-        </div>
-
-        <div class="col-sm-6 centered">
-            <p>D Bistabil ima 2 ulaza i 2 izlaza. NJegovi signali izlaza ovise o ulazu i definirani su u donjoj tablici.</p>
         </div>
     </div>
 	
@@ -21,11 +17,7 @@
 
     <div class="row">
         <div class="col-sm-6 centered">
-            <p>U tablici nema E. Kako bi jasnije shvatio taj nedostatak pogledaj na gornju animaciju. Vidiš li da
-				se stanje Q mijenja samo onda kada E prelazi 0->1? To upravo i je bit bistabila. On čuva neku informaciju
-				sve dok mu na E ne dovedemo promjenu iz 0 u 1. Na taj E možemo dovoditi sinkroni i asinkroni signal. Sinkroni
-				sigal možemo dovesti od IZVORA TAKTA čiji je opis <a href="/tutorial/lesson/CLOCK">ovdje</a>. Asinkroni signal je
-				signal koji u vremenu nema jednoliku promjenu.
+            <p>D bistabil mijenja stanje u određenom trenutku signala takta (konkretno u ovom simulatoru je implementiran D bistabil koji mijenja stanje na rastući brid takta, odnosno kada signal takta prelazi iz 0 u 1). Vrijednost na ulazu D se preslikava na izlaz Q na rastući brid takta, a u ostalim trenutcima izlaz ostaje nepromijenjen. Može se reći da on "pamti" podatak s ulaza, stoga se D bistabil najčešće koristi za pohranu podataka (registri) ili za kašnjenje (po čemu je dobio ime, "<b>D</b>elay" - kašnjenje, "<b>D</b>ata" - podatak).
             </p>
         </div>
 
@@ -34,33 +26,51 @@
                 <thead>
                     <tr>
                         <th class="text-center">D</th>
-                        <th class="text-center">Q</th>
-                        <th class="text-center">^Q</th>
-						
+                        <th class="text-center">Q<sup>n+1</sup></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="red"><b>0</b></td>
                         <td class="red"><b>0</b></td>
-
-                        <td class="green"><b>1</b></td>
                     </tr>
 
                     <tr>
                         <td class="green"><b>1</b></td>
                         <td class="green"><b>1</b></td>
-
-                        <td class="red"><b>0</b></td>
                     </tr>
 
                 </tbody>
 
             </table>
         </div>
-    </div>
-	
 
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p> 
+            Na animaciji desno možemo vidjeti jednu od češćih primjena D bistabila, djelilo frekvencije. Signal takta koji dovedemo na ulaz Clk, preslikava se na izlaz Q s dvostruko manjom frekvencijom.
+            </p>
+        </div>
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/freq_div.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+        <hr>
+        <div class="col-sm-6 centered">
+            <p> 
+            Na sljedećoj animaciji možemo vidjeti posmačni registar. Na ulaz Q serijski dovodimo podatke, koje zatim signalom takta
+            paralelno pomičemo u desno. Na ovom primjeru jasno možemo vidjeti primjenu činjenice da D bistabil "pamti" podatak.
+            </p>
+        </div>
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/shift_register.gif" class="tut-image" />
+            <br /><br />
+        </div>
+    </div>
 </div>
 
 {% endblock %}
