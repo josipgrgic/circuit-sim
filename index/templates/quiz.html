@@ -11,7 +11,10 @@
                 <div class="row">
                     <div class="row">
                         <h4>{{ forloop.counter }}. {{ item.question.text }}</h4>
-                        <img src="{{ item.question.img }}"  class="tut-image"/>
+                        {% if item.question.img %}
+                            <img src="{{ item.question.img }}"  class="tut-image"/>
+                        {% endif %}
+
                         <form action="">
                             {% for a in item.answers %}
                                 <br /><br />
@@ -31,15 +34,23 @@
 
             <div class="row">
                 <a class="btn btn-sm btn-primary" id="Submit">Submit</a>
+                <a href="#top" class="btn btn-sm btn-primary">Vrati se na vrh</a>
                 <br /><br />
                 <div id="Result">
-                    <p> YOMAN!</p>
+                    <h2 id="score"></h2>
+                    <p id="remarks"></p>
+                    <a class="btn btn-sm btn-default" onClick="window.location.reload()">Pokušaj još jednom</a>
                 </div>
 
                 <script>
                      $(document).ready(function() {
                         $('#Result').hide();
                      });
+
+                     $("a[href='#top']").click(function() {
+                      $("html, body").animate({ scrollTop: 0 }, "slow");
+                      return false;
+                    });
 
                     $('#Submit').on('click', function(event) {
                         event.preventDefault();
@@ -60,6 +71,32 @@
                                 $(radios[j-1]).attr("disabled",true);
                             }
                         }
+                        $('#score').text("Rezultat: " + nCorrect + '/5');
+
+                        switch( nCorrect ) {
+                            case 0:
+                                $('#remarks').text("Jao! Prođi još jednom kroz opise sklopova pa pokušaj još jednom. Nemoj zaboraviti da ti je simulator također na raspolaganju.");
+                                break;
+                            case 1:
+                                $('#remarks').text("Trebao bi više vremena uložiti u proučavanje sklopova prije nego što opet pristupiš kvizu.");
+                                break;
+                            case 2:
+                                $('#remarks').text("Imaš dovoljno znanja za osnovno rukovanje sklopovima u simulatoru. Ukoliko to znanje želiš poboljšati, baci još jednom oko na opise funkcija sklopova.");
+                                break;
+                            case 3:
+                                $('#remarks').text("OK! Uvijek dobro dođe više vježbe.");
+                                break;
+                            case 4:
+                                $('#remarks').text("Jako lijepo! Malo ti fali do savladavanja svih sklopova koje ovaj simulator nudi.");
+                                break;
+                            case 5:
+                                $('#remarks').text("Ti si majstor ovog simulatora! Za 50 godina će se pisati pjesme o tvom veličanstvenom razumijevanju digitalne logike.");
+                                break;
+
+                            default:
+                                break;
+                        }
+
                         $('#Result').show();
                     });
                 </script>

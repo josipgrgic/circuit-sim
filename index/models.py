@@ -4,7 +4,7 @@ from django.db import models
 
 class Question(models.Model):
     text = models.CharField(max_length=200)
-    img = models.CharField(max_length=100)
+    img = models.CharField(max_length=100, blank=True, null=True,)
 
 
 class Answer(models.Model):
