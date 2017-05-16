@@ -3,5 +3,122 @@
 
 {% block content %}
 <div id="ww" class="container">
+	<div class="container">
+		<div class = "centered">
+            <div class="col-sm-10 col-md-offset-1">
+                <div class="row">
+				    <img src="/static/img/tut/simulator.png" class="tut-image" width="800"/>
+                </div>
+
+                <div class="row">
+				    <i>slika: prikaz simulatora</i>
+                </div>
+				<br /><br />
+            </div>
+		</div>
+        <div class="row">			
+            <div class="col-lg-10 col-lg-offset-1 centered">
+				<p>
+				U simulatoru ćemo moći konstruirati vlastitu shemu pomoću ponuđenih sklopova. Ukoliko se još nisi upoznao sa
+				sklopovima, molim pogledaj <a href="/tutorial/lesson">ovdje</a>. Upoznat ćemo se s nekim cjelinama:
+				</p>
+			</div>
+			<div class="col-md-10 col-lg-offset-1 centered">
+                    <a href="#Dodavanje" class="row"><h4 class="tut-heading">1. DODAVANJE SKLOPOVA U SIMULATOR</h4></a>
+					<a href="#Brisanje" class="row"><h4 class="tut-heading">2. BRISANJE SKLOPOVA</h4></a>
+					<a href="#Povezivanje" class="row"><h4 class="tut-heading">3. POVEZIVANJE SKLOPOVA</h4></a>
+					<a href="#BZica" class="row"><h4 class="tut-heading">4. BRISANJE ŽICA</h4></a>
+					<a href="#Simulacija" class="row"><h4 class="tut-heading">5. SIMULACIJA</h4></a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+		<hr />
+		<div class = "centered">
+			<h2><a name="Dodavanje">1. Dodavanje sklopova u simulator</a></h2>
+			<br/><br/>
+			
+				<p>Sklop odabireš pritikom lijeve tipke miša iznad njegove slike. Postoje 3 kategorije sklopova: ULAZ/IZLAZ, JEDNOSTAVNI SKLOPOVI i
+				    SLOŽENI SKLOPOVI. Ako nisi siguran što koji radi pogledaj upute <a href="/tutorial/lesson">ovdje</a>. Nakon što si sklop odabrao,
+                        samo ga postavi na željeno mjesto unutar granica polja za simulaciju. Uoči da sklopove nije dopušteno stavljati iznad drugih sklopova
+                            ili žica. U takvoj situaciji sklop će poprimiti crveni obris.
+				</p>
+				<img src="/static/img/gif/simulator.gif" class="tut-image" />
+				
+			
+		</div>
+		<hr />
+		
+		<div class = "centered">
+			<h2><a name="Brisanje">2. Brisanje sklopova</a></h2>
+			<br/><br/>
+		
+			
+				<p>Kada se nađeš u situacije da ti dodani sklop ipak nije potreban, uvijek ga možeš izbrisati.
+				    Kako bi izbrisao sklopove, ponajprije je potrebno pritisnuti desni klik miša kako bi prešao u stanje
+				        bez odabranog sklopa ili aktualne žice. Potom se približi mišem na sklop koji želiš obrisati i pritisni tipku "x" uz sklop.
+				</p>
+				
+				<img src="/static/img/gif/simulator2.gif" class="tut-image" />
+				<i>animacija: brisanje sklopova</i>
+			
+		</div>
+		<hr />
+		<div class = "centered">
+			<h2><A NAME=Povezivanje>3. Povezivanje sklopova</A></h2>
+			<br/><br/>
+		
+			
+				<p>Kako bi povezao neke sklopove prvo trebaš kao u prethodnom primjeru pritisnuti desni klik ako si u stanju
+				    dodavanja novog sklopa ili povlačenja aktualne žice. Poslije toga potrebno je približiti se mišem na ulaz/izlaz
+                        sklopa dok se ne pojavi plavi kružić. Klikom na taj kružić stvara aktualnu žicu kojoj je još potrebno pridružiti drugi kraj.
+                            Također moguće je grananje žice na način koji je prikazan u animaciji.
+				</p>
+				
+				<img src="/static/img/gif/simulator3.gif" class="tut-image" />
+				<i>animacija: spajanje sklopova</i>
+		</div>
+		
+		<hr />
+		
+		<div class = "centered">
+			<h2><a name="BZica">4. Brisanje žica</a></h2>
+			<br/><br/>
+		
+			
+				<p>Ukoliko si krivo povukao žicu koja još nije postavljena, njezino crtanje možeš prekinuti desnim klikom.
+                    Ako shvatiš da su ti neke gotove žice suvišne, onda upali mod "BRIŠI ŽICE" u kojem ti je njihovo brisanje omogućeno.
+                        Važno je znati da ne možeš pokrenuti mod "BRIŠI ŽICE" dok je simulacija upaljena.
+				</p>
+				<img src="/static/img/gif/simulator4.gif" class="tut-image" />
+				<i>animacija: brisanje žica</i>
+			
+		</div>
+		
+		<hr />
+		
+		<div class = "centered">
+			<h2><a name="Simulacija">5. Simulacija</a></h2>
+			<br/><br/>
+				<p>Simulacija je mod koji ti omogućuje pregled propagacije ulaznih signala, preko različitih vrata i sklopova do izlaznih komponenti.
+                    Dok je ovaj mod upaljen, onemogućen je ikakav rad sa komponentama simulatora koji ne uključuje promjenu stanja ulaznih sklopova
+                        (izvor signala i izvor takta).
+				</p>
+				
+				<img src="/static/img/gif/simulator5.gif" class="tut-image" />
+				<i>animacija: simulacija postavljene sheme</i>
+			
+		</div>
+		
+		
+		<hr />
+		
+		
+		<p>Entrepreneurs of Entrepreneurship ti želi ugodno korištenje simulatora na koji možeš doći klikom <a href="/simulator/">ovdje</a></p>
+		
 </div>
+
+</div>
+
 {% endblock %}

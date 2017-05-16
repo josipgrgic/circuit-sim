@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <div class="">
+        {% if list %}
+
+            {% for item in list %}
+                <div class="row">
+                    <div class="row">
+                        <h4>{{ forloop.counter }}. {{ item.question.text }}</h4>
+                        <img src="{{ item.question.img }}"  class="tut-image"/>
+                        <form action="">
+                            {% for a in item.answers %}
+                                <br /><br />
+                                <div id="question-{{forloop.parentloop.counter}}-{{ forloop.counter }}" class="col-sm-8 col-sm-offset-1">
+                                    {% if a.isCorrect %}
+                                        <input type="radio" name="question-{{forloop.parentloop.counter}}" value="Correct"> <b>{{ a.text }}</b>
+                                    {% else %}
+                                        <input type="radio" name="question-{{forloop.parentloop.counter}}" value="False"> <b>{{ a.text }}</b>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </form>
+                    </div>
+                    <hr />
+                </div>
+            {% endfor %}
+
+            <div class="row">
+                <a class="btn btn-sm btn-primary" id="Submit">Submit</a>
+                <br /><br />
+                <div id="Result">
+                    <p> YOMAN!</p>
+                </div>
+
+                <script>
+                     $(document).ready(function() {
+                        $('#Result').hide();
+                     });
+
+                    $('#Submit').on('click', function(event) {
+                        event.preventDefault();
+                        $('#Submit').attr("disabled", true);
+                        var nCorrect = 0;
+                        for( i = 1; i <= 5; i++) {
+                             var radios = document.getElementsByName('question-' + i);
+                             for( j = 1; j <= radios.length; j++ ) {
+                                if( radios[j-1].value === 'Correct' ) {
+                                    $('#question-' + i + '-' + j).addClass('green');
+                                    if( radios[j-1].checked) {
+                                        nCorrect++;
+                                    }
+                                } else {
+                                    $('#question-' + i + '-' + j).addClass('red');
+                                }
+
+                                $(radios[j-1]).attr("disabled",true);
+                            }
+                        }
+                        $('#Result').show();
+                    });
+                </script>
+            </div>
+        {% else %}
+            <h4>Nema pitanja.</h4>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

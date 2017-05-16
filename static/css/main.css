@@ -280,3 +280,30 @@ bt {
 .green {
     color:green;
 }
+
+.margin {
+    margin-bottom:10px;
+}
+
+.tut-heading {
+    color: #1abc9c;
+}
+
+.upperline { 
+    text-decoration: overline; 
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+}
+
+.false {
+    background-color:red;
+}
+
+.true {
+    background-color:green;
+}

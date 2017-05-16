@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from .models import Question
+from .models import Answer
+from random import shuffle
 
 
 def index(request):
@@ -11,6 +14,26 @@ def simulator(request):
 
 def tutorial(request):
     return render(request, 'tutorial.html', {})
+
+
+def quiz(request):
+    questions = Question.objects.order_by('?')[:5]
+    list = []
+    for q in questions:
+        answers = Answer.objects.all().filter(question=q, isCorrect=False)[:4]
+        ans = []
+        for a in answers:
+            ans.append(a)
+        corr = Answer.objects.all().filter(question=q, isCorrect=True)[:1]
+
+        for a in corr:
+            ans.append(a)
+
+        shuffle(ans)
+        data = {'question' : q, 'answers' : ans}
+        list.append(data)
+
+    return render(request, 'quiz.html', {'list':list })
 
 
 def lesson(request):
@@ -91,6 +114,15 @@ def MUX(request):
 
 def DEMUX(request):
     return render(request, 'DEMUX.html', {})
+	
+def DBISTABIL(request):
+    return render(request, 'DBISTABIL.html', {})
+	
+def TBISTABIL(request):
+    return render(request, 'TBISTABIL.html', {})
+	
+def JKBISTABIL(request):
+    return render(request, 'JKBISTABIL.html', {})
 
 
 def notFound(request):

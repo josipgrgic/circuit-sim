@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>T BISTABIL</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/t_flip_flop.gif" class="tut-image" />
+            <br /><br />
+        </div>
+
+    </div>
+	
+	
+
+    <div class="row">
+        <div class="col-sm-6 centered">
+            <p>Kao i <a href="/tutorial/lesson/D-FLIP-FLOP">D bistabil</a>, T bistabil mijenja stanje u određenom trenutku signala takta. No ponašanje T bistabila je malo drugačije od D bistabila. On mijenja stanje. 
+            Kada na ulaz Q dovedemo "jedinicu", na svaki rastući brid takta stanje na izlazu će se promijeniti (1 -> 0 -> 1 -> 0), a inače ostaje nepromijenjeno.
+            </p>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1">
+            <table class="table table-bordered tut-image centered">
+                <thead>
+                    <tr>
+                        <th class="text-center">T</th>
+						<th class="text-center">Q<sup>n+1</sup></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td ><b>0</b></td>
+                        <td ><b>Q<sup>n</sup></b></td>
+                    </tr>
+
+                    <tr>
+                        <td ><b>1</b></td>
+                        <td><b><span class="upperline">Q</span><sup>n</sup></b></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+	
+
+</div>
+
+{% endblock %}

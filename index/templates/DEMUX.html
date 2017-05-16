@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="ww" class="container">
+    <h3>DEMULTIPLEKSER</h3>
+    <div class="row">
+
+        <div class="col-sm-6 centered">
+            <img src="/static/img/gif/demultipleksor.gif" class="tut-image" />
+            <br /><br />
+			<div >
+            <p> Demultiplekser ima 1+2 ulaza i 4 izlaza. Njegov izlaz ovisi o ulazima i definiran je na tablici desno.
+				Logika demultipleksora je da bočni lijevi ulazni bude na onom izlazu kojeg definira donji ulaz. To znači da
+				ako nam je lijevi bočni ulaz 1, onda će kombinacija donjih ulaza definirati na koji ćemo izlatni signal poslati tu 1.
+				Kombinaciju svih ulaza pogledaj na tablici desno
+            </p>
+			
+			
+        
+        </div>
+        </div>
+		
+		
+        <div class="col-sm-3 col-sm-offset-1">
+            <table class="table table-bordered tut-image centered">
+					<thead>
+						<tr>
+							<th class="text-center">ulaz</th>
+							<th class="text-center">S0</th>
+							<th class="text-center">S1</th>
+							<th class="text-center">I0</th>
+							<th class="text-center">I1</th>
+							<th class="text-center">I2</th>
+							<th class="text-center">I3</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+						</tr>
+						<tr>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+						</tr>
+						<tr>
+							<td class="red"><b>0</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+						</tr>
+						<tr>
+							<td class="red"><b>0</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+						</tr>
+						<tr>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+						</tr>
+						<tr>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+						</tr>
+						<tr>
+							<td class="green"><b>1</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+						</tr>
+						<tr>
+							<td class="green"><b>1</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="green"><b>1</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="red"><b>0</b></td>
+							<td class="green"><b>1</b></td>
+						</tr>
+
+
+
+					</tbody>
+
+				</table>
+        </div>		
+    </div>
+
+
+</div>
+
+{% endblock %}

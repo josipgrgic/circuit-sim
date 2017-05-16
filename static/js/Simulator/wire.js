@@ -114,13 +114,14 @@ function Wire() {
         for (var i = 1; i < this.points.length; i++) {
             line(this.points[i - 1].x, this.points[i - 1].y, this.points[i].x, this.points[i].y);
         }
-        strokeWeight(1);
-        stroke(0);
+
         if(this.branchingPoint !== null) {
-            fill(0);
+            fill(this.color);
             ellipse(this.branchingPoint.x,this.branchingPoint.y,5,5);
             noFill();
         }
+        strokeWeight(1);
+        stroke(0);
         this.mouseOver();
     }
 
@@ -137,6 +138,13 @@ function Wire() {
             this.branchButton.hide();
             return;
         }*/
+
+        if(currentWire != null) {
+          if(currentWire.outGateIndex != null){
+            this.branchButton.hide();
+            return;
+          }
+        }
 
         if (!this.done || currentGate !== null || simToggleValue === 1) {
             this.branchButton.hide();
