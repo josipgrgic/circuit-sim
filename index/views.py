@@ -16,8 +16,14 @@ def tutorial(request):
 
 
 def quiz(request):
-    questions = Question.objects.all()
-    return render(request, 'quiz.html', {'q':questions})
+    questions = Question.objects.order_by('?')[:5]
+    list = []
+    for q in questions:
+        answers = Answer.objects.all().filter(question=q)
+        data = {'question' : q, 'answers' : answers}
+        list.append(data)
+
+    return render(request, 'quiz.html', {'list':list})
 
 
 def lesson(request):

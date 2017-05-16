@@ -4,11 +4,18 @@
 {% block content %}
 
 <div id="ww" class="container">
-    {% if q %}
+    {% if list %}
 
-    {% for ques in q %}
-        <h4>{{ques.text}}</h4>
-        <img src="{{ ques.img }}" />
+    {% for item in list %}
+        <h4>{{ item.question.text }}</h4>
+        <img src="{{ item.question.img }}" />
+        {% for a in item.answers %}
+            <h5>{{ a.text }}</h5>
+            {% if a.isCorrect %}
+                <p>Tocno</p>
+            {% endif %}
+
+        {% endfor %}
     {% endfor %}
     {% else %}
         <h4>Nema pitanja</h4>
