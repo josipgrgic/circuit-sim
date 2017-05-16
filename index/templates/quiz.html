@@ -8,6 +8,7 @@
 
     {% for ques in q %}
         <h4>{{ques.text}}</h4>
+        <img src="{{ ques.img }}" />
     {% endfor %}
     {% else %}
         <h4>Nema pitanja</h4>
